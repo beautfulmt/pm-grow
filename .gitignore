@@ -1,0 +1,11 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+pm-grow-data/
+.pm-grow-data/
+handbook.html
+handbook.previous-*.html
+.coverage
+htmlcov/

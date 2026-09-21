@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "case_id": "case-example",
+  "title": "",
+  "owner": "self",
+  "origin": "work",
+  "status": "open",
+  "ability_ids": [],
+  "attempts": [
+    {
+      "attempt_id": "attempt-01",
+      "date": "",
+      "kind": "guided",
+      "status": "unverified",
+      "user_work": "",
+      "source": "",
+      "feedback": "",
+      "result": "尚未验证",
+      "observations": []
+    }
+  ]
+}
