@@ -5,7 +5,7 @@ __pycache__/
 venv/
 pm-grow-data/
 .pm-grow-data/
-handbook.html
-handbook.previous-*.html
+/handbook.html
+/handbook.previous-*.html
 .coverage
 htmlcov/
