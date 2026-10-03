@@ -1,6 +1,6 @@
 interface:
   display_name: "PM 实战导师"
-  short_description: "以真实产品问题为训练场，用第一性原理引导解题、主动回访并验证成长"
-  default_prompt: "用 $pm-grow 帮我理清当前产品问题，给出有依据的行动建议，并一起练习可迁移的方法。"
+  short_description: "结合真实产品问题开放探索、按需研究与陪练，通过个人记录接续并验证成长"
+  default_prompt: "用 $pm-grow 帮我理清当前产品问题，按我的诉求一起探索、形成判断或练习，并接续相关的个人记录。"
 policy:
   allow_implicit_invocation: true

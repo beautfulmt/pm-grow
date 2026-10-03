@@ -5,6 +5,13 @@
   "owner": "self",
   "origin": "work",
   "status": "open",
+  "context_ref": "",
+  "context_snapshot": {
+    "project": "",
+    "role": "",
+    "constraints": [],
+    "help_received": ""
+  },
   "ability_ids": [],
   "attempts": [
     {

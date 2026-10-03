@@ -17,6 +17,8 @@ PRINCIPLES = {
     "goal": "目标", "facts": "事实", "constraints": "约束",
     "mechanism": "机制", "options": "选择", "validation": "验证",
 }
+BODY_TEXT = ("problem", "context", "judgment", "case", "template", "counterexample", "next_action")
+BODY_LISTS = ("steps", "boundaries", "pitfalls")
 
 
 def text_field(obj, key, required=True):
@@ -60,20 +62,32 @@ def validate(book):
         if not SLUG.fullmatch(identifier) or identifier in ids:
             raise ValueError("Topic IDs must be unique lowercase slugs")
         ids.add(identifier)
-        for key in ("title", "problem", "context", "judgment", "case", "template"):
-            text_field(topic, key)
+        text_field(topic, "title")
         date_field(topic, "updated_on")
-        for key in ("steps", "boundaries"):
-            text_list(topic, key, required=True)
-        for key in ("tags", "pitfalls"):
-            text_list(topic, key)
-        for key in ("counterexample", "next_action"):
+        for key in BODY_TEXT:
             text_field(topic, key, required=False)
+        for key in (*BODY_LISTS, "tags"):
+            text_list(topic, key)
         principles = topic.get("first_principles", {})
         if not isinstance(principles, dict) or any(k not in PRINCIPLES for k in principles):
             raise ValueError("Unknown first_principles field")
         for key in principles:
             text_field(principles, key)
+        sections = topic.get("sections", [])
+        if not isinstance(sections, list):
+            raise ValueError("sections: expected a list")
+        for section in sections:
+            if not isinstance(section, dict):
+                raise ValueError("Section must be an object")
+            text_field(section, "heading")
+            text_field(section, "content")
+        has_body = (
+            any(topic.get(key, "").strip() for key in BODY_TEXT)
+            or any(topic.get(key, []) for key in BODY_LISTS)
+            or bool(principles) or bool(sections)
+        )
+        if not has_body:
+            raise ValueError("Topic needs substantive body content in legacy fields or sections")
         sources = topic.get("sources")
         if not isinstance(sources, list) or not sources:
             raise ValueError("Provide a real source or an honest conversation locator")
@@ -99,7 +113,7 @@ def validate(book):
 
 
 def paragraph(title, value, css=""):
-    if not value:
+    if not value.strip():
         return ""
     return f'<section class="{css}"><h3>{escape(title)}</h3><p>{escape(value)}</p></section>'
 
@@ -117,10 +131,17 @@ def render_topic(topic):
         f'<article id="topic-{tid}" data-topic="{tid}">',
         f'<h2>{escape(topic["title"])}</h2>',
         f'<p class="meta">更新于 {escape(topic["updated_on"])}</p>',
-        '<div class="tags">' + "".join(f'<span class="tag">{escape(t)}</span>' for t in topic.get("tags", [])) + "</div>",
-        paragraph("问题与背景", topic["problem"] + "\n" + topic["context"]),
-        paragraph("关键判断", topic["judgment"], "judgment"),
     ]
+    tags = topic.get("tags", [])
+    if tags:
+        parts.append('<div class="tags">' + "".join(f'<span class="tag">{escape(t)}</span>' for t in tags) + "</div>")
+    problem, context = topic.get("problem", ""), topic.get("context", "")
+    background = "\n".join(value for value in (problem, context) if value.strip())
+    background_title = "问题与背景" if problem.strip() and context.strip() else ("问题" if problem.strip() else "背景")
+    parts.extend([
+        paragraph(background_title, background),
+        paragraph("关键判断", topic.get("judgment", ""), "judgment"),
+    ])
     principles = topic.get("first_principles", {})
     if principles:
         parts.append('<section><h3>关键推导</h3><div class="principles">')
@@ -129,15 +150,19 @@ def render_topic(topic):
                 parts.append(f'<div class="principle"><strong>{label}</strong><p>{escape(principles[key])}</p></div>')
         parts.append("</div></section>")
     parts.extend([
-        list_section("解题步骤", topic["steps"], ordered=True),
-        list_section("适用边界", topic["boundaries"]),
-        paragraph("案例", topic["case"]),
+        list_section("解题步骤", topic.get("steps", []), ordered=True),
+        list_section("适用边界", topic.get("boundaries", [])),
+        paragraph("案例", topic.get("case", "")),
         paragraph("反例与失效条件", topic.get("counterexample", "")),
-        f'<section><h3>可复用模板</h3><pre>{escape(topic["template"])}</pre></section>',
+    ])
+    if topic.get("template", "").strip():
+        parts.append(f'<section><h3>可复用模板</h3><pre>{escape(topic["template"])}</pre></section>')
+    parts.extend([
         list_section("常见误用", topic.get("pitfalls", [])),
         paragraph("下一步", topic.get("next_action", "")),
-        '<section class="sources"><h3>来源与核验范围</h3><ul>',
     ])
+    parts.extend(paragraph(section["heading"], section["content"]) for section in topic.get("sections", []))
+    parts.append('<section class="sources"><h3>来源与核验范围</h3><ul>')
     for source in topic["sources"]:
         title = escape(source["title"])
         url = source.get("url", "")
