@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "case_id": "case-third",
+  "title": "帮同事看方案",
+  "owner": "third_party",
+  "origin": "work",
+  "status": "closed",
+  "ability_ids": [],
+  "attempts": [
+    {
+      "attempt_id": "attempt-01", "date": "2026-09-20", "kind": "independent", "status": "active",
+      "user_work": "同事写的方案", "source": "同事文档", "observations": []
+    }
+  ]
+}

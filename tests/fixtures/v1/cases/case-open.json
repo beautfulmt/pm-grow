@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "case_id": "case-open",
+  "title": "留存下降排查",
+  "owner": "self",
+  "origin": "work",
+  "status": "open",
+  "context_snapshot": {"project": "项目 A", "role": "负责留存", "constraints": ["两周内"], "help_received": "同事给了口径"},
+  "ability_ids": ["data_validation"],
+  "attempts": [
+    {
+      "attempt_id": "attempt-01", "date": "2026-10-04", "kind": "independent", "status": "active",
+      "user_work": "用户按新老用户拆分留存", "source": "用户贴出的表格", "observations": []
+    },
+    {
+      "attempt_id": "attempt-02", "date": "", "kind": "guided", "status": "unverified",
+      "user_work": "可能是用户自己写的结论", "source": "", "observations": []
+    }
+  ]
+}

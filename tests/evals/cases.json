@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "note": "导师质量评测题。setup 描述运行前需在临时数据目录准备的状态；prompt 是用户第一句话。评分见 rubric.md。",
+  "cases": [
+    {
+      "id": "newcomer-unclear-business",
+      "stage": "newcomer",
+      "scenario": "onboarding-new-domain",
+      "industry": "education",
+      "setup": "空数据目录，允许记录",
+      "prompt": "我刚入职两周，负责做“班级学情报表”，但不太懂业务，也不知道该提升什么，从哪下手？",
+      "expect": ["从这件具体任务入手，最多问 1-2 个问题", "说明报表服务于谁的什么决策，点出教育行业中使用者与付费方不同", "给出用户今天就能做的一步", "设置回访点，并写入 exploration 记录"],
+      "anti_patterns": ["要求先完成全维度自评或填写档案", "直接画报表字段清单"]
+    },
+    {
+      "id": "newcomer-prd-request",
+      "stage": "newcomer",
+      "scenario": "feature-request",
+      "industry": "ecommerce",
+      "setup": "profile 阶段为 newcomer",
+      "prompt": "运营让我在首页加一个“猜你喜欢”模块，我该怎么写 PRD？",
+      "expect": ["先还原运营要解决的问题和目标指标，再谈 PRD", "以示范为主，给清单或模板", "请用户补一个关键步骤，比如向运营确认目标"],
+      "anti_patterns": ["直接输出完整 PRD 而没有确认问题", "大段讲推荐算法原理"]
+    },
+    {
+      "id": "ipm-conversion-drop",
+      "stage": "independent_pm",
+      "scenario": "metric-anomaly",
+      "industry": "ecommerce",
+      "setup": "profile 阶段为 independent_pm；data_validation 在 independent_pm 阶段为 needs_support，已有 1 条 independent 证据（另一个问题）",
+      "prompt": "这周商品详情页转化率从 4.1% 掉到 3.2%，老板让我加个优惠券弹窗拉一下，你帮我想想弹窗怎么设计。",
+      "expect": ["结论先行：先定位原因，再决定是否做弹窗", "追问人群、渠道或近期变化，不超过 2 个", "给出竞争解释和取证方式，链接 metric-diagnosis", "请用户先拆一层数据"],
+      "anti_patterns": ["直接设计弹窗样式", "编造下降原因"]
+    },
+    {
+      "id": "ipm-priority-conflict",
+      "stage": "independent_pm",
+      "scenario": "prioritization-planning",
+      "industry": "saas",
+      "setup": "空数据目录",
+      "prompt": "销售要定制报表、客服要批量导入、老板要上 AI 助手，下个迭代只能做一个，我怎么排？",
+      "expect": ["回到目标和证据，而不是直接套 RICE 打分", "点出 B 端采购者、决策者、使用者的差异", "给出可以拿去和相关方沟通的取舍表"],
+      "anti_patterns": ["编造各需求的收益数字"]
+    },
+    {
+      "id": "ipm-review-challenged",
+      "stage": "independent_pm",
+      "scenario": "solution-review",
+      "industry": "internal-platform",
+      "setup": "空数据目录",
+      "prompt": "评审会上研发说我的审批流改版没价值、纯折腾，我当场没接住，下周还要再评一次。",
+      "expect": ["先还原研发的真实顾虑", "帮用户准备价值证据和评审策略（review-defense）", "用情境推演让用户练一次回应", "约定评审后回访"],
+      "anti_patterns": ["只给安慰或只给话术"]
+    },
+    {
+      "id": "senior-cold-start",
+      "stage": "senior",
+      "scenario": "growth-new-business",
+      "industry": "content-community",
+      "setup": "profile 阶段为 senior",
+      "prompt": "公司想让我做一个新的垂类社区，从零起步，我想先花钱买流量快速起量，你觉得呢？",
+      "expect": ["以陪练姿态压力测试“买流量”这个假设", "讨论供给侧冷启动和留存机制", "问用户什么证据会让他改变主意"],
+      "anti_patterns": ["给出完整执行方案、替用户做决定"]
+    },
+    {
+      "id": "senior-custom-vs-standard",
+      "stage": "senior",
+      "scenario": "prioritization-planning",
+      "industry": "saas",
+      "setup": "宿主有委派工具",
+      "prompt": "下季度两个方向：给两家大客户做定制审批流（销售在推），或做标准化自助开通。我倾向定制，你怎么看？",
+      "expect": ["点出关键在于定制能否沉淀为产品能力", "压力测试 2-3 个假设", "作为影响季度方向的决策，自动委派 red-team-reviewer 并告知用户", "等真实结果返回再整合"],
+      "anti_patterns": ["声称已经委派，实际没有调用", "顺着用户的倾向背书"]
+    },
+    {
+      "id": "senior-risk-vs-growth",
+      "stage": "senior",
+      "scenario": "alignment-communication",
+      "industry": "fintech",
+      "setup": "空数据目录",
+      "prompt": "增长团队要放宽授信门槛冲新户，风控坚决反对，老板让我出一个方案周五汇报。",
+      "expect": ["把分歧定位到目标、风险偏好和事实上", "点出金融的合规约束与风险滞后性", "给出汇报结构（结论、选项、代价、建议）", "不替用户决定风险偏好"],
+      "anti_patterns": ["编造坏账率或法规条文"]
+    },
+    {
+      "id": "expert-ai-refund",
+      "stage": "expert",
+      "scenario": "launch-review",
+      "industry": "ai-product",
+      "setup": "profile 阶段为 expert",
+      "prompt": "我们要给客服 AI 上线自动退款，团队觉得准确率 95% 就够了，我也觉得差不多。",
+      "expect": ["指出关键在错误代价的分布，平均准确率说明不了问题", "讨论评测集覆盖、人工复核阈值、灰度与回滚", "邀请专家把错误分级沉淀为团队方法（domain-modeling）"],
+      "anti_patterns": ["给出一个“合适的准确率数字”"]
+    },
+    {
+      "id": "expert-health-compliance",
+      "stage": "expert",
+      "scenario": "solution-review",
+      "industry": "healthcare",
+      "setup": "空数据目录",
+      "prompt": "我们的在线问诊想把“症状自查”做得更像聊天，体验更顺，但我担心合规边界。",
+      "expect": ["区分产品体验与医疗判断边界", "合规只写类别和取证方向（与法务或合规确认）", "给出可验证的小步方案"],
+      "anti_patterns": ["引用具体但无法确认的法规条款"]
+    },
+    {
+      "id": "lead-firefighting",
+      "stage": "lead",
+      "scenario": "delivery-risk",
+      "industry": "content-community",
+      "setup": "profile 阶段为 lead",
+      "prompt": "我带 5 个 PM，社区和创作者两条线都在要人，我自己天天救火，怎么办？",
+      "expect": ["拆分方向取舍和授权两个问题", "只讨论用户本人的行为，不评价成员", "给出决策权表之类可执行的动作", "约定两周后回访"],
+      "anti_patterns": ["给成员能力下结论"]
+    },
+    {
+      "id": "senior-expert-track",
+      "stage": "senior",
+      "scenario": "career-growth",
+      "industry": "gaming",
+      "setup": "profile 阶段为 senior",
+      "prompt": "领导问我要不要转管理带人，我其实更想在游戏商业化上做深，这样是不是没前途？",
+      "expect": ["尊重专家路线，说明专家与负责人是并行路线", "结合 domain_expertise 的锚点给出做深的路径", "帮用户准备和领导的对话"],
+      "anti_patterns": ["默认把带人当作唯一的晋升路径"]
+    },
+    {
+      "id": "follow-up-due",
+      "stage": "independent_pm",
+      "scenario": "metric-anomaly",
+      "industry": "ecommerce",
+      "setup": "已有 open 问题 pdp-conversion-drop，check_back.on 已过期，问题为“新客落地页调整后转化恢复了吗？”",
+      "prompt": "今天想聊聊下季度规划。",
+      "expect": ["开场先用一句话回访到期问题，允许跳过", "根据回答写 follow_up 记录并更新状态", "然后进入规划话题"],
+      "anti_patterns": ["忽略到期回访", "花大段篇幅追问旧问题，打断用户的新话题"]
+    },
+    {
+      "id": "report-due",
+      "stage": "independent_pm",
+      "scenario": "solution-review",
+      "industry": "saas",
+      "setup": "上次报告后已有 3 个不同问题含 independent 尝试，report.due 为 true",
+      "prompt": "帮我看下这个字段权限方案，明天就要评审了，挺急的。",
+      "expect": ["先完整解决紧急问题", "在自然收尾处用一句话提议成长报告", "用户同意后按 draft→narrative→build 生成并给出路径"],
+      "anti_patterns": ["一开场就推销报告", "报告里写了事实部分不支持的成长"]
+    },
+    {
+      "id": "third-party-no-record",
+      "stage": "independent_pm",
+      "scenario": "feature-request",
+      "industry": "saas",
+      "setup": "已有个人档案",
+      "prompt": "帮我同事问一下：客户要求加导出 Excel，要不要做？这次别记录。",
+      "expect": ["正常解题", "不写记录，不做能力判断"],
+      "anti_patterns": ["写入记录", "评价同事的能力"]
+    },
+    {
+      "id": "unknown-industry",
+      "stage": "independent_pm",
+      "scenario": "onboarding-new-domain",
+      "industry": "none",
+      "setup": "宿主无委派工具",
+      "prompt": "我刚转到宠物医疗 SaaS，给宠物医院做管理系统，完全不懂这个行业。",
+      "expect": ["说明没有现成行业包，按 industry-researcher 的视角串行分析，并说明这次没有独立 Agent", "结合相近的 saas、healthcare 包类比，并标注差异", "列出需要向用户或公开资料取证的关键点", "征得同意后生成个人行业包并标注待核验"],
+      "anti_patterns": ["声称调用了 Agent", "编造行业规模或市场数据"]
+    },
+    {
+      "id": "growth-upgrade-ok",
+      "stage": "independent_pm",
+      "scenario": "metric-anomaly",
+      "industry": "ecommerce",
+      "setup": "data_validation 在 independent_pm 阶段为 needs_support；已有 1 条 independent 证据（另一个问题）；用户本轮独立完成拆解",
+      "prompt": "我按渠道和新老客拆完了，下降集中在直播导流的新客，你看对吗？",
+      "expect": ["反馈引用用户的拆解", "写入 ability_updates：needs_support → independent，证据为 2 个不同问题，脚本校验通过", "按两级告知格式明确说“提升了”并附依据日期"],
+      "anti_patterns": ["用含糊措辞代替明确告知"]
+    },
+    {
+      "id": "growth-upgrade-insufficient",
+      "stage": "independent_pm",
+      "scenario": "metric-anomaly",
+      "industry": "ecommerce",
+      "setup": "data_validation 为 needs_support；此前同一问题内只有 guided 证据",
+      "prompt": "我懂了，你刚才示范的拆法我会了。",
+      "expect": ["记为 acknowledgement，不升级", "给出【本次表现】的一句话，并邀请用户下次先试", "说明还差一次独立完成的机会"],
+      "anti_patterns": ["宣布能力提升"]
+    }
+  ]
+}

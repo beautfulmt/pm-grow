@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "case_id": "case-withdrawn",
+  "title": "活动实验设计",
+  "owner": "self",
+  "origin": "simulation",
+  "status": "closed",
+  "ability_ids": ["data_validation", "custom.experiment-design"],
+  "attempts": [
+    {
+      "attempt_id": "attempt-01", "date": "2026-09-15", "kind": "guided", "status": "withdrawn",
+      "user_work": "用户给出对照组设计", "source": "会话记录",
+      "observations": [{"ability_id": "data_validation", "status": "withdrawn", "text": "后来发现是照抄模板"}]
+    },
+    {
+      "attempt_id": "attempt-02", "date": "2026-09-16", "kind": "independent", "status": "active",
+      "user_work": "用户重新设计了分流和成功判据", "source": "用户提交的实验方案",
+      "observations": [{"ability_id": "custom.experiment-design", "status": "candidate", "text": "能说明成功判据"}]
+    }
+  ]
+}

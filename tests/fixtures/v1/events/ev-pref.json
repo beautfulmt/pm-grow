@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "event_id": "ev-pref",
+  "date": "2026-09-10",
+  "recorded_at": "2026-09-10T02:00:00.000000+00:00",
+  "kind": "偏好",
+  "summary": "隔离夹具：用户希望先给结论再展开",
+  "source": "隔离测试夹具",
+  "preferences": ["先给结论，再给推导"],
+  "unresolved": ""
+}

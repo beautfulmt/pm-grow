@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "reviewed_case_ids": ["case-reviewed"],
+  "deferred_fingerprint": null,
+  "history": [{"date": "2026-09-20", "case_ids": ["case-reviewed"]}]
+}

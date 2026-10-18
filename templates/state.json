@@ -1,0 +1,13 @@
+{
+  "schema_version": 2,
+  "abilities": [],
+  "ability_history": [],
+  "report": {
+    "history": [],
+    "deferred": null
+  },
+  "settings": {
+    "report_mode": "propose"
+  },
+  "migrations": []
+}

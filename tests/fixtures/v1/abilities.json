@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "abilities": [
+    {
+      "id": "custom.experiment-design",
+      "name": "实验设计",
+      "definition": "为具体决策设计可验证的实验。",
+      "observable_behaviors": ["说明对照条件和成功判据。"]
+    }
+  ],
+  "history": [
+    {
+      "replaced_at": "2026-09-14T10:00:00+00:00",
+      "ability_id": "custom.experiment-design",
+      "previous_definition": {
+        "id": "custom.experiment-design",
+        "name": "实验设计",
+        "definition": "旧定义。",
+        "observable_behaviors": ["旧行为。"]
+      }
+    }
+  ]
+}

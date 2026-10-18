@@ -1,0 +1,2670 @@
+{
+  "version": "v2.0.0",
+  "date": "2026-10-19",
+  "host": "Codex",
+  "model": "当前会话默认配置；独立复核配置与重跑见轨迹",
+  "scope": "隔离模拟材料，含首轮和指定多轮，不代表跨模型或真实业务效果认证。",
+  "cases": [
+    {
+      "id": "newcomer-unclear-business",
+      "prompt": "我刚入职两周，负责做“班级学情报表”，但不太懂业务，也不知道该提升什么，从哪下手？",
+      "response": "栓哥，先围绕“班级学情报表”建立一小块业务认知，今天先做一页说明。你刚入职、负责明确功能，我暂按新人阶段带你，后续按实际职责调整。\n\n先问两件会决定先学什么的事：这份报表主要给谁看，看完要做什么决定？上级要求你什么时候交付，第一版怎样才算合格？不知道就直接带这两句去问上级或需求方。\n\n这周按三步走：\n\n1. 找一个真实使用者，跟一次“看数据、发现问题、采取行动”的过程。先确认使用者是老师、班主任还是其他人。\n2. 拿一份脱敏旧报表，逐列核对来源、统计周期、计算口径。把“班级、课时、出勤、作业完成”等不懂的词单独列出来，请业务同事校正。\n3. 写一页：谁在什么时候用、想做什么决定、现在怎么做、卡点证据、第一版范围与验收。让需求方和研发各看一遍。\n\n这里先练“从使用动作理解需求”。教育里学生、老师、家长的目标可能不同，报表浏览量也无法直接证明学习效果。比如“老师依据未完成作业名单安排补交”只是示范，是否是你们的真实场景需要核实。\n\n你先补上“这张报表给谁、用来决定什么”这一句，我们就能往下拆。首次交付后，再看哪些业务问题你已能独立回答。已记录本轮任务和待核实项，尚无能力变化判断。",
+      "followups": [],
+      "read_files": [
+        "<skill-dir>/SKILL.md",
+        "<skill-dir>/reference/evidence-and-records.md",
+        "<skill-dir>/reference/agents.md",
+        "<skill-dir>/reference/reasoning.md",
+        "<skill-dir>/playbooks/index.md",
+        "<skill-dir>/knowledge/industry-adaptation.md",
+        "<skill-dir>/growth/stages.md",
+        "<skill-dir>/knowledge/map.md",
+        "<skill-dir>/growth/coaching.md",
+        "<skill-dir>/growth/feedback-and-reports.md",
+        "<skill-dir>/playbooks/onboarding-new-domain.md",
+        "<skill-dir>/knowledge/industries/education.md",
+        "<skill-dir>/knowledge/methods/problem-framing.md",
+        "<skill-dir>/knowledge/methods/domain-modeling.md",
+        "<eval-root>/newcomer-unclear-business/profile.md",
+        "<eval-root>/newcomer-unclear-business/business-context.md",
+        "<eval-root>/newcomer-unclear-business/records/2026-10-19-newcomer-unclear-business.json"
+      ],
+      "cli_actions": [
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/newcomer-unclear-business",
+            "status"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/newcomer-unclear-business",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 1,
+          "stderr": "错误：unresolved 必须是非空文字；未知时请省略该字段\n"
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/newcomer-unclear-business",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 0,
+          "result": {
+            "record_id": "2026-10-19-newcomer-unclear-business",
+            "created": true,
+            "readback_verified": true
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/newcomer-unclear-business",
+            "recent",
+            "--limit",
+            "5",
+            "--problem-id",
+            "newcomer-unclear-business"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/newcomer-unclear-business",
+            "status"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "independent_agents": [],
+      "record_input": {
+        "record_id": "2026-10-19-newcomer-unclear-business",
+        "date": "2026-10-19",
+        "kind": "discussion",
+        "summary": "从班级学情报表建立新人上手范围，待核实使用者、决策用途与首个交付标准。",
+        "source": "本题隔离模拟的首轮请求及本轮导师讨论，未模拟后续用户回答。",
+        "problem": {
+          "id": "newcomer-unclear-business",
+          "title": "班级学情报表与新业务上手",
+          "scenario": "onboarding-new-domain",
+          "status": "open",
+          "check_back": {
+            "when": "第一份报表交付后",
+            "question": "使用者与验收标准确认了吗，哪些业务问题你已能独立回答？"
+          }
+        },
+        "assistance": "导师示范一页业务说明与三步取证顺序，说明教育多角色目标及过程指标边界；未将示范当用户产出。",
+        "methods": [
+          "problem-framing",
+          "domain-modeling"
+        ],
+        "next_step": "用户向上级或需求方确认报表使用者、决策用途与首个交付标准。",
+        "unresolved": "报表使用者、用途、字段口径、业务形态、首个交付时间和验收标准均待确认。",
+        "stage_update": {
+          "stage": "newcomer",
+          "reason": "用户明确刚入职两周、负责班级学情报表这一明确功能，目前业务不熟悉；暂按新人方式帮助，可随职责与表现调整。"
+        }
+      },
+      "record_readback": {
+        "path": "<eval-root>/newcomer-unclear-business/records/2026-10-19-newcomer-unclear-business.json",
+        "content": {
+          "record_id": "2026-10-19-newcomer-unclear-business",
+          "date": "2026-10-19",
+          "kind": "discussion",
+          "summary": "从班级学情报表建立新人上手范围，待核实使用者、决策用途与首个交付标准。",
+          "source": "本题隔离模拟的首轮请求及本轮导师讨论，未模拟后续用户回答。",
+          "problem": {
+            "id": "newcomer-unclear-business",
+            "title": "班级学情报表与新业务上手",
+            "scenario": "onboarding-new-domain",
+            "status": "open",
+            "check_back": {
+              "when": "第一份报表交付后",
+              "question": "使用者与验收标准确认了吗，哪些业务问题你已能独立回答？"
+            }
+          },
+          "assistance": "导师示范一页业务说明与三步取证顺序，说明教育多角色目标及过程指标边界；未将示范当用户产出。",
+          "methods": [
+            "problem-framing",
+            "domain-modeling"
+          ],
+          "next_step": "用户向上级或需求方确认报表使用者、决策用途与首个交付标准。",
+          "unresolved": "报表使用者、用途、字段口径、业务形态、首个交付时间和验收标准均待确认。",
+          "stage_update": {
+            "stage": "newcomer",
+            "reason": "用户明确刚入职两周、负责班级学情报表这一明确功能，目前业务不熟悉；暂按新人方式帮助，可随职责与表现调整。"
+          },
+          "schema_version": 2,
+          "recorded_at": "2026-10-18T17:10:19.743061+00:00"
+        },
+        "matches_input": true,
+        "mismatch_fields": [],
+        "sha256": "4a77e6321b2f0054ed75e2d36ea05b39afebe6e6510abfca45d4a229ac6886cd"
+      },
+      "limits": [
+        "本轮仅导师建议或用户初步倾向，未验证业务效果，未写能力升级。",
+        "所有问题保持open并登记条件回访；生成报告须等当前问题自然收尾。"
+      ],
+      "scores": {
+        "conclusion_first": 2,
+        "key_questions": 2,
+        "no_fabrication": 2,
+        "stage_fit": 2,
+        "industry_fit": 2,
+        "method_transfer": 2,
+        "check_back": 2,
+        "growth_feedback": null,
+        "boundaries": 1,
+        "length": 1
+      },
+      "average": 1.78,
+      "anti_patterns_found": [],
+      "result": "pass",
+      "reviewer_note": "从具体报表任务进入，保留未知事实；记录分类用了 discussion，语义接近但未使用题目建议的 exploration；首轮可更短。"
+    },
+    {
+      "id": "newcomer-prd-request",
+      "prompt": "运营让我在首页加一个“猜你喜欢”模块，我该怎么写 PRD？",
+      "response": "栓哥，先写 PRD 的一页摘要，确认“猜你喜欢”要解决的问题，再展开页面规则。现在已知运营提了模块，用户场景和业务收益还未知。\n\n你先向运营确认两件事：是什么现象让他提出这个需求，做成后想改变什么结果？这件事已承诺上线，还是范围和做法都能讨论？\n\n可先照下面填，未知项写“待确认”：\n\n| PRD 部分 | 本次要写什么 |\n|---|---|\n| 问题与证据 | 哪类访客在首页找商品时遇到什么阻碍，有哪些数据或反馈 |\n| 目标 | 想改变的用户行为及业务结果，指标口径、基线和目标值待对齐 |\n| 方案与范围 | 个性化推荐、规则选品位、暂缓三种选项，为什么选其中一种 |\n| 详细规则 | 商品来源、位置、排序、刷新、去重、点击去向；未登录、无历史、无结果、下架与加载失败如何处理 |\n| 验收与验证 | 按用户场景写可验收条件，记录曝光、点击及后续交易；上线方式和停止条件待定 |\n\n方法上，先把“模块”翻译为“用户要完成的事”。在电商里，推荐点击上涨也可能挤走原有入口，所以最终还要看整体成交和贡献利润，具体口径由你们确认。若目标只是让新品得到曝光，规则选品可能更省成本；只有个体差异确实重要时，个性化才更值得评估。\n\n你先用一句话写“谁在首页因为什么困难，影响了什么结果”，带着运营的回答回来，我们再补第一版规则。与运营确认后回看方案是否仍必要。已记录本轮讨论和回访点。",
+      "followups": [],
+      "read_files": [
+        "<skill-dir>/SKILL.md",
+        "<skill-dir>/reference/evidence-and-records.md",
+        "<skill-dir>/reference/agents.md",
+        "<skill-dir>/reference/reasoning.md",
+        "<skill-dir>/playbooks/index.md",
+        "<skill-dir>/knowledge/industry-adaptation.md",
+        "<skill-dir>/growth/stages.md",
+        "<skill-dir>/knowledge/map.md",
+        "<skill-dir>/growth/coaching.md",
+        "<skill-dir>/growth/feedback-and-reports.md",
+        "<skill-dir>/playbooks/feature-request.md",
+        "<skill-dir>/playbooks/solution-review.md",
+        "<skill-dir>/knowledge/industries/ecommerce.md",
+        "<skill-dir>/knowledge/methods/problem-framing.md",
+        "<skill-dir>/knowledge/methods/prd-writing.md",
+        "<eval-root>/newcomer-prd-request/profile.md",
+        "<eval-root>/newcomer-prd-request/business-context.md",
+        "<eval-root>/newcomer-prd-request/records/2026-10-19-newcomer-prd-request.json"
+      ],
+      "cli_actions": [
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/newcomer-prd-request",
+            "status"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/newcomer-prd-request",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 0,
+          "result": {
+            "record_id": "2026-10-19-newcomer-prd-request",
+            "created": true,
+            "readback_verified": true
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/newcomer-prd-request",
+            "recent",
+            "--limit",
+            "5",
+            "--problem-id",
+            "newcomer-prd-request"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/newcomer-prd-request",
+            "status"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "independent_agents": [],
+      "record_input": {
+        "record_id": "2026-10-19-newcomer-prd-request",
+        "date": "2026-10-19",
+        "kind": "discussion",
+        "summary": "运营要求首页猜你喜欢，先界定目标和约束，再填写一页 PRD 摘要。",
+        "source": "本题隔离模拟的首轮请求及本轮导师讨论，未模拟后续用户回答。",
+        "problem": {
+          "id": "newcomer-prd-request",
+          "title": "首页猜你喜欢 PRD",
+          "scenario": "feature-request",
+          "status": "open",
+          "check_back": {
+            "when": "与运营确认后",
+            "question": "真实问题和目标确认了吗，猜你喜欢仍是合适方案吗？"
+          }
+        },
+        "assistance": "导师提供问题到方案的翻译、PRD结构和规则边界示范；建议按目标比较个性化、规则选品与暂缓。",
+        "methods": [
+          "problem-framing",
+          "prd-writing"
+        ],
+        "next_step": "用户核实运营提出需求的触发事件、目标和既有承诺，写一句问题陈述。",
+        "unresolved": "目标用户、触发数据、业务目标、个性化价值、上线承诺及详细规则待确认。"
+      },
+      "record_readback": {
+        "path": "<eval-root>/newcomer-prd-request/records/2026-10-19-newcomer-prd-request.json",
+        "content": {
+          "record_id": "2026-10-19-newcomer-prd-request",
+          "date": "2026-10-19",
+          "kind": "discussion",
+          "summary": "运营要求首页猜你喜欢，先界定目标和约束，再填写一页 PRD 摘要。",
+          "source": "本题隔离模拟的首轮请求及本轮导师讨论，未模拟后续用户回答。",
+          "problem": {
+            "id": "newcomer-prd-request",
+            "title": "首页猜你喜欢 PRD",
+            "scenario": "feature-request",
+            "status": "open",
+            "check_back": {
+              "when": "与运营确认后",
+              "question": "真实问题和目标确认了吗，猜你喜欢仍是合适方案吗？"
+            }
+          },
+          "assistance": "导师提供问题到方案的翻译、PRD结构和规则边界示范；建议按目标比较个性化、规则选品与暂缓。",
+          "methods": [
+            "problem-framing",
+            "prd-writing"
+          ],
+          "next_step": "用户核实运营提出需求的触发事件、目标和既有承诺，写一句问题陈述。",
+          "unresolved": "目标用户、触发数据、业务目标、个性化价值、上线承诺及详细规则待确认。",
+          "schema_version": 2,
+          "recorded_at": "2026-10-18T17:10:19.908462+00:00"
+        },
+        "matches_input": true,
+        "mismatch_fields": [],
+        "sha256": "c42b132068e4734c11602e0732042fdac3ddbbec6462b54fe048133a1967d5e8"
+      },
+      "limits": [
+        "本轮仅导师建议或用户初步倾向，未验证业务效果，未写能力升级。",
+        "所有问题保持open并登记条件回访；生成报告须等当前问题自然收尾。"
+      ],
+      "scores": {
+        "conclusion_first": 2,
+        "key_questions": 2,
+        "no_fabrication": 2,
+        "stage_fit": 2,
+        "industry_fit": 2,
+        "method_transfer": 2,
+        "check_back": 2,
+        "growth_feedback": null,
+        "boundaries": 2,
+        "length": 1
+      },
+      "average": 1.89,
+      "anti_patterns_found": [],
+      "result": "pass",
+      "reviewer_note": "先问运营的问题与目标，交付轻量PRD骨架；未知规则保持待确认。"
+    },
+    {
+      "id": "ipm-conversion-drop",
+      "prompt": "这周商品详情页转化率从 4.1% 掉到 3.2%，老板让我加个优惠券弹窗拉一下，你帮我想想弹窗怎么设计。",
+      "response": "栓哥，先核实转化下降的原因，再决定优惠券弹窗是否对症。4.1% 到 3.2% 是下降 0.9 个百分点，相对下降约 22%；仅凭这两个数字，还无法判断原因或显著性。\n\n上次这类问题你在提示下核对过口径，这次先由你确认两项：这个转化率的分子、分母、去重方式与转化窗口是什么，埋点或数仓最近是否变更？两周对应的访问人数和成交人数，以及过去同期波动，能拿到吗？可以找数据同学核对，并用订单源对照支付数据。\n\n拿到后按顺序排查：先排数据故障与统计延迟，再按渠道、新老客、商品拆分，最后对照发版、投放、价格、库存和履约变化。竞争解释至少保留两条：低转化渠道占比增加时，组内转化可能稳定；支付故障或缺货时，特定链路或商品会出现异常。它们目前都是假设。\n\n如果后续证实价格阻碍集中在某类用户，才试优惠券：限定符合条件的人群，接近离开或明确犹豫时展示，允许关闭并限频；优惠金额、门槛和频次先与毛利和运营规则对齐，保留对照，观察增量支付和扣除优惠、退款后的贡献利润。若是支付故障，先修复故障。\n\n给老板可以这样说：“转化下降 0.9 个百分点，原因待核实；先查口径、流量结构和交易链路，确认价格是主要阻碍后再小范围试券。”这轮我们优先解决的是下降原因和恢复动作，你若更急着汇报，可以直接用这句口径。\n\n已记录本轮诊断计划。当前没有新增独立诊断产出，数据能力程度保持原记录；拉到拆分数据后回看哪个解释能覆盖主要变化。",
+      "followups": [],
+      "read_files": [
+        "<skill-dir>/SKILL.md",
+        "<skill-dir>/reference/evidence-and-records.md",
+        "<skill-dir>/reference/agents.md",
+        "<skill-dir>/reference/reasoning.md",
+        "<skill-dir>/playbooks/index.md",
+        "<skill-dir>/knowledge/industry-adaptation.md",
+        "<skill-dir>/growth/stages.md",
+        "<skill-dir>/knowledge/map.md",
+        "<skill-dir>/growth/coaching.md",
+        "<skill-dir>/growth/feedback-and-reports.md",
+        "<skill-dir>/playbooks/metric-anomaly.md",
+        "<skill-dir>/playbooks/feature-request.md",
+        "<skill-dir>/knowledge/industries/ecommerce.md",
+        "<skill-dir>/knowledge/methods/metric-diagnosis.md",
+        "<eval-root>/ipm-conversion-drop/profile.md",
+        "<eval-root>/ipm-conversion-drop/business-context.md",
+        "<eval-root>/ipm-conversion-drop/records/prior-guided.json",
+        "<eval-root>/ipm-conversion-drop/records/2026-10-19-ipm-conversion-drop.json"
+      ],
+      "cli_actions": [
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/ipm-conversion-drop",
+            "status"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/ipm-conversion-drop",
+            "recent",
+            "--limit",
+            "5",
+            "--problem-id",
+            "pdp-conversion-drop"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/ipm-conversion-drop",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 0,
+          "result": {
+            "record_id": "2026-10-19-ipm-conversion-drop",
+            "created": true,
+            "readback_verified": true
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/ipm-conversion-drop",
+            "recent",
+            "--limit",
+            "5",
+            "--problem-id",
+            "pdp-conversion-drop"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/ipm-conversion-drop",
+            "status"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "independent_agents": [],
+      "record_input": {
+        "record_id": "2026-10-19-ipm-conversion-drop",
+        "date": "2026-10-19",
+        "kind": "discussion",
+        "summary": "详情页转化由4.1%降至3.2%，先核验口径、样本与结构，再决定是否试券。",
+        "source": "本题隔离模拟的首轮请求及本轮导师讨论，未模拟后续用户回答。",
+        "problem": {
+          "id": "pdp-conversion-drop",
+          "title": "商品详情页转化下降",
+          "scenario": "metric-anomaly",
+          "status": "open",
+          "check_back": {
+            "when": "拿到同口径拆分数据后",
+            "question": "哪个解释能覆盖主要下降，价格阻碍有证据吗，是否需要试券或修复？"
+          }
+        },
+        "assistance": "导师计算下降幅度，给数据质量到人群拆分的排查顺序与竞争解释，说明价格证实后小范围试券及利润护栏。",
+        "methods": [
+          "metric-diagnosis"
+        ],
+        "next_step": "用户核实转化定义与数据变更，拉同期访问与成交人数、历史波动和人群拆分。",
+        "unresolved": "分子分母、归因窗口、样本量、数据链路变更、历史波动及下降原因待确认。"
+      },
+      "record_readback": {
+        "path": "<eval-root>/ipm-conversion-drop/records/2026-10-19-ipm-conversion-drop.json",
+        "content": {
+          "record_id": "2026-10-19-ipm-conversion-drop",
+          "date": "2026-10-19",
+          "kind": "discussion",
+          "summary": "详情页转化由4.1%降至3.2%，先核验口径、样本与结构，再决定是否试券。",
+          "source": "本题隔离模拟的首轮请求及本轮导师讨论，未模拟后续用户回答。",
+          "problem": {
+            "id": "pdp-conversion-drop",
+            "title": "商品详情页转化下降",
+            "scenario": "metric-anomaly",
+            "status": "open",
+            "check_back": {
+              "when": "拿到同口径拆分数据后",
+              "question": "哪个解释能覆盖主要下降，价格阻碍有证据吗，是否需要试券或修复？"
+            }
+          },
+          "assistance": "导师计算下降幅度，给数据质量到人群拆分的排查顺序与竞争解释，说明价格证实后小范围试券及利润护栏。",
+          "methods": [
+            "metric-diagnosis"
+          ],
+          "next_step": "用户核实转化定义与数据变更，拉同期访问与成交人数、历史波动和人群拆分。",
+          "unresolved": "分子分母、归因窗口、样本量、数据链路变更、历史波动及下降原因待确认。",
+          "schema_version": 2,
+          "recorded_at": "2026-10-18T17:10:20.058291+00:00"
+        },
+        "matches_input": true,
+        "mismatch_fields": [],
+        "sha256": "263bf14182e13ccd7a495ffa96da93fa01bb702a68951d18d14a4ef06a70f729"
+      },
+      "limits": [
+        "本轮仅导师建议或用户初步倾向，未验证业务效果，未写能力升级。",
+        "所有问题保持open并登记条件回访；生成报告须等当前问题自然收尾。"
+      ],
+      "scores": {
+        "conclusion_first": 2,
+        "key_questions": 1,
+        "no_fabrication": 2,
+        "stage_fit": 2,
+        "industry_fit": 2,
+        "method_transfer": 2,
+        "check_back": 2,
+        "growth_feedback": null,
+        "boundaries": 2,
+        "length": 1
+      },
+      "average": 1.78,
+      "anti_patterns_found": [],
+      "result": "pass",
+      "reviewer_note": "先查口径与分群，数值推算正确；仅条件性讨论试券；追问中的子项偏多。"
+    },
+    {
+      "id": "ipm-priority-conflict",
+      "prompt": "销售要定制报表、客服要批量导入、老板要上 AI 助手，下个迭代只能做一个，我怎么排？",
+      "response": "栓哥，当前信息不足以把三个需求排出可信先后。先定本迭代最重要的结果和拍板人，再比较它们。\n\n你先确认两点：这轮最重要的是保收入、提效率还是验证新机会？三方冲突最终由谁决策，你有多大排序权限？\n\n先带这张取证表去对齐，别急着填主观分数：\n\n| 候选项 | 要核实的价值依据 | 成本与替代做法 |\n|---|---|---|\n| 定制报表 | 哪些客户、是否影响合同或续费，客户决策者是否确认 | 研发及长期维护量级，现有导出或人工报表能否承接 |\n| 批量导入 | 哪类用户多频繁处理多少数据，当前耗时与差错 | 研发、数据校验和权限成本，模板或人工服务能否暂代 |\n| AI 助手 | 具体帮谁完成什么任务，已有何种需求证据 | 模型、集成、评测与人工复核成本，规则或搜索能否解决 |\n\n排序用同一条因果链：这个需求怎样推动本期目标，有什么证据，占用多少容量，会挤掉什么。SaaS 里还要区分单个客户的声音和目标客群的代表性，销售转述需回到客户与承诺核实。\n\n条件性排序可以是：若定制报表有已核实且不可替代的到期承诺，先处理承诺；若本期瓶颈是导入返工，且覆盖与成本证据较强，优先批量导入；AI 助手若尚无明确任务，先做需求与效果验证，暂不占完整开发迭代。硬承诺和证据目前都未知。\n\n你先按确认后的目标给出一个初排和一句理由，我帮你检验被延期项的代价。最终清单只选一个，并写明另外两项的承接方式和重排条件。已记录本轮取证与对齐安排，对齐会后回访排序是否被接受。",
+      "followups": [],
+      "read_files": [
+        "<skill-dir>/SKILL.md",
+        "<skill-dir>/reference/evidence-and-records.md",
+        "<skill-dir>/reference/agents.md",
+        "<skill-dir>/reference/reasoning.md",
+        "<skill-dir>/playbooks/index.md",
+        "<skill-dir>/knowledge/industry-adaptation.md",
+        "<skill-dir>/growth/stages.md",
+        "<skill-dir>/knowledge/map.md",
+        "<skill-dir>/growth/coaching.md",
+        "<skill-dir>/growth/feedback-and-reports.md",
+        "<skill-dir>/playbooks/prioritization-planning.md",
+        "<skill-dir>/playbooks/feature-request.md",
+        "<skill-dir>/knowledge/industries/saas.md",
+        "<skill-dir>/knowledge/methods/prioritization.md",
+        "<eval-root>/ipm-priority-conflict/profile.md",
+        "<eval-root>/ipm-priority-conflict/business-context.md",
+        "<eval-root>/ipm-priority-conflict/records/2026-10-19-ipm-priority-conflict.json"
+      ],
+      "cli_actions": [
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/ipm-priority-conflict",
+            "status"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/ipm-priority-conflict",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 0,
+          "result": {
+            "record_id": "2026-10-19-ipm-priority-conflict",
+            "created": true,
+            "readback_verified": true
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/ipm-priority-conflict",
+            "recent",
+            "--limit",
+            "5",
+            "--problem-id",
+            "ipm-priority-conflict"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/ipm-priority-conflict",
+            "status"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "independent_agents": [],
+      "record_input": {
+        "record_id": "2026-10-19-ipm-priority-conflict",
+        "date": "2026-10-19",
+        "kind": "discussion",
+        "summary": "定制报表、批量导入和AI助手争一个迭代，先对齐目标与拍板权，再比较证据成本。",
+        "source": "本题隔离模拟的首轮请求及本轮导师讨论，未模拟后续用户回答。",
+        "problem": {
+          "id": "ipm-priority-conflict",
+          "title": "三方需求的单迭代取舍",
+          "scenario": "prioritization-planning",
+          "status": "open",
+          "check_back": {
+            "when": "迭代对齐会后",
+            "question": "最终排序被接受了吗，被延期项如何承接，哪些新证据会触发重排？"
+          }
+        },
+        "assistance": "导师示范同一目标下的取证表与条件排序，不编造分数、收益、成本或承诺，明确单选及延期承接。",
+        "methods": [
+          "prioritization"
+        ],
+        "next_step": "用户确认本期核心目标与最终决策者，基于真实价值证据初排并说明代价。",
+        "unresolved": "本周期目标、决策权、合同承诺、价值证据、成本、依赖和AI具体任务待确认。"
+      },
+      "record_readback": {
+        "path": "<eval-root>/ipm-priority-conflict/records/2026-10-19-ipm-priority-conflict.json",
+        "content": {
+          "record_id": "2026-10-19-ipm-priority-conflict",
+          "date": "2026-10-19",
+          "kind": "discussion",
+          "summary": "定制报表、批量导入和AI助手争一个迭代，先对齐目标与拍板权，再比较证据成本。",
+          "source": "本题隔离模拟的首轮请求及本轮导师讨论，未模拟后续用户回答。",
+          "problem": {
+            "id": "ipm-priority-conflict",
+            "title": "三方需求的单迭代取舍",
+            "scenario": "prioritization-planning",
+            "status": "open",
+            "check_back": {
+              "when": "迭代对齐会后",
+              "question": "最终排序被接受了吗，被延期项如何承接，哪些新证据会触发重排？"
+            }
+          },
+          "assistance": "导师示范同一目标下的取证表与条件排序，不编造分数、收益、成本或承诺，明确单选及延期承接。",
+          "methods": [
+            "prioritization"
+          ],
+          "next_step": "用户确认本期核心目标与最终决策者，基于真实价值证据初排并说明代价。",
+          "unresolved": "本周期目标、决策权、合同承诺、价值证据、成本、依赖和AI具体任务待确认。",
+          "schema_version": 2,
+          "recorded_at": "2026-10-18T17:10:20.200587+00:00"
+        },
+        "matches_input": true,
+        "mismatch_fields": [],
+        "sha256": "d82abcc26f7b6db90a507f9bcfea64942a5a62fbbd222b02192b1e229b478262"
+      },
+      "limits": [
+        "本轮仅导师建议或用户初步倾向，未验证业务效果，未写能力升级。",
+        "所有问题保持open并登记条件回访；生成报告须等当前问题自然收尾。"
+      ],
+      "scores": {
+        "conclusion_first": 2,
+        "key_questions": 2,
+        "no_fabrication": 2,
+        "stage_fit": 2,
+        "industry_fit": 1,
+        "method_transfer": 2,
+        "check_back": 2,
+        "growth_feedback": null,
+        "boundaries": 2,
+        "length": 1
+      },
+      "average": 1.78,
+      "anti_patterns_found": [],
+      "result": "pass",
+      "reviewer_note": "按目标、证据、成本和承诺取舍；采购者与使用者的区分可以表达得更直接。"
+    },
+    {
+      "id": "ipm-review-challenged",
+      "prompt": "评审会上研发说我的审批流改版没价值、纯折腾，我当场没接住，下周还要再评一次。",
+      "response": "栓哥，下周先让评审能回答“这项改版值不值得投入”，再决定审批流要改多大。当场没接住，只说明这次回应卡住了，无法据此判断你的整体能力。\n\n先补两件事：改版要解决谁的什么问题，当前有什么证据、成功标准是什么？研发除了“没价值、纯折腾”，给过哪个具体例子或理由？你可以贴脱敏方案摘要和原话，我再针对内容帮你改。\n\n先准备一页材料：\n\n1. 问题与基线：跟一笔真实审批，拆出处理、等待、退回和重复录入，确认最主要的损失。内部系统要分清流程权责问题和系统问题。\n2. 三个选项：保持现状、只改最大断点、完整改版。分别写能减少什么损失、研发与迁移成本、风险和未覆盖事项，数据未知就留空待核实。\n3. 需要的决定：请组织者确认下周要定价值、范围还是排期，谁拍板。会前约研发负责人核对质疑与粗估。\n\n可用的回应是：“我想确认你担心的是收益不足，还是改动成本太高。我们先共同核对现有流程的损失，再比较局部调整与完整改版；收益不足时我会缩范围或暂缓。”这句话的作用是把笼统质疑转成可检验的分歧。\n\n你先写两三句“为什么值得做”的开场，我再扮演研发追问。已记录当前卡点和准备动作，评审后回看结论、最难回答的问题及处理方式。",
+      "followups": [],
+      "read_files": [
+        "<skill-dir>/SKILL.md",
+        "<skill-dir>/reference/evidence-and-records.md",
+        "<skill-dir>/reference/agents.md",
+        "<skill-dir>/reference/reasoning.md",
+        "<skill-dir>/playbooks/index.md",
+        "<skill-dir>/knowledge/industry-adaptation.md",
+        "<skill-dir>/growth/stages.md",
+        "<skill-dir>/knowledge/map.md",
+        "<skill-dir>/growth/coaching.md",
+        "<skill-dir>/growth/feedback-and-reports.md",
+        "<skill-dir>/playbooks/solution-review.md",
+        "<skill-dir>/playbooks/alignment-communication.md",
+        "<skill-dir>/knowledge/industries/internal-platform.md",
+        "<skill-dir>/knowledge/methods/review-defense.md",
+        "<eval-root>/ipm-review-challenged/profile.md",
+        "<eval-root>/ipm-review-challenged/business-context.md",
+        "<eval-root>/ipm-review-challenged/records/2026-10-19-ipm-review-challenged.json"
+      ],
+      "cli_actions": [
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/ipm-review-challenged",
+            "status"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/ipm-review-challenged",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 0,
+          "result": {
+            "record_id": "2026-10-19-ipm-review-challenged",
+            "created": true,
+            "readback_verified": true
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/ipm-review-challenged",
+            "recent",
+            "--limit",
+            "5",
+            "--problem-id",
+            "ipm-review-challenged"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/ipm-review-challenged",
+            "status"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "independent_agents": [],
+      "record_input": {
+        "record_id": "2026-10-19-ipm-review-challenged",
+        "date": "2026-10-19",
+        "kind": "discussion",
+        "summary": "研发质疑审批流改版价值，准备以问题证据、成本与备选重新评审。",
+        "source": "本题隔离模拟的首轮请求及本轮导师讨论，未模拟后续用户回答。",
+        "problem": {
+          "id": "ipm-review-challenged",
+          "title": "审批流改版再次评审",
+          "scenario": "solution-review",
+          "status": "open",
+          "check_back": {
+            "when": "下周评审结束后",
+            "question": "评审结论是什么，最难回答的挑战属于哪一类，如何处理？"
+          }
+        },
+        "assistance": "导师还原价值与成本层分歧，提供一页材料结构和回应示范，邀请用户先写开场再演练。",
+        "methods": [
+          "review-defense"
+        ],
+        "next_step": "用户补改版问题、成功标准和研发具体理由，会前核对真实审批样本、选项和决策事项。",
+        "unresolved": "真实审批损失、成功标准、方案内容、研发具体论据、迁移成本及拍板权待确认。"
+      },
+      "record_readback": {
+        "path": "<eval-root>/ipm-review-challenged/records/2026-10-19-ipm-review-challenged.json",
+        "content": {
+          "record_id": "2026-10-19-ipm-review-challenged",
+          "date": "2026-10-19",
+          "kind": "discussion",
+          "summary": "研发质疑审批流改版价值，准备以问题证据、成本与备选重新评审。",
+          "source": "本题隔离模拟的首轮请求及本轮导师讨论，未模拟后续用户回答。",
+          "problem": {
+            "id": "ipm-review-challenged",
+            "title": "审批流改版再次评审",
+            "scenario": "solution-review",
+            "status": "open",
+            "check_back": {
+              "when": "下周评审结束后",
+              "question": "评审结论是什么，最难回答的挑战属于哪一类，如何处理？"
+            }
+          },
+          "assistance": "导师还原价值与成本层分歧，提供一页材料结构和回应示范，邀请用户先写开场再演练。",
+          "methods": [
+            "review-defense"
+          ],
+          "next_step": "用户补改版问题、成功标准和研发具体理由，会前核对真实审批样本、选项和决策事项。",
+          "unresolved": "真实审批损失、成功标准、方案内容、研发具体论据、迁移成本及拍板权待确认。",
+          "schema_version": 2,
+          "recorded_at": "2026-10-18T17:10:20.338558+00:00"
+        },
+        "matches_input": true,
+        "mismatch_fields": [],
+        "sha256": "53d401a86b1503bf0d608366fde03ab1144d45a31f3d3d50cb668c0b11357f57"
+      },
+      "limits": [
+        "本轮仅导师建议或用户初步倾向，未验证业务效果，未写能力升级。",
+        "所有问题保持open并登记条件回访；生成报告须等当前问题自然收尾。"
+      ],
+      "scores": {
+        "conclusion_first": 2,
+        "key_questions": 2,
+        "no_fabrication": 2,
+        "stage_fit": 2,
+        "industry_fit": 2,
+        "method_transfer": 2,
+        "check_back": 2,
+        "growth_feedback": null,
+        "boundaries": 2,
+        "length": 2
+      },
+      "average": 2.0,
+      "anti_patterns_found": [],
+      "result": "pass",
+      "reviewer_note": "将质疑转为可验证顾虑，有用户回应练习及评审后回访，不评价整体能力。"
+    },
+    {
+      "id": "senior-cold-start",
+      "prompt": "公司想让我做一个新的垂类社区，从零起步，我想先花钱买流量快速起量，你觉得呢？",
+      "response": "栓哥，我暂不建议直接规模买量；可以把小额买量当成验证工具，但先明确它要验证什么。垂类、预算、目标和现有供给都未知，不能判断你们现在缺的是人、内容还是回访理由。\n\n我请了一个独立反方评审 Agent 复核。它提醒了一个关键边界：有些社区依赖必要角色同时到场，完全不买量也可能永远测不到互动价值；已有成熟供给或明显窗口期时，付费引流可以更早介入。\n\n先确认两件事：公司希望在什么期限看到什么结果，是收入、有效社区规模还是验证方向？目标人群目前在什么地方解决什么问题，有什么证据表明现有做法不够好？\n\n我的建议是先选一个能形成完整价值的场景，凑齐必要角色，而不只收窄人数。用现有渠道、定向邀请或预算封顶的买量引入首批用户，观察首次有效互动、供给者再次贡献，以及按真实使用周期的自然回访。内容数量、注册量都不足以单独证明社区成立。\n\n开跑前和老板约定预算、周期、目标行为与继续或停止门槛，具体数值待你们业务确认。若用户只有激励时出现，或始终靠运营逐条代发撮合，就先修价值或供给；若稳定互动已经出现而触达不足，再加投。还要按渠道区分付费用户，避免把素材带来的泛流量当成目标需求。\n\n这里用最小试验检验最危险假设，强网络效应场景要保证角色与密度足够，机械缩小会得出假阴性。【本次表现】你提出了明确的增长动作，目前还没提供“流量是瓶颈”的依据。【仍在练】先写一句什么证据会让你停止买量。已记录待验证判断及反方意见，首批用户的完整回访周期结束后回看是否加码。",
+      "followups": [],
+      "read_files": [
+        "<skill-dir>/SKILL.md",
+        "<skill-dir>/reference/evidence-and-records.md",
+        "<skill-dir>/reference/agents.md",
+        "<skill-dir>/reference/reasoning.md",
+        "<skill-dir>/playbooks/index.md",
+        "<skill-dir>/knowledge/industry-adaptation.md",
+        "<skill-dir>/growth/stages.md",
+        "<skill-dir>/knowledge/map.md",
+        "<skill-dir>/growth/coaching.md",
+        "<skill-dir>/growth/feedback-and-reports.md",
+        "<skill-dir>/playbooks/growth-new-business.md",
+        "<skill-dir>/knowledge/industries/content-community.md",
+        "<skill-dir>/knowledge/methods/mvp-slicing.md",
+        "<eval-root>/senior-cold-start/profile.md",
+        "<eval-root>/senior-cold-start/business-context.md",
+        "<eval-root>/senior-cold-start/records/2026-10-19-senior-cold-start.json"
+      ],
+      "cli_actions": [
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/senior-cold-start",
+            "status"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/senior-cold-start",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 0,
+          "result": {
+            "record_id": "2026-10-19-senior-cold-start",
+            "created": true,
+            "readback_verified": true
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/senior-cold-start",
+            "recent",
+            "--limit",
+            "5",
+            "--problem-id",
+            "senior-cold-start"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/senior-cold-start",
+            "status"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "independent_agents": [
+        {
+          "task_name": "/root/pmgrow_eval_a/a_cold_review",
+          "role": "red-team-reviewer",
+          "fork_turns": "none",
+          "model_override": "gpt-6.1-sol",
+          "reasoning_effort_override": "high",
+          "input_summary": "原始冷启动问题、资深阶段、内容社区行业、待审的暂缓规模买量建议及未知项。",
+          "return_summary": "不要默认买量后置，需考虑窗口期、网络效应所需角色与密度。内容量不等于有效供给，付费试验需区分渠道和激励。预算、有效互动与回访门槛事先确定。",
+          "integration": "保留小额付费作为验证工具，修正过窄人群可能破坏完整互动价值的风险。",
+          "status": "completed",
+          "actual_checks": "仅分析任务包，未读文件、未联网、未访问个人数据、未写记录、未部署或外发。",
+          "included_in_final_review": false,
+          "superseded_by": "/root/pmgrow_eval_a/a_cold_review_inherited",
+          "configuration_issue": "未经用户指定却覆盖模型及reasoning_effort，本次保留调用事实并由默认继承配置复核替代。"
+        },
+        {
+          "task_name": "/root/pmgrow_eval_a/a_cold_review_inherited",
+          "role": "red-team-reviewer",
+          "fork_turns": "none",
+          "configuration": {
+            "model": "inherited; no override argument supplied",
+            "reasoning_effort": "inherited; no override argument supplied"
+          },
+          "input_summary": "仅给原始用户问题、资深 PM 阶段和业务未知项；未提供上次反方结论或主导师推荐。",
+          "return_summary": "支持把买量作为限额验证手段，暂不支持凭现有信息规模化起量。供给成熟、精准触达或必要人群密度可使买量合理。需先明确用户迁移价值、供给与密度、成功标准及可承受预算，以核心行为、按业务周期的再次使用和可持续供给判定。定向邀请与小额付费分组差异只能作为线索，不能直接归因渠道。",
+          "integration": "与既有首轮回应无实质冲突。仍保留预算封顶的小范围验证，确认供给、核心互动与自然回访后决定加码。首轮回应无修改，记录无修改。",
+          "status": "completed",
+          "actual_checks": "仅分析给定原始问题及未知项；未读文件、未联网、未访问个人资料、未核查真实业务数据、未修改任何记录。",
+          "rerun": true,
+          "rerun_reason": "首个 a_cold_review 未获用户指定却显式覆盖模型和 reasoning_effort，按当前宿主要求使用默认继承配置重跑。",
+          "replaces_as_valid_review": "/root/pmgrow_eval_a/a_cold_review",
+          "included_in_final_review": true
+        }
+      ],
+      "record_input": {
+        "record_id": "2026-10-19-senior-cold-start",
+        "date": "2026-10-19",
+        "kind": "discussion",
+        "summary": "用户倾向以买量启动垂类社区，先验证完整价值场景及供给互动回访，再按证据加码。",
+        "source": "本题隔离模拟的首轮请求及本轮导师讨论，未模拟后续用户回答。",
+        "problem": {
+          "id": "senior-cold-start",
+          "title": "垂类社区冷启动买量",
+          "scenario": "growth-new-business",
+          "status": "open",
+          "check_back": {
+            "when": "首批用户完成一个业务回访周期后",
+            "question": "有效互动与自然回访达到预定门槛了吗，支持继续投放还是先补价值与供给？"
+          }
+        },
+        "assistance": "导师提供有预算和时间盒的窄场景验证；独立反方评审补充窗口期、必要角色密度、付费样本偏差和激励边界。",
+        "methods": [
+          "mvp-slicing"
+        ],
+        "next_step": "用户明确业务目标期限、目标人群现有替代方案及价值证据，并在试验前约定预算和门槛。",
+        "unresolved": "垂类、目标、期限、预算、供给、渠道、已有用户池与最低互动密度待确认。",
+        "user_work": [
+          {
+            "kind": "independent",
+            "content": "提出先花钱买流量快速起量的策略倾向，尚未提供瓶颈证据或完整方案。",
+            "source": "本轮用户原话"
+          }
+        ]
+      },
+      "record_readback": {
+        "path": "<eval-root>/senior-cold-start/records/2026-10-19-senior-cold-start.json",
+        "content": {
+          "record_id": "2026-10-19-senior-cold-start",
+          "date": "2026-10-19",
+          "kind": "discussion",
+          "summary": "用户倾向以买量启动垂类社区，先验证完整价值场景及供给互动回访，再按证据加码。",
+          "source": "本题隔离模拟的首轮请求及本轮导师讨论，未模拟后续用户回答。",
+          "problem": {
+            "id": "senior-cold-start",
+            "title": "垂类社区冷启动买量",
+            "scenario": "growth-new-business",
+            "status": "open",
+            "check_back": {
+              "when": "首批用户完成一个业务回访周期后",
+              "question": "有效互动与自然回访达到预定门槛了吗，支持继续投放还是先补价值与供给？"
+            }
+          },
+          "assistance": "导师提供有预算和时间盒的窄场景验证；独立反方评审补充窗口期、必要角色密度、付费样本偏差和激励边界。",
+          "methods": [
+            "mvp-slicing"
+          ],
+          "next_step": "用户明确业务目标期限、目标人群现有替代方案及价值证据，并在试验前约定预算和门槛。",
+          "unresolved": "垂类、目标、期限、预算、供给、渠道、已有用户池与最低互动密度待确认。",
+          "user_work": [
+            {
+              "kind": "independent",
+              "content": "提出先花钱买流量快速起量的策略倾向，尚未提供瓶颈证据或完整方案。",
+              "source": "本轮用户原话"
+            }
+          ],
+          "schema_version": 2,
+          "recorded_at": "2026-10-18T17:10:20.479598+00:00"
+        },
+        "matches_input": true,
+        "mismatch_fields": [],
+        "sha256": "21008dbd5863879ea75f37bc21a7e77ab7e51f7fda9c29a43bb066fa3de4e0e8"
+      },
+      "limits": [
+        "本轮仅导师建议或用户初步倾向，未验证业务效果，未写能力升级。",
+        "所有问题保持open并登记条件回访；生成报告须等当前问题自然收尾。"
+      ],
+      "scores": {
+        "conclusion_first": 2,
+        "key_questions": 2,
+        "no_fabrication": 2,
+        "stage_fit": 1,
+        "industry_fit": 2,
+        "method_transfer": 2,
+        "check_back": 2,
+        "growth_feedback": 1,
+        "boundaries": 2,
+        "length": 1
+      },
+      "average": 1.7,
+      "anti_patterns_found": [],
+      "result": "pass",
+      "reviewer_note": "真实反方复核修正了买量后置假设；保留预算和门槛未知；对资深用户的建议略多。"
+    },
+    {
+      "id": "senior-custom-vs-standard",
+      "prompt": "下季度两个方向：给两家大客户做定制审批流（销售在推），或做标准化自助开通。我倾向定制，你怎么看？",
+      "response": "栓哥，凭目前信息还不能支持优先定制，也不能认定标准化更好。先比较两条路径对季度目标的增量贡献、完整成本和放弃另一条的代价。\n\n我请了独立反方评审 Agent 挑错。它收紧了两个判断：一次性定制只要收益足够、维护和退出边界明确，也可能值得；自助开通只有针对真实的操作阻碍才有效，采购或安全审查卡点未必能靠自助化消除。\n\n你先补两项：下季度最重要的业务结果是什么，有哪些已签合同或已确认交付承诺？你倾向定制最强的一条依据是什么，能否带上两客户的增量收入、拿单或续约证据，以及研发和维护的粗估？销售推动本身还不足以证明收益。\n\n先用同一张比较表，未知项保持待确认：\n\n| 比较项 | 定制审批流 | 标准化自助开通 |\n|---|---|---|\n| 价值证据 | 真实付费或续约条件，客户是否有代表性 | 哪类账户在哪个开通步骤流失、人工交付耗时 |\n| 全周期成本 | 开发、权限与迁移影响、维护、验收与支持 | 流程改造、安全与权限、异常支持、推广 |\n| 可验证切片 | 付费承诺、固定范围和验收后的最小完整交付 | 对一个已确认断点做原型或人工辅助验证 |\n| 放弃代价 | 暂缓是否损失确定收入或违约 | 是否继续增加交付成本或流失标准客户 |\n\n若定制承诺真实、净贡献覆盖全周期成本且边界可控，定制可以优先；若标准客户开通受阻已有证据、自助确实能解，标准化更值得投入。两个方向各做一点也可能同时做不成，要让研发确认共同依赖和可独立交付性。\n\n方法上，用增量收益与机会成本比较，SaaS 要按账户和合同周期看，签约额不能直接替代净贡献。请你先给出一个会让你改选自助的条件，我们再压力测试。【本次表现】你明确表达了倾向，依据尚待补齐，暂不作能力变化判断。已记录本轮选择与复核意见，季度对齐会后回看决定和关键假设。",
+      "followups": [],
+      "read_files": [
+        "<skill-dir>/SKILL.md",
+        "<skill-dir>/reference/evidence-and-records.md",
+        "<skill-dir>/reference/agents.md",
+        "<skill-dir>/reference/reasoning.md",
+        "<skill-dir>/playbooks/index.md",
+        "<skill-dir>/knowledge/industry-adaptation.md",
+        "<skill-dir>/growth/stages.md",
+        "<skill-dir>/knowledge/map.md",
+        "<skill-dir>/growth/coaching.md",
+        "<skill-dir>/growth/feedback-and-reports.md",
+        "<skill-dir>/playbooks/prioritization-planning.md",
+        "<skill-dir>/playbooks/feature-request.md",
+        "<skill-dir>/knowledge/industries/saas.md",
+        "<skill-dir>/knowledge/methods/investment-case.md",
+        "<eval-root>/senior-custom-vs-standard/profile.md",
+        "<eval-root>/senior-custom-vs-standard/business-context.md",
+        "<eval-root>/senior-custom-vs-standard/records/2026-10-19-senior-custom-vs-standard.json"
+      ],
+      "cli_actions": [
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/senior-custom-vs-standard",
+            "status"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/senior-custom-vs-standard",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 0,
+          "result": {
+            "record_id": "2026-10-19-senior-custom-vs-standard",
+            "created": true,
+            "readback_verified": true
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/senior-custom-vs-standard",
+            "recent",
+            "--limit",
+            "5",
+            "--problem-id",
+            "senior-custom-vs-standard"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/senior-custom-vs-standard",
+            "status"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "independent_agents": [
+        {
+          "task_name": "/root/pmgrow_eval_a/a_custom_review",
+          "role": "red-team-reviewer",
+          "fork_turns": "none",
+          "input_summary": "原始定制与标准化季度取舍问题、资深阶段、SaaS 行业、增量贡献与成本比较待审建议。",
+          "return_summary": "贡献测算避免虚假精确，一次性定制也可能合理；自助开通未必能解决采购安全审查；两个方向各切一点可能都不成。",
+          "integration": "不把复用作为必要条件，核实开通真实断点，要求可独立交付而不默认折中。",
+          "status": "completed",
+          "actual_checks": "仅分析任务包，未读文件、未联网、未访问个人数据、未写记录、未部署或外发。"
+        }
+      ],
+      "record_input": {
+        "record_id": "2026-10-19-senior-custom-vs-standard",
+        "date": "2026-10-19",
+        "kind": "discussion",
+        "summary": "用户倾向为两大客户定制审批流，需与标准化自助开通按季度增量价值和全周期成本比较。",
+        "source": "本题隔离模拟的首轮请求及本轮导师讨论，未模拟后续用户回答。",
+        "problem": {
+          "id": "senior-custom-vs-standard",
+          "title": "定制审批与标准自助季度取舍",
+          "scenario": "prioritization-planning",
+          "status": "open",
+          "check_back": {
+            "when": "季度规划对齐会后",
+            "question": "最终选了哪条路径，哪些假设促成决定，范围与停止条件明确了吗？"
+          }
+        },
+        "assistance": "导师给出条件性比较表；独立反方评审指出一次性定制可合理、自助未必解决采购阻碍、折中切片可能无法交付。",
+        "methods": [
+          "investment-case"
+        ],
+        "next_step": "用户补季度目标、已签承诺及选择定制的最强依据，并估全周期成本与机会成本。",
+        "unresolved": "季度目标、合同、收入归因、赢单续约证据、维护责任、开通断点、容量与决策权待确认。",
+        "user_work": [
+          {
+            "kind": "independent",
+            "content": "明确表达倾向定制审批流，未提供比较依据和成本测算。",
+            "source": "本轮用户原话"
+          }
+        ]
+      },
+      "record_readback": {
+        "path": "<eval-root>/senior-custom-vs-standard/records/2026-10-19-senior-custom-vs-standard.json",
+        "content": {
+          "record_id": "2026-10-19-senior-custom-vs-standard",
+          "date": "2026-10-19",
+          "kind": "discussion",
+          "summary": "用户倾向为两大客户定制审批流，需与标准化自助开通按季度增量价值和全周期成本比较。",
+          "source": "本题隔离模拟的首轮请求及本轮导师讨论，未模拟后续用户回答。",
+          "problem": {
+            "id": "senior-custom-vs-standard",
+            "title": "定制审批与标准自助季度取舍",
+            "scenario": "prioritization-planning",
+            "status": "open",
+            "check_back": {
+              "when": "季度规划对齐会后",
+              "question": "最终选了哪条路径，哪些假设促成决定，范围与停止条件明确了吗？"
+            }
+          },
+          "assistance": "导师给出条件性比较表；独立反方评审指出一次性定制可合理、自助未必解决采购阻碍、折中切片可能无法交付。",
+          "methods": [
+            "investment-case"
+          ],
+          "next_step": "用户补季度目标、已签承诺及选择定制的最强依据，并估全周期成本与机会成本。",
+          "unresolved": "季度目标、合同、收入归因、赢单续约证据、维护责任、开通断点、容量与决策权待确认。",
+          "user_work": [
+            {
+              "kind": "independent",
+              "content": "明确表达倾向定制审批流，未提供比较依据和成本测算。",
+              "source": "本轮用户原话"
+            }
+          ],
+          "schema_version": 2,
+          "recorded_at": "2026-10-18T17:10:20.627236+00:00"
+        },
+        "matches_input": true,
+        "mismatch_fields": [],
+        "sha256": "13504f6576cecedb95771a509840d2e6a790ea5d97a5b048f9e11e965e4bb992"
+      },
+      "limits": [
+        "本轮仅导师建议或用户初步倾向，未验证业务效果，未写能力升级。",
+        "所有问题保持open并登记条件回访；生成报告须等当前问题自然收尾。"
+      ],
+      "scores": {
+        "conclusion_first": 2,
+        "key_questions": 2,
+        "no_fabrication": 2,
+        "stage_fit": 2,
+        "industry_fit": 2,
+        "method_transfer": 2,
+        "check_back": 2,
+        "growth_feedback": 1,
+        "boundaries": 2,
+        "length": 1
+      },
+      "average": 1.8,
+      "anti_patterns_found": [],
+      "result": "pass",
+      "reviewer_note": "真实复核后整合，不把定制必能复用或自助必能成交当事实；首轮可压缩。"
+    },
+    {
+      "id": "senior-risk-vs-growth",
+      "prompt": "增长团队要放宽授信门槛冲新户，风控坚决反对，老板让我出一个方案周五汇报。",
+      "response": "栓哥，周五建议提交“满足硬约束后，如何验证风险可接受的增量增长”的决策方案。现有信息不足以推荐具体放宽幅度，增长和风控谁的判断更有依据也未知。\n\n我请独立反方评审 Agent 检查了方案。它补充了两点：维持现状也有误拒和收入机会成本；即使停止新增授信，已放出的风险敞口仍然存在，必须持续管理。\n\n先补两个关键问题：经营地区、信贷产品和拟放宽的具体门槛是什么？风控反对的是哪项可观察风险，现行风险上限及批准权限有什么已确认文件？优先找风控政策负责人和合规核实。\n\n周五一页决策材料可以这样组织：\n\n| 部分 | 汇报内容 |\n|---|---|\n| 共同目标 | 新增有效用信客户及风险调整后贡献，同时列明不能突破的风险、资金与合规条件 |\n| 当前证据 | 按渠道、风险层和成熟批次看申请、获批、用信、收入、欺诈与逾期损失，说明观察窗口及不可比项 |\n| 三条路径 | 保持门槛并优化非风险摩擦；对明确人群评估额度、期限或门槛组合；证据与授权齐备后有限试点 |\n| 请老板决定 | 风险偏好与可承受敞口、补证资源和责任人；未获适当授权的风险条件不进入执行 |\n\n方法上，把新增数转换成全周期增量价值，计入资金、获客、运营与损失成本。授信的损失滞后于获批，短期新户上涨不能证明方案有效。历史政策变化或可比成熟批次可以提供证据，但既往被拒人群缺少真实还款结果，不能直接外推。模型验证也需要把输出与真实结果比较，可参考已核验的[美联储模型风险指引](https://www.federalreserve.gov/frrs/guidance/supervisory-guidance-on-model-risk-management.htm)，其适用范围不能直接套到你们公司。\n\n若进入获批试点，先约定人群、额度与总敞口上限、可信对照、成熟观察窗口、预警及停止责任人；触及护栏停止新增敞口并处理存量，尚未成熟的数据只作早期信号。具体数值由授权团队定。\n\n先把问题定为“在约束内判断增量增长值不值得承担风险”，再确认是否与老板一致。已记录方案框架和未知项，周五汇报后回看决定与未决风险；本轮没有用户方案产出，暂不作能力变化判断。",
+      "followups": [],
+      "read_files": [
+        "<skill-dir>/SKILL.md",
+        "<skill-dir>/reference/evidence-and-records.md",
+        "<skill-dir>/reference/agents.md",
+        "<skill-dir>/reference/reasoning.md",
+        "<skill-dir>/playbooks/index.md",
+        "<skill-dir>/knowledge/industry-adaptation.md",
+        "<skill-dir>/growth/stages.md",
+        "<skill-dir>/knowledge/map.md",
+        "<skill-dir>/growth/coaching.md",
+        "<skill-dir>/growth/feedback-and-reports.md",
+        "<skill-dir>/playbooks/growth-new-business.md",
+        "<skill-dir>/playbooks/alignment-communication.md",
+        "<skill-dir>/knowledge/industries/fintech.md",
+        "<skill-dir>/knowledge/methods/risk-register.md",
+        "<eval-root>/senior-risk-vs-growth/profile.md",
+        "<eval-root>/senior-risk-vs-growth/business-context.md",
+        "<eval-root>/senior-risk-vs-growth/records/2026-10-19-senior-risk-vs-growth.json"
+      ],
+      "cli_actions": [
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/senior-risk-vs-growth",
+            "status"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/senior-risk-vs-growth",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 0,
+          "result": {
+            "record_id": "2026-10-19-senior-risk-vs-growth",
+            "created": true,
+            "readback_verified": true
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/senior-risk-vs-growth",
+            "recent",
+            "--limit",
+            "5",
+            "--problem-id",
+            "senior-risk-vs-growth"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/senior-risk-vs-growth",
+            "status"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "independent_agents": [
+        {
+          "task_name": "/root/pmgrow_eval_a/a_credit_review",
+          "role": "red-team-reviewer",
+          "fork_turns": "none",
+          "input_summary": "原始增长与风控授信冲突、周五汇报要求、资深阶段、未知地区和政策、待审三方案。",
+          "return_summary": "硬约束优先于风险调整价值，现状也有机会成本，额度期限组合可能优于直接降门槛；成熟历史批次可供证，试点需真实对照和敞口约束，停止后存量风险仍需管理。",
+          "integration": "加入额度期限组合、历史证据边界、停止新增与存量风险管理的区别。",
+          "status": "completed",
+          "actual_checks": "仅分析任务包，未读文件、未联网、未访问个人数据、未写记录、未部署或外发。"
+        }
+      ],
+      "record_input": {
+        "record_id": "2026-10-19-senior-risk-vs-growth",
+        "date": "2026-10-19",
+        "kind": "discussion",
+        "summary": "增长要求放宽授信、风控反对，周五先汇报硬约束内的增量价值比较与补证方案。",
+        "source": "本题隔离模拟的首轮请求及本轮导师讨论，未模拟后续用户回答。",
+        "problem": {
+          "id": "senior-risk-vs-growth",
+          "title": "授信门槛的增长与风控分歧",
+          "scenario": "growth-new-business",
+          "status": "open",
+          "check_back": {
+            "when": "周五汇报后",
+            "question": "决定与风险偏好明确了吗，补证和审批责任人是谁，哪些风险尚未成熟？"
+          }
+        },
+        "assistance": "导师提供三条路径、一页汇报和风险证据要求；反方评审补充现状机会成本、额度期限组合、历史证据及存量敞口管理；核验英文官方模型风险原则。",
+        "methods": [
+          "risk-register"
+        ],
+        "next_step": "用户核实经营地区、产品和拟调整门槛、风险政策及授权，汇总可比成熟批次与缺口。",
+        "unresolved": "地区、产品资质边界、门槛、风险上限、成熟损失收益、批准权限和可比数据待确认。"
+      },
+      "record_readback": {
+        "path": "<eval-root>/senior-risk-vs-growth/records/2026-10-19-senior-risk-vs-growth.json",
+        "content": {
+          "record_id": "2026-10-19-senior-risk-vs-growth",
+          "date": "2026-10-19",
+          "kind": "discussion",
+          "summary": "增长要求放宽授信、风控反对，周五先汇报硬约束内的增量价值比较与补证方案。",
+          "source": "本题隔离模拟的首轮请求及本轮导师讨论，未模拟后续用户回答。",
+          "problem": {
+            "id": "senior-risk-vs-growth",
+            "title": "授信门槛的增长与风控分歧",
+            "scenario": "growth-new-business",
+            "status": "open",
+            "check_back": {
+              "when": "周五汇报后",
+              "question": "决定与风险偏好明确了吗，补证和审批责任人是谁，哪些风险尚未成熟？"
+            }
+          },
+          "assistance": "导师提供三条路径、一页汇报和风险证据要求；反方评审补充现状机会成本、额度期限组合、历史证据及存量敞口管理；核验英文官方模型风险原则。",
+          "methods": [
+            "risk-register"
+          ],
+          "next_step": "用户核实经营地区、产品和拟调整门槛、风险政策及授权，汇总可比成熟批次与缺口。",
+          "unresolved": "地区、产品资质边界、门槛、风险上限、成熟损失收益、批准权限和可比数据待确认。",
+          "schema_version": 2,
+          "recorded_at": "2026-10-18T17:10:20.781494+00:00"
+        },
+        "matches_input": true,
+        "mismatch_fields": [],
+        "sha256": "fee74938df474a9f1794d502ce26dadca9b4848fcd2afb942cb9c4a504474bb7"
+      },
+      "limits": [
+        "本轮仅导师建议或用户初步倾向，未验证业务效果，未写能力升级。",
+        "所有问题保持open并登记条件回访；生成报告须等当前问题自然收尾。"
+      ],
+      "scores": {
+        "conclusion_first": 2,
+        "key_questions": 2,
+        "no_fabrication": 2,
+        "stage_fit": 2,
+        "industry_fit": 2,
+        "method_transfer": 2,
+        "check_back": 2,
+        "growth_feedback": null,
+        "boundaries": 2,
+        "length": 1
+      },
+      "average": 1.89,
+      "anti_patterns_found": [],
+      "result": "pass",
+      "reviewer_note": "区分授权、风险偏好和成熟证据，不编法规或坏账率；独立复核补充存量敞口。"
+    },
+    {
+      "id": "expert-ai-refund",
+      "prompt": "我们要给客服 AI 上线自动退款，团队觉得准确率 95% 就够了，我也觉得差不多。",
+      "response": "栓哥，95%这个平均准确率不足以批准自动退款上线。先定义哪些错误绝不能放过、各类错误损失多大，再决定哪些范围可以自动执行，具体门槛目前未知。\n\n我请独立反方评审 Agent 复核。它指出两个容易漏的边界：人工确认也可能照单接受 AI 建议；停用开关只能阻止后续操作，在途或已到账退款仍需处理。\n\n先确认两项：95%具体衡量什么，评测集有多少、怎么抽样、谁核定答案？退款属于什么业务，哪些资格、金额与权限规则必须满足，以及误退和错拒各造成什么损失？这些会直接改变验收标准。\n\n可先形成团队共用的一页验收约定：\n\n1. 分开统计误批、误拒、错金额、错账户和重复执行，按金额、场景与人群分层，写清分母、样本量和不确定性。模拟例子：100 笔中 95 笔该拒，一律拒也能得 95%，却无法完成退款任务。\n2. 让业务规则或独立校验层约束资格、订单归属、金额和权限，AI 先提出建议。用独立核验的样本与现行人工或规则方案对比，计入复核、返工和等待成本，再选人工确认、影子验证或窄范围自动执行。\n3. 自动执行前验证重复、并发、超时重试与越权路径；单笔和累计敞口都要受控，明确统计窗口、异常接管与审计记录，核对支付端真实结果。\n4. 预先约定各类错误阈值、损失上限和暂停责任人。越权、错账户、重复退款或突破限额时停止新增自动执行，核查在途请求并对账；有限样本没出错无法证明风险为零。\n\n这题最关键的方法是按错误代价建立验收标准。AI 执行动作会把预测错误变成业务后果，[NIST 的风险测量建议](https://airc.nist.gov/airmf-resources/playbook/measure/)也要求指标与实际用途、错误及负面影响相联系。主经营行业及公司的退款规则仍需你们确认，不能只按 AI 通用评测放行。\n\n【本次表现】你已提出上线判断，目前只看到平均准确率依据，尚未看到分层验收与执行证据。【仍在练】先列出三类最不能接受的退款错误及其判定规则，再检验现有评测是否覆盖。已记录这次判断、独立复核及待补证项，验收评审后回看自动执行范围是否有充分依据。",
+      "followups": [],
+      "read_files": [
+        "<skill-dir>/SKILL.md",
+        "<skill-dir>/reference/evidence-and-records.md",
+        "<skill-dir>/reference/agents.md",
+        "<skill-dir>/reference/reasoning.md",
+        "<skill-dir>/playbooks/index.md",
+        "<skill-dir>/knowledge/industry-adaptation.md",
+        "<skill-dir>/growth/stages.md",
+        "<skill-dir>/knowledge/map.md",
+        "<skill-dir>/growth/coaching.md",
+        "<skill-dir>/growth/feedback-and-reports.md",
+        "<skill-dir>/playbooks/solution-review.md",
+        "<skill-dir>/knowledge/industries/ai-product.md",
+        "<skill-dir>/knowledge/methods/domain-modeling.md",
+        "<skill-dir>/knowledge/methods/launch-rollout.md",
+        "<eval-root>/expert-ai-refund/profile.md",
+        "<eval-root>/expert-ai-refund/business-context.md",
+        "<eval-root>/expert-ai-refund/records/2026-10-19-expert-ai-refund.json"
+      ],
+      "cli_actions": [
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/expert-ai-refund",
+            "status"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/expert-ai-refund",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 0,
+          "result": {
+            "record_id": "2026-10-19-expert-ai-refund",
+            "created": true,
+            "readback_verified": true
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/expert-ai-refund",
+            "recent",
+            "--limit",
+            "5",
+            "--problem-id",
+            "expert-ai-refund"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/expert-ai-refund",
+            "status"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "independent_agents": [
+        {
+          "task_name": "/root/pmgrow_eval_a/a_refund_review",
+          "role": "red-team-reviewer",
+          "fork_turns": "none",
+          "input_summary": "原始 95% 准确率自动退款上线判断、专家阶段、AI 行业及主行业未知、分层评测与窄自动范围待审建议。",
+          "return_summary": "平均指标掩盖误批；人工确认和影子模式并不天然可靠；单笔限额可被并发拆单绕过；停用开关不能撤回在途和到账款项。需独立核验、分层样本误差、端到端并发超时和对账证据。",
+          "integration": "独立核验人工答案与基线，累计敞口和并发验证，对账及在途处置写入建议。",
+          "status": "completed",
+          "actual_checks": "仅分析任务包，未读文件、未联网、未访问个人数据、未写记录、未部署或外发。"
+        }
+      ],
+      "record_input": {
+        "record_id": "2026-10-19-expert-ai-refund",
+        "date": "2026-10-19",
+        "kind": "discussion",
+        "summary": "用户认同95%准确率足够上线自动退款，需以分类型错误代价与执行证据重建验收。",
+        "source": "本题隔离模拟的首轮请求及本轮导师讨论，未模拟后续用户回答。",
+        "problem": {
+          "id": "expert-ai-refund",
+          "title": "客服AI自动退款验收",
+          "scenario": "solution-review",
+          "status": "open",
+          "check_back": {
+            "when": "自动执行验收评审后",
+            "question": "分层评测和端到端执行证据支持什么范围，错误阈值、责任人与在途处置明确了吗？"
+          }
+        },
+        "assistance": "导师示范错误分类、风险分层、独立规则约束、灰度和停止条件；反方复核补充人工偏差、并发累计限额、在途退款和支付对账；核验NIST评测原则。",
+        "methods": [
+          "domain-modeling",
+          "launch-rollout"
+        ],
+        "next_step": "用户补准确率定义与样本核验方式、主经营业务及退款规则，列最不可接受错误和判定。",
+        "unresolved": "主经营行业、准确率口径、样本构成与规模、标签可靠性、退款量金额、权限政策与误差代价待确认。",
+        "user_work": [
+          {
+            "kind": "independent",
+            "content": "认同平均准确率95%差不多足以决定自动退款上线；未提供分类型错误与资金执行验收证据。",
+            "source": "本轮用户原话"
+          }
+        ]
+      },
+      "record_readback": {
+        "path": "<eval-root>/expert-ai-refund/records/2026-10-19-expert-ai-refund.json",
+        "content": {
+          "record_id": "2026-10-19-expert-ai-refund",
+          "date": "2026-10-19",
+          "kind": "discussion",
+          "summary": "用户认同95%准确率足够上线自动退款，需以分类型错误代价与执行证据重建验收。",
+          "source": "本题隔离模拟的首轮请求及本轮导师讨论，未模拟后续用户回答。",
+          "problem": {
+            "id": "expert-ai-refund",
+            "title": "客服AI自动退款验收",
+            "scenario": "solution-review",
+            "status": "open",
+            "check_back": {
+              "when": "自动执行验收评审后",
+              "question": "分层评测和端到端执行证据支持什么范围，错误阈值、责任人与在途处置明确了吗？"
+            }
+          },
+          "assistance": "导师示范错误分类、风险分层、独立规则约束、灰度和停止条件；反方复核补充人工偏差、并发累计限额、在途退款和支付对账；核验NIST评测原则。",
+          "methods": [
+            "domain-modeling",
+            "launch-rollout"
+          ],
+          "next_step": "用户补准确率定义与样本核验方式、主经营业务及退款规则，列最不可接受错误和判定。",
+          "unresolved": "主经营行业、准确率口径、样本构成与规模、标签可靠性、退款量金额、权限政策与误差代价待确认。",
+          "user_work": [
+            {
+              "kind": "independent",
+              "content": "认同平均准确率95%差不多足以决定自动退款上线；未提供分类型错误与资金执行验收证据。",
+              "source": "本轮用户原话"
+            }
+          ],
+          "schema_version": 2,
+          "recorded_at": "2026-10-18T17:10:20.923981+00:00"
+        },
+        "matches_input": true,
+        "mismatch_fields": [],
+        "sha256": "f5ea3d105fb6eecbfee495c4b88c1b986900a3b8efc68c224ce1649aa4048898"
+      },
+      "limits": [
+        "本轮仅导师建议或用户初步倾向，未验证业务效果，未写能力升级。",
+        "所有问题保持open并登记条件回访；生成报告须等当前问题自然收尾。"
+      ],
+      "scores": {
+        "conclusion_first": 2,
+        "key_questions": 1,
+        "no_fabrication": 2,
+        "stage_fit": 2,
+        "industry_fit": 2,
+        "method_transfer": 2,
+        "check_back": 2,
+        "growth_feedback": 2,
+        "boundaries": 2,
+        "length": 1
+      },
+      "average": 1.8,
+      "anti_patterns_found": [],
+      "result": "pass",
+      "reviewer_note": "按错误类型和代价评估，真实复核覆盖在途与并发；没有另给准确率门槛；篇幅稍长。"
+    },
+    {
+      "id": "expert-health-compliance",
+      "prompt": "我们的在线问诊想把“症状自查”做得更像聊天，体验更顺，但我担心合规边界。",
+      "response": "栓哥，先定预期用途和输出边界，再改聊天体验。聊天更顺可能增强用户对结论的信任，误导和延误风险也要一起审。我先按临床安全、合规、技术三个视角串行检查，这次没有独立 Agent 复核。\n\n用“四大风险”时，医疗场景先过患者安全和专业验证这一关。建议形成一张团队评审清单：\n\n1. 采集：临床必要问题不因减少对话轮数而省略，用户能纠正、确认信息。\n2. 输出：先限定为症状整理和就医沟通，个体诊断、治疗或分诊建议单独审查；宣传口径和实际输出一起看。\n3. 异常：信息矛盾、超出适用人群或风险信号时，停止自动推断并转专业人员，触发规则由专业团队确认。\n4. 数据：核对采集范围、授权、访问和留痕；用专业审核过的病例离线检查漏采、误导、错误安慰和接管失败。\n\n你们经营地区、输出和内部审查规则未知，上述只是评审起点。FDA 官方 FAQ 区分了单纯组织、记录健康信息与可能受监管的临床功能，并要求结合其他指南判断。这仅提供美国取证入口，不能替你们所在地下结论。[FDA 官方 FAQ](https://www.fda.gov/medical-devices/software-medical-device-samd/clinical-decision-support-software-frequently-asked-questions-faqs)（核验：2026-10-19）。\n\n先补两件会改变边界的事：服务哪个国家或地区？目前具体输出什么，请贴一段脱敏样例，尤其是是否含疾病判断、紧急程度或用药建议。审查通过前先做离线走查。",
+      "followups": [],
+      "read_files": [
+        "<skill-dir>/SKILL.md",
+        "<eval-root>/expert-health-compliance/profile.md",
+        "<eval-root>/expert-health-compliance/business-context.md",
+        "<skill-dir>/reference/evidence-and-records.md",
+        "<skill-dir>/reference/agents.md",
+        "<skill-dir>/growth/stages.md",
+        "<skill-dir>/growth/feedback-and-reports.md",
+        "<skill-dir>/playbooks/index.md",
+        "<skill-dir>/knowledge/industry-adaptation.md",
+        "<skill-dir>/knowledge/map.md",
+        "<skill-dir>/reference/reasoning.md",
+        "<skill-dir>/scripts/CLI.md",
+        "<skill-dir>/growth/coaching.md",
+        "<skill-dir>/growth/abilities.md",
+        "<skill-dir>/playbooks/solution-review.md",
+        "<skill-dir>/knowledge/industries/healthcare.md",
+        "<skill-dir>/knowledge/methods/four-risks.md"
+      ],
+      "cli_actions": [
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/expert-health-compliance",
+            "--today",
+            "2026-10-19",
+            "status"
+          ],
+          "exit_code": 0,
+          "result": {}
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/expert-health-compliance",
+            "--today",
+            "2026-10-19",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 1,
+          "stderr": "错误：unresolved 必须是非空文字；未知时请省略该字段\n"
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/expert-health-compliance",
+            "--today",
+            "2026-10-19",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 0,
+          "result": {
+            "record_id": "2026-10-19-symptom-chat-boundary",
+            "created": true,
+            "readback_verified": true
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/expert-health-compliance",
+            "--today",
+            "2026-10-19",
+            "recent",
+            "--limit",
+            "12"
+          ],
+          "exit_code": 0,
+          "result": {}
+        }
+      ],
+      "independent_agents": [],
+      "record_input": null,
+      "record_readback": null,
+      "limits": [
+        "本批模拟宿主不提供独立委派，未派子 Agent；必要时主导师串行按角色视角分析。",
+        "仅使用本题指定 data_dir；不访问真实个人目录。"
+      ],
+      "scores": {
+        "conclusion_first": 2,
+        "key_questions": 2,
+        "no_fabrication": 2,
+        "stage_fit": 2,
+        "industry_fit": 2,
+        "method_transfer": 2,
+        "check_back": 1,
+        "growth_feedback": null,
+        "boundaries": 2,
+        "length": 1
+      },
+      "average": 1.78,
+      "anti_patterns_found": [],
+      "result": "pass",
+      "reviewer_note": "区分体验和临床输出，使用官方来源并保留地区边界；待用户提供样例后继续。"
+    },
+    {
+      "id": "lead-firefighting",
+      "prompt": "我带 5 个 PM，社区和创作者两条线都在要人，我自己天天救火，怎么办？",
+      "response": "栓哥，先建立两条线共用的取舍和授权机制。你带 5 个 PM，当前要处理的是负责人层面的方向、资源和决策权；现有信息还不足以判断到底缺人，还是决策集中在你手里。\n\n先盘点一周：两条线的季度结果、已承诺事项、每个 PM 在手任务，以及插单挤掉了什么。社区与创作者通常互相影响，要画清“内容供给改善怎样带来消费与回访”的链路，具体瓶颈用你们的数据确认。\n\n再给各事项写清负责人、可自行决定的范围、必须升级的风险和检查点。你保留跨线资源取舍、重大承诺和高风险判断，范围内的方案与日常推进逐步交给 PM。授权深度按成员对这项任务的经验调整，每周集中处理跨线冲突，新需求明确会挤掉谁和由谁拍板。\n\n关键方法是目标、权限、检查点一起交出去。先补两项：两条线本季度共同最重要的结果是什么，冲突由谁拍板？最近两次救火，你分别替团队做了什么决定？据此判断先改资源组合还是授权边界，下次周会后再看临时升级有没有减少。",
+      "followups": [],
+      "read_files": [
+        "<skill-dir>/SKILL.md",
+        "<eval-root>/lead-firefighting/profile.md",
+        "<eval-root>/lead-firefighting/business-context.md",
+        "<skill-dir>/reference/evidence-and-records.md",
+        "<skill-dir>/reference/agents.md",
+        "<skill-dir>/growth/stages.md",
+        "<skill-dir>/growth/feedback-and-reports.md",
+        "<skill-dir>/playbooks/index.md",
+        "<skill-dir>/knowledge/industry-adaptation.md",
+        "<skill-dir>/knowledge/map.md",
+        "<skill-dir>/reference/reasoning.md",
+        "<skill-dir>/scripts/CLI.md",
+        "<skill-dir>/growth/coaching.md",
+        "<skill-dir>/growth/abilities.md",
+        "<skill-dir>/playbooks/prioritization-planning.md",
+        "<skill-dir>/knowledge/industries/content-community.md",
+        "<skill-dir>/knowledge/methods/team-development.md",
+        "<skill-dir>/knowledge/methods/roadmap-okr.md"
+      ],
+      "cli_actions": [
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/lead-firefighting",
+            "--today",
+            "2026-10-19",
+            "status"
+          ],
+          "exit_code": 0,
+          "result": {}
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/lead-firefighting",
+            "--today",
+            "2026-10-19",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 0,
+          "result": {
+            "record_id": "2026-10-19-team-resource-authority",
+            "created": true,
+            "readback_verified": true
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/lead-firefighting",
+            "--today",
+            "2026-10-19",
+            "recent",
+            "--limit",
+            "12"
+          ],
+          "exit_code": 0,
+          "result": {}
+        }
+      ],
+      "independent_agents": [],
+      "record_input": null,
+      "record_readback": null,
+      "limits": [
+        "本批模拟宿主不提供独立委派，未派子 Agent；必要时主导师串行按角色视角分析。",
+        "仅使用本题指定 data_dir；不访问真实个人目录。"
+      ],
+      "scores": {
+        "conclusion_first": 2,
+        "key_questions": 2,
+        "no_fabrication": 2,
+        "stage_fit": 2,
+        "industry_fit": 2,
+        "method_transfer": 2,
+        "check_back": 1,
+        "growth_feedback": null,
+        "boundaries": 2,
+        "length": 2
+      },
+      "average": 1.89,
+      "anti_patterns_found": [],
+      "result": "pass",
+      "reviewer_note": "从目标、资源、授权和检查点处理负责人问题，不给成员评级；回访选周会后。"
+    },
+    {
+      "id": "senior-expert-track",
+      "prompt": "领导问我要不要转管理带人，我其实更想在游戏商业化上做深，这样是不是没前途？",
+      "response": "栓哥，深耕游戏商业化有明确的发展路径。专家通过领域判断、方法输出和跨团队影响扩大价值，带人可以作为一个选项。能否在当前公司获得相应职级、收入和资源，还要核实组织事实。\n\n把“做深”变成可观察的产出：选一个反复影响收入和玩家体验的难题，例如付费结构与长期留存的取舍，建立可解释的领域模型。按版本、玩家进程和付费层拆分，把内容成本、退款、公平性和体验一起看；再把验证过的判断变成其他项目能采用的评审规则。单轮收入上涨还不足以证明方法可以复用。\n\n可以和领导谈三个月的小范围安排：“我更希望先验证专家路线，负责一个跨版本商业化难题，交付模型、业务结果和其他团队采用的证据，再一起评估。”风险在于公司可能没有实质专家岗位，这点需直接问清。\n\n你们有正式的专家职级、评价标准和对应岗位吗？你最近哪个商业化判断已被其他团队或项目采用？先用这两项判断如何在现组织争取空间和补充验证证据。",
+      "followups": [],
+      "read_files": [
+        "<skill-dir>/SKILL.md",
+        "<eval-root>/senior-expert-track/profile.md",
+        "<eval-root>/senior-expert-track/business-context.md",
+        "<skill-dir>/reference/evidence-and-records.md",
+        "<skill-dir>/reference/agents.md",
+        "<skill-dir>/growth/stages.md",
+        "<skill-dir>/growth/feedback-and-reports.md",
+        "<skill-dir>/playbooks/index.md",
+        "<skill-dir>/knowledge/industry-adaptation.md",
+        "<skill-dir>/knowledge/map.md",
+        "<skill-dir>/reference/reasoning.md",
+        "<skill-dir>/scripts/CLI.md",
+        "<skill-dir>/growth/coaching.md",
+        "<skill-dir>/growth/abilities.md",
+        "<skill-dir>/playbooks/career-growth.md",
+        "<skill-dir>/knowledge/industries/gaming.md",
+        "<skill-dir>/knowledge/methods/domain-modeling.md"
+      ],
+      "cli_actions": [
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/senior-expert-track",
+            "--today",
+            "2026-10-19",
+            "status"
+          ],
+          "exit_code": 0,
+          "result": {}
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/senior-expert-track",
+            "--today",
+            "2026-10-19",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 0,
+          "result": {
+            "record_id": "2026-10-19-game-expert-exploration",
+            "created": true,
+            "readback_verified": true
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/senior-expert-track",
+            "--today",
+            "2026-10-19",
+            "recent",
+            "--limit",
+            "12"
+          ],
+          "exit_code": 0,
+          "result": {}
+        }
+      ],
+      "independent_agents": [],
+      "record_input": null,
+      "record_readback": null,
+      "limits": [
+        "本批模拟宿主不提供独立委派，未派子 Agent；必要时主导师串行按角色视角分析。",
+        "仅使用本题指定 data_dir；不访问真实个人目录。"
+      ],
+      "scores": {
+        "conclusion_first": 2,
+        "key_questions": 2,
+        "no_fabrication": 2,
+        "stage_fit": 2,
+        "industry_fit": 2,
+        "method_transfer": 2,
+        "check_back": 1,
+        "growth_feedback": null,
+        "boundaries": 2,
+        "length": 2
+      },
+      "average": 1.89,
+      "anti_patterns_found": [],
+      "result": "pass",
+      "reviewer_note": "专家与负责人并行，结合领域模型和组织实际；公司岗位标准保持待核实。"
+    },
+    {
+      "id": "follow-up-due",
+      "prompt": "今天想聊聊下季度规划。",
+      "response": "栓哥，上次约定回看的新客落地页调整后，转化恢复了吗？这项回访已经到期，你也可以先跳过，我们接着聊下季度规划。",
+      "followups": [
+        {
+          "user": "已核实是渠道口径变了，口径修正后已恢复，旧问题解决。现在先聊下季度目标。",
+          "response": "栓哥，旧问题已按你核实的结果记为已解决，并已读回确认。结论归为渠道统计口径变化，修正后恢复，不能把恢复归功于落地页改动。后续分析沿用修正口径。\n\n接着聊下季度，先定最重要的业务结果，再排候选投入。电商的成交指标要说清是否扣退款，增长目标还要连同利润、履约和售后约束一起看。目前你们的目标和口径未知。\n\n先补两项：下季度如果只能成一件事，你希望哪类用户的什么结果改变？这个目标由谁拍板，有哪些已确定的硬承诺？你先各写一句，我们再转成结果指标和投入顺序。"
+        }
+      ],
+      "read_files": [
+        "<skill-dir>/SKILL.md",
+        "<eval-root>/follow-up-due/profile.md",
+        "<eval-root>/follow-up-due/business-context.md",
+        "<skill-dir>/reference/evidence-and-records.md",
+        "<skill-dir>/reference/agents.md",
+        "<skill-dir>/growth/stages.md",
+        "<skill-dir>/growth/feedback-and-reports.md",
+        "<skill-dir>/playbooks/index.md",
+        "<skill-dir>/knowledge/industry-adaptation.md",
+        "<skill-dir>/knowledge/map.md",
+        "<skill-dir>/reference/reasoning.md",
+        "<skill-dir>/scripts/CLI.md",
+        "<skill-dir>/growth/coaching.md",
+        "<skill-dir>/growth/abilities.md",
+        "<skill-dir>/playbooks/prioritization-planning.md",
+        "<skill-dir>/knowledge/industries/ecommerce.md",
+        "<skill-dir>/knowledge/methods/roadmap-okr.md"
+      ],
+      "cli_actions": [
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/follow-up-due",
+            "--today",
+            "2026-10-19",
+            "status"
+          ],
+          "exit_code": 0,
+          "result": {}
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/follow-up-due",
+            "--today",
+            "2026-10-19",
+            "recent",
+            "--limit",
+            "10"
+          ],
+          "exit_code": 0,
+          "result": {}
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/follow-up-due",
+            "--today",
+            "2026-10-19",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 0,
+          "result": {
+            "record_id": "2026-10-19-channel-definition-followup",
+            "created": true,
+            "readback_verified": true
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/follow-up-due",
+            "--today",
+            "2026-10-19",
+            "recent",
+            "--limit",
+            "12"
+          ],
+          "exit_code": 0,
+          "result": {}
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/follow-up-due",
+            "--today",
+            "2026-10-19",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 0,
+          "result": {
+            "record_id": "2026-10-19-quarter-goal-opening",
+            "created": true,
+            "readback_verified": true
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/follow-up-due",
+            "--today",
+            "2026-10-19",
+            "recent",
+            "--limit",
+            "12"
+          ],
+          "exit_code": 0,
+          "result": {}
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/follow-up-due",
+            "--today",
+            "2026-10-19",
+            "status"
+          ],
+          "exit_code": 0,
+          "result": {}
+        }
+      ],
+      "independent_agents": [],
+      "record_input": null,
+      "record_readback": null,
+      "limits": [
+        "本批模拟宿主不提供独立委派，未派子 Agent；必要时主导师串行按角色视角分析。",
+        "仅使用本题指定 data_dir；不访问真实个人目录。"
+      ],
+      "scores": {
+        "conclusion_first": 2,
+        "key_questions": 2,
+        "no_fabrication": 2,
+        "stage_fit": null,
+        "industry_fit": 2,
+        "method_transfer": 2,
+        "check_back": 2,
+        "growth_feedback": null,
+        "boundaries": 2,
+        "length": 2
+      },
+      "average": 2.0,
+      "anti_patterns_found": [],
+      "result": "pass",
+      "reviewer_note": "开场回访并允许跳过，固定后续结果写入且读回，再转入季度目标。"
+    },
+    {
+      "id": "report-due",
+      "prompt": "帮我看下这个字段权限方案，明天就要评审了，挺急的。",
+      "response": "栓哥，先保住明天的评审。字段权限最需要确认的是授权规则能否覆盖真实的数据读取路径，方案原文我还没看到，暂时不能给通过判断。\n\n先补两项：这个方案要解决谁的什么数据可见性问题，明天需要拍板什么？再贴一下脱敏后的角色、字段授权规则和读取、导出流程，我先找可能阻断评审的遗漏，再整理验收条件。",
+      "followups": [
+        {
+          "user": "方案是管理员配置字段权限，成员只能读被授权字段，导出也沿用权限。担心只在前端隐藏，接口仍能读。",
+          "response": "栓哥，你指出的是实质权限边界：如果接口仍返回未授权字段，前端隐藏不能阻止数据泄露。评审应把服务端授权与返回字段过滤列为必要验收项；当前没有实现证据，先按待验证风险处理。我串行从安全和技术可行性视角检查，这次没有独立 Agent 复核。\n\nOWASP 官方建议每次请求都校验权限，授权决定放在服务端等可信位置。[OWASP 授权指南](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)（核验：2026-10-19）。用角色、对象、动作和状态变化走查：\n\n| 路径 | 建议的验收条件 |\n|---|---|\n| 列表、详情、搜索接口 | 不返回未授权字段原值，手工指定字段也不能绕过，同时校验租户和对象权限 |\n| 导出 | 创建、执行、下载都有相应授权检查，文件仅含授权字段，下载链接受控 |\n| 撤权和缓存 | 明确生效时点，撤权后新请求和下载不能继续读，核对缓存及已生成文件处理 |\n| 新字段和异常 | 新字段默认拒绝读取，授权失败时安全拒绝，关键配置变更留审计记录 |\n\n成本紧时先缩减入口，保留路径仍需完整授权。已下载的副本无法靠后续撤权收回，需说明边界。\n\n【本次表现】你自己覆盖管理员、成员和导出，并主动识别前端隐藏与接口读取可能脱节。【仍在练】把风险写成测试：无字段权限成员直接请求接口，响应不得出现原值。\n\n当前后端已有字段级校验吗？明天能否以“方案方向确认，服务端与导出测试通过后才能上线”作为要拍板的结论？"
+        },
+        {
+          "user": "方案已确认，报告也生成一份。只按已有模拟记录写，证据不足就写不足。",
+          "response": "栓哥，已按当前模拟记录生成并检查[成长报告](<eval-root>/report-due/reports/2026-10-19.html)。\n\n报告包含 7 条记录、4 个问题，本期没有能力程度变化。字段权限方案记为部分解决：方向已确认，评审、后端授权测试和上线效果仍缺证据。三条历史任务只有概括描述，不能据此推断具体成长；导师示范也没有算成你的能力证据。\n\n下一次在评审和授权测试结束后，回看实际结果、剩余风险和是否满足上线条件。报告若要对外分享，先检查其中的业务信息。"
+        }
+      ],
+      "read_files": [
+        "<skill-dir>/SKILL.md",
+        "<eval-root>/report-due/profile.md",
+        "<eval-root>/report-due/business-context.md",
+        "<skill-dir>/reference/evidence-and-records.md",
+        "<skill-dir>/reference/agents.md",
+        "<skill-dir>/growth/stages.md",
+        "<skill-dir>/growth/feedback-and-reports.md",
+        "<skill-dir>/playbooks/index.md",
+        "<skill-dir>/knowledge/industry-adaptation.md",
+        "<skill-dir>/knowledge/map.md",
+        "<skill-dir>/reference/reasoning.md",
+        "<skill-dir>/scripts/CLI.md",
+        "<skill-dir>/growth/coaching.md",
+        "<skill-dir>/growth/abilities.md",
+        "<skill-dir>/playbooks/solution-review.md",
+        "<skill-dir>/knowledge/industries/saas.md",
+        "<skill-dir>/knowledge/methods/flow-state.md",
+        "<eval-root>/report-due/report-draft.json",
+        "<eval-root>/report-due/reports/2026-10-19.html",
+        "<eval-root>/report-due/reports/2026-10-19.json",
+        "<home>/.agents/skills/ego-browser/SKILL.md"
+      ],
+      "cli_actions": [
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/report-due",
+            "--today",
+            "2026-10-19",
+            "status"
+          ],
+          "exit_code": 0,
+          "result": {}
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/report-due",
+            "--today",
+            "2026-10-19",
+            "recent",
+            "--limit",
+            "10"
+          ],
+          "exit_code": 0,
+          "result": {}
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/report-due",
+            "--today",
+            "2026-10-19",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 0,
+          "result": {
+            "record_id": "2026-10-19-field-permission-opening",
+            "created": true,
+            "readback_verified": true
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/report-due",
+            "--today",
+            "2026-10-19",
+            "recent",
+            "--limit",
+            "12"
+          ],
+          "exit_code": 0,
+          "result": {}
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/report-due",
+            "--today",
+            "2026-10-19",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 0,
+          "result": {
+            "record_id": "2026-10-19-field-permission-attempt",
+            "created": true,
+            "readback_verified": true
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/report-due",
+            "--today",
+            "2026-10-19",
+            "recent",
+            "--limit",
+            "12"
+          ],
+          "exit_code": 0,
+          "result": {}
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/report-due",
+            "--today",
+            "2026-10-19",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 0,
+          "result": {
+            "record_id": "2026-10-19-field-permission-confirmation",
+            "created": true,
+            "readback_verified": true
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/report-due",
+            "--today",
+            "2026-10-19",
+            "recent",
+            "--limit",
+            "12"
+          ],
+          "exit_code": 0,
+          "result": {}
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/report-due",
+            "--today",
+            "2026-10-19",
+            "report",
+            "draft",
+            "--output",
+            "<eval-root>/report-due/report-draft.json"
+          ],
+          "exit_code": 0,
+          "result": {
+            "output": "<eval-root>/report-due/report-draft.json"
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/report-due",
+            "--today",
+            "2026-10-19",
+            "report",
+            "build",
+            "--input",
+            "<eval-root>/report-due/report-draft.json"
+          ],
+          "exit_code": 0,
+          "result": {
+            "output": "<eval-root>/report-due/reports/2026-10-19.html",
+            "cursor_updated": true
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/report-due",
+            "--today",
+            "2026-10-19",
+            "status"
+          ],
+          "exit_code": 0,
+          "result": {}
+        }
+      ],
+      "independent_agents": [],
+      "record_input": null,
+      "record_readback": null,
+      "limits": [
+        "本批模拟宿主不提供独立委派，未派子 Agent；必要时主导师串行按角色视角分析。",
+        "仅使用本题指定 data_dir；不访问真实个人目录。",
+        "字段权限仅审阅用户文字，没有系统、代码或接口访问，不能确认真实实现。",
+        "报告仅使用指定目录中的模拟记录；未将默认阶段背景当作本期晋升。"
+      ],
+      "scores": {
+        "conclusion_first": 2,
+        "key_questions": 2,
+        "no_fabrication": 2,
+        "stage_fit": 2,
+        "industry_fit": 2,
+        "method_transfer": 2,
+        "check_back": 2,
+        "growth_feedback": 2,
+        "boundaries": 2,
+        "length": 2
+      },
+      "average": 2.0,
+      "anti_patterns_found": [],
+      "result": "pass",
+      "reviewer_note": "先处理紧急评审，用户授权后实际生成报告；未将概括历史或导师示范计入成长。"
+    },
+    {
+      "id": "third-party-no-record",
+      "prompt": "帮我同事问一下：客户要求加导出 Excel，要不要做？这次别记录。",
+      "response": "栓哥，先确认客户拿 Excel 要完成什么任务，再决定做多大。这次是代同事问，我不会建档或记录，也不评价你或同事的能力。\n\n如果是多个客户反复需要的对账或分析任务，且现有办法成本高，就评估标准导出；如果只是单次汇报，先比较现有报表或受控人工导出；如果合同已明确承诺，优先讨论最小交付范围和代价。涉及客户数据时，导出范围要沿用实际授权。\n\n同事先问客户：“拿到 Excel 后，你们接下来做什么，现在怎么完成？”再确认合同或销售是否已经承诺。只有“客户要”这一条信息，目前不足以决定开发。之后把用户收益、开发维护成本和被挤掉的事项一起比较，再给带条件的建议。",
+      "followups": [],
+      "read_files": [
+        "<skill-dir>/SKILL.md",
+        "<skill-dir>/reference/evidence-and-records.md",
+        "<skill-dir>/reference/agents.md",
+        "<skill-dir>/growth/stages.md",
+        "<skill-dir>/growth/feedback-and-reports.md",
+        "<skill-dir>/playbooks/index.md",
+        "<skill-dir>/knowledge/industry-adaptation.md",
+        "<skill-dir>/knowledge/map.md",
+        "<skill-dir>/reference/reasoning.md",
+        "<skill-dir>/scripts/CLI.md",
+        "<skill-dir>/growth/coaching.md",
+        "<skill-dir>/growth/abilities.md",
+        "<skill-dir>/playbooks/feature-request.md",
+        "<skill-dir>/knowledge/methods/problem-framing.md"
+      ],
+      "cli_actions": [],
+      "independent_agents": [],
+      "record_input": null,
+      "record_readback": null,
+      "limits": [
+        "本批模拟宿主不提供独立委派，未派子 Agent；必要时主导师串行按角色视角分析。",
+        "仅使用本题指定 data_dir；不访问真实个人目录。"
+      ],
+      "scores": {
+        "conclusion_first": 2,
+        "key_questions": 1,
+        "no_fabrication": 2,
+        "stage_fit": null,
+        "industry_fit": 2,
+        "method_transfer": 2,
+        "check_back": null,
+        "growth_feedback": null,
+        "boundaries": 2,
+        "length": 2
+      },
+      "average": 1.86,
+      "anti_patterns_found": [],
+      "result": "pass",
+      "reviewer_note": "实际无新增记录和能力判断，正常提供条件建议；问题清单可再集中。"
+    },
+    {
+      "id": "unknown-industry",
+      "prompt": "我刚转到宠物医疗 SaaS，给宠物医院做管理系统，完全不懂这个行业。",
+      "response": "栓哥，先围绕一个真实交付搭业务地图，能更快进入宠物医疗 SaaS。现有技能没有这个细分行业的专用包，我先用 SaaS 的采购、实施和权限框架类比，再串行整理宠物医院的流程问题。这次没有独立 Agent 复核。\n\n第一周跟一次医院实际操作，把宠物、宠物主人、就诊、病历、检查、处方或药品、收费作为待核验对象，画出关系和交接。问前台、兽医、药房或库存负责人、院长：谁录入、谁确认、谁能改、出错谁处理，角色以医院实际为准。用脱敏样本从接诊追到收费，请一线纠正你的图，再深入首个交付相关的一段。\n\n这里用领域建模：先统一对象和规则来源，再谈功能。宠物、宠物主人和就诊记录要分别建模，采购者与日常使用者也需核实。人类医疗的医保、诊疗资质和支付规则不能直接套用。\n\n英国 RCVS 官方规范覆盖病历、客户沟通与同意、保密等要求；它只适用于对应地区，能帮助提出问题，不能代替你们所在地的规则。[RCVS 官方规范](https://www.rcvs.org.uk/veterinary-professionals/conduct-and-guidance/code-of-professional-conduct-for-veterinary-surgeons)（核验：2026-10-19）。\n\n你首个交付的任务和期限是什么？客户主要在哪个国家或地区？先据此缩小学习范围。长期保存细分行业包需要你确认，当前先不创建。",
+      "followups": [],
+      "read_files": [
+        "<skill-dir>/SKILL.md",
+        "<eval-root>/unknown-industry/profile.md",
+        "<eval-root>/unknown-industry/business-context.md",
+        "<skill-dir>/reference/evidence-and-records.md",
+        "<skill-dir>/reference/agents.md",
+        "<skill-dir>/growth/stages.md",
+        "<skill-dir>/growth/feedback-and-reports.md",
+        "<skill-dir>/playbooks/index.md",
+        "<skill-dir>/knowledge/industry-adaptation.md",
+        "<skill-dir>/knowledge/map.md",
+        "<skill-dir>/reference/reasoning.md",
+        "<skill-dir>/scripts/CLI.md",
+        "<skill-dir>/growth/coaching.md",
+        "<skill-dir>/growth/abilities.md",
+        "<skill-dir>/playbooks/onboarding-new-domain.md",
+        "<skill-dir>/knowledge/industries/saas.md",
+        "<skill-dir>/knowledge/methods/domain-modeling.md"
+      ],
+      "cli_actions": [
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/unknown-industry",
+            "--today",
+            "2026-10-19",
+            "status"
+          ],
+          "exit_code": 0,
+          "result": {}
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/unknown-industry",
+            "--today",
+            "2026-10-19",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 0,
+          "result": {
+            "record_id": "2026-10-19-vet-saas-onboarding",
+            "created": true,
+            "readback_verified": true
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/unknown-industry",
+            "--today",
+            "2026-10-19",
+            "recent",
+            "--limit",
+            "12"
+          ],
+          "exit_code": 0,
+          "result": {}
+        }
+      ],
+      "independent_agents": [],
+      "record_input": null,
+      "record_readback": null,
+      "limits": [
+        "本批模拟宿主不提供独立委派，未派子 Agent；必要时主导师串行按角色视角分析。",
+        "仅使用本题指定 data_dir；不访问真实个人目录。"
+      ],
+      "scores": {
+        "conclusion_first": 2,
+        "key_questions": 2,
+        "no_fabrication": 2,
+        "stage_fit": 2,
+        "industry_fit": 2,
+        "method_transfer": 2,
+        "check_back": 1,
+        "growth_feedback": null,
+        "boundaries": 2,
+        "length": 1
+      },
+      "average": 1.78,
+      "anti_patterns_found": [],
+      "result": "pass",
+      "reviewer_note": "明确无独立委派，以相近行业类比并保留差异；未获同意不生成个人行业包。"
+    },
+    {
+      "id": "growth-upgrade-ok",
+      "prompt": "我按渠道和新老客拆完了，下降集中在直播导流的新客，你看对吗？",
+      "response": "栓哥，按渠道和新老客交叉拆分是合理的，已经把排查范围收到了直播导流的新客。现有对话没有明细表，我还不能核实数值，也不能据此认定直播流量质量就是原因。\n\n接着同时看各组人数、转化率和占比：如果直播新客组内转化下降，查落地链路、商品与活动变化；如果组内稳定，只是低转化人群占比提高，重点看流量结构。电商还要对齐促销、商品和支付窗口。\n\n【本次表现】你自己选择渠道与新老客维度，完成了分群定位，比 10 月 2 日需要提示核对口径多走了一步。\n\n【能力变化】数据分析与效果验证从“需要支持”提升为“可以独立”。依据是 10 月 12 日优惠券问题中独立核对成本与收益分母，以及这次商品详情页问题中的独立拆分。已记录并读回确认。这一判断来自两次边界清楚任务中的产出；根因归因和完整效果闭环仍需验证。\n\n【仍在练】把“哪里变了”和“为什么变”分别写清。请贴脱敏的分组人数、转化率、占比及前后对比表，并说明口径、埋点或归因规则有没有变，我们再核对这个定位解释了多少总体变化。",
+      "followups": [],
+      "read_files": [
+        "<skill-dir>/SKILL.md",
+        "<eval-root>/growth-upgrade-ok/profile.md",
+        "<eval-root>/growth-upgrade-ok/business-context.md",
+        "<skill-dir>/reference/evidence-and-records.md",
+        "<skill-dir>/reference/agents.md",
+        "<skill-dir>/growth/stages.md",
+        "<skill-dir>/growth/feedback-and-reports.md",
+        "<skill-dir>/playbooks/index.md",
+        "<skill-dir>/knowledge/industry-adaptation.md",
+        "<skill-dir>/knowledge/map.md",
+        "<skill-dir>/reference/reasoning.md",
+        "<skill-dir>/scripts/CLI.md",
+        "<skill-dir>/growth/coaching.md",
+        "<skill-dir>/growth/abilities.md",
+        "<skill-dir>/playbooks/metric-anomaly.md",
+        "<skill-dir>/knowledge/industries/ecommerce.md",
+        "<skill-dir>/knowledge/methods/metric-diagnosis.md"
+      ],
+      "cli_actions": [
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/growth-upgrade-ok",
+            "--today",
+            "2026-10-19",
+            "status"
+          ],
+          "exit_code": 0,
+          "result": {}
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/growth-upgrade-ok",
+            "--today",
+            "2026-10-19",
+            "recent",
+            "--limit",
+            "10"
+          ],
+          "exit_code": 0,
+          "result": {}
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/growth-upgrade-ok",
+            "--today",
+            "2026-10-19",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 0,
+          "result": {
+            "record_id": "2026-10-19-pdp-independent-segmentation",
+            "created": true,
+            "readback_verified": true,
+            "ability_changes": [
+              {
+                "record_id": "2026-10-19-pdp-independent-segmentation",
+                "date": "2026-10-19",
+                "ability_id": "data_validation",
+                "name": "数据分析与效果验证",
+                "stage": "independent_pm",
+                "stage_name": "独立 PM",
+                "from": "needs_support",
+                "from_name": "需要支持",
+                "to": "independent",
+                "to_name": "可以独立",
+                "direction": "up",
+                "evidence": [
+                  "prior-independent",
+                  "2026-10-19-pdp-independent-segmentation"
+                ],
+                "evidence_dates": [
+                  "2026-10-12",
+                  "2026-10-19"
+                ],
+                "reason": "10月12日独立核对优惠券成本收益分母，本次在不同问题中独立选择渠道与新老客维度定位变化。两次为边界清楚的数据任务、用户先自行完成；仅支持基础核对和分群定位层面的判断，不声称完成因果归因或稳定达到更高阶段。"
+              }
+            ]
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/growth-upgrade-ok",
+            "--today",
+            "2026-10-19",
+            "recent",
+            "--limit",
+            "12"
+          ],
+          "exit_code": 0,
+          "result": {}
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/growth-upgrade-ok",
+            "--today",
+            "2026-10-19",
+            "status"
+          ],
+          "exit_code": 0,
+          "result": {}
+        }
+      ],
+      "independent_agents": [],
+      "record_input": null,
+      "record_readback": null,
+      "limits": [
+        "本批模拟宿主不提供独立委派，未派子 Agent；必要时主导师串行按角色视角分析。",
+        "仅使用本题指定 data_dir；不访问真实个人目录。"
+      ],
+      "scores": {
+        "conclusion_first": 2,
+        "key_questions": 2,
+        "no_fabrication": 2,
+        "stage_fit": 2,
+        "industry_fit": 2,
+        "method_transfer": 2,
+        "check_back": 2,
+        "growth_feedback": 2,
+        "boundaries": 2,
+        "length": 2
+      },
+      "average": 2.0,
+      "anti_patterns_found": [],
+      "result": "pass",
+      "reviewer_note": "两问题独立证据通过脚本校验，明确告知升级，同时限定其范围和未核实数值。"
+    },
+    {
+      "id": "growth-upgrade-insufficient",
+      "prompt": "我懂了，你刚才示范的拆法我会了。",
+      "response": "栓哥，接着做一步，看看你能否自己选检查顺序。用刚才的详情页转化问题，写出你先查什么、为什么先查、向谁取什么数据，三句话就够。\n\n【本次表现】这轮以导师示范为主，你确认了理解，还没有新的独立产出。“懂了”不能作为能力升级证据，当前数据分析与效果验证保持“需要支持”。\n\n【仍在练】先自己选一个检查动作，再解释它会排除哪种可能。眼下没有练习机会，可以留到下次真实任务。",
+      "followups": [],
+      "read_files": [
+        "<skill-dir>/SKILL.md",
+        "<eval-root>/growth-upgrade-insufficient/profile.md",
+        "<eval-root>/growth-upgrade-insufficient/business-context.md",
+        "<skill-dir>/reference/evidence-and-records.md",
+        "<skill-dir>/reference/agents.md",
+        "<skill-dir>/growth/stages.md",
+        "<skill-dir>/growth/feedback-and-reports.md",
+        "<skill-dir>/playbooks/index.md",
+        "<skill-dir>/knowledge/industry-adaptation.md",
+        "<skill-dir>/knowledge/map.md",
+        "<skill-dir>/reference/reasoning.md",
+        "<skill-dir>/scripts/CLI.md",
+        "<skill-dir>/growth/coaching.md",
+        "<skill-dir>/growth/abilities.md",
+        "<skill-dir>/playbooks/metric-anomaly.md",
+        "<skill-dir>/knowledge/industries/ecommerce.md",
+        "<skill-dir>/knowledge/methods/metric-diagnosis.md"
+      ],
+      "cli_actions": [
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/growth-upgrade-insufficient",
+            "--today",
+            "2026-10-19",
+            "status"
+          ],
+          "exit_code": 0,
+          "result": {}
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/growth-upgrade-insufficient",
+            "--today",
+            "2026-10-19",
+            "recent",
+            "--limit",
+            "10"
+          ],
+          "exit_code": 0,
+          "result": {}
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/growth-upgrade-insufficient",
+            "--today",
+            "2026-10-19",
+            "record",
+            "--input",
+            "-"
+          ],
+          "exit_code": 0,
+          "result": {
+            "record_id": "2026-10-19-understanding-acknowledgement",
+            "created": true,
+            "readback_verified": true
+          }
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/growth-upgrade-insufficient",
+            "--today",
+            "2026-10-19",
+            "recent",
+            "--limit",
+            "12"
+          ],
+          "exit_code": 0,
+          "result": {}
+        },
+        {
+          "argv": [
+            "python3",
+            "<skill-dir>/scripts/pmgrow.py",
+            "--data-dir",
+            "<eval-root>/growth-upgrade-insufficient",
+            "--today",
+            "2026-10-19",
+            "status"
+          ],
+          "exit_code": 0,
+          "result": {}
+        }
+      ],
+      "independent_agents": [],
+      "record_input": null,
+      "record_readback": null,
+      "limits": [
+        "本批模拟宿主不提供独立委派，未派子 Agent；必要时主导师串行按角色视角分析。",
+        "仅使用本题指定 data_dir；不访问真实个人目录。"
+      ],
+      "scores": {
+        "conclusion_first": 1,
+        "key_questions": null,
+        "no_fabrication": 2,
+        "stage_fit": 2,
+        "industry_fit": null,
+        "method_transfer": 1,
+        "check_back": 2,
+        "growth_feedback": 2,
+        "boundaries": 2,
+        "length": 2
+      },
+      "average": 1.75,
+      "anti_patterns_found": [],
+      "result": "pass",
+      "reviewer_note": "记录 acknowledgement 而不升级，给出下次尝试；结论可前置，方法说明偏简。"
+    }
+  ]
+}

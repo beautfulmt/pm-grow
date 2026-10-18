@@ -1,0 +1,66 @@
+{
+  "report": {
+    "sections": [
+      "learned",
+      "problems",
+      "growth",
+      "next",
+      "evidence"
+    ],
+    "tiers": [
+      "【本次表现】",
+      "【能力变化】",
+      "【仍在练】"
+    ],
+    "externalResources": 0
+  },
+  "widths": [
+    {
+      "width": 390,
+      "body": 390
+    },
+    {
+      "width": 760,
+      "body": 760
+    },
+    {
+      "width": 1360,
+      "body": 1360
+    }
+  ],
+  "print": {
+    "navigationHidden": true,
+    "buttonHidden": true,
+    "visibleSections": 5
+  },
+  "noJS": {
+    "visibleSections": 5,
+    "printHidden": true
+  },
+  "emptyGap": true,
+  "handbook": {
+    "search": true,
+    "empty": true,
+    "clear": true,
+    "anchor": true,
+    "widths": [
+      {
+        "width": 390,
+        "body": 390
+      },
+      {
+        "width": 760,
+        "body": 760
+      },
+      {
+        "width": 1360,
+        "body": 1360
+      }
+    ],
+    "print": {
+      "navigationHidden": true,
+      "topics": 2
+    },
+    "noJS": true
+  }
+}

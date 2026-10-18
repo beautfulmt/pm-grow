@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "case_id": "case-reviewed",
+  "title": "报表需求澄清",
+  "owner": "self",
+  "origin": "work",
+  "status": "closed",
+  "context_ref": "project-a",
+  "ability_ids": ["user_problem"],
+  "attempts": [
+    {
+      "attempt_id": "attempt-01", "date": "2026-09-02", "kind": "independent", "status": "active",
+      "user_work": "用户还原了使用者要做的决策", "source": "用户在会话中的原话",
+      "feedback": "导师指出还缺验证方式", "result": "确认了决策场景",
+      "observations": [{"ability_id": "user_problem", "status": "supported", "text": "能从功能请求还原决策"}]
+    },
+    {
+      "attempt_id": "attempt-02", "date": "2026-09-03", "kind": "model_demo", "status": "active",
+      "user_work": "导师示范了指标口径表", "source": "导师示范", "observations": []
+    }
+  ]
+}
