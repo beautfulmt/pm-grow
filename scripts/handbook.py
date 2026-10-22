@@ -1,4 +1,5 @@
-"""Render an approved topic collection into a standalone offline HTML handbook."""
+"""Maintain an approved topic collection and render it into a standalone offline HTML handbook."""
+from copy import deepcopy
 from datetime import date, datetime
 from html import escape
 from pathlib import Path
@@ -7,9 +8,11 @@ import shutil
 import tempfile
 from urllib.parse import urlsplit
 
-from records import SKILL_DIR, read_json
+from records import SKILL_DIR, read_json, today_value
+from storage import atomic_write_json, file_lock
 
 TEMPLATE = SKILL_DIR / "assets" / "handbook.html"
+BOOK_TEMPLATE = SKILL_DIR / "templates" / "handbook.json"
 SLUG = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*\Z")
 PRINCIPLES = {
     "goal": "目标", "facts": "事实", "constraints": "约束",
@@ -214,3 +217,109 @@ def build(input_path, output_path, replace=False):
     finally:
         temporary.unlink(missing_ok=True)
     return {"output": str(output_path.resolve()), "topics": len(book["topics"]), "backup": str(backup.resolve()) if backup else None}
+
+
+# ---------------------------------------------------------------- topic maintenance
+
+def _load_book(source):
+    book = read_json(source)
+    if not isinstance(book, dict) or not isinstance(book.get("topics"), list):
+        raise ValueError(f"{source} 不是有效的手册源文件：需要包含 topics 列表")
+    return book
+
+
+def _topic_index(book, identifier):
+    return next((index for index, topic in enumerate(book["topics"])
+                 if isinstance(topic, dict) and topic.get("id") == identifier), None)
+
+
+def _save_book(source, book):
+    """Back up the previous source, then replace it atomically and verify the read-back."""
+    backup = None
+    if source.exists():
+        stamp = datetime.now().strftime("%Y%m%d-%H%M%S-%f")
+        backup = source.with_name(f"{source.stem}.previous-{stamp}{source.suffix}")
+        shutil.copy2(source, backup)
+    atomic_write_json(source, book)
+    if read_json(source) != book:
+        raise ValueError(f"{source} 写入后读回内容不一致")
+    return str(backup.resolve()) if backup else None
+
+
+def list_topics(source):
+    """Read-only overview, so the mentor can reuse IDs instead of editing JSON by hand."""
+    source = Path(source).expanduser()
+    location = str(source.resolve())
+    if not source.exists():
+        return {"input": location, "exists": False, "topics": [],
+                "note": "手册源文件还不存在；用户同意收录后用 handbook upsert 新增第一个专题"}
+    book = _load_book(source)
+    result = {"input": location, "exists": True, "title": book.get("title"), "updated_on": book.get("updated_on"),
+              "topics": [{key: topic.get(key) for key in ("id", "title", "updated_on")}
+                         for topic in book["topics"] if isinstance(topic, dict)]}
+    try:
+        validate(deepcopy(book))
+        result["valid"] = True
+    except ValueError as exc:
+        result.update({"valid": False, "error": str(exc)})
+    return result
+
+
+def upsert(root, source, topic, today=None, timeout=10.0):
+    """Replace one topic in place by id, or append it; the whole book must still validate."""
+    if not isinstance(topic, dict):
+        raise ValueError("专题必须是 JSON 对象")
+    identifier = topic.get("id")
+    if not isinstance(identifier, str) or not SLUG.fullmatch(identifier):
+        raise ValueError("专题 id 必须是小写字母、数字和单个连字符组成的 slug")
+    day = today_value(today).isoformat()
+    source = Path(source).expanduser()
+    with file_lock(root, timeout=timeout):
+        book = _load_book(source if source.exists() else BOOK_TEMPLATE)
+        index = _topic_index(book, identifier)
+        existing = book["topics"][index] if index is not None else None
+        incoming = dict(topic)
+        if "updated_on" not in incoming:
+            if existing is not None and {k: v for k, v in existing.items() if k != "updated_on"} == incoming:
+                incoming = existing
+            else:
+                incoming["updated_on"] = day
+        if existing is not None and existing == incoming and source.exists():
+            return {"input": str(source.resolve()), "action": "unchanged", "topic_id": identifier,
+                    "topics": len(book["topics"]), "backup": None}
+        updated = deepcopy(book)
+        if index is None:
+            updated["topics"].append(incoming)
+            action = "created"
+        else:
+            updated["topics"][index] = incoming
+            action = "replaced"
+        updated["updated_on"] = day
+        validate(deepcopy(updated))
+        backup = _save_book(source, updated)
+    return {"input": str(source.resolve()), "action": action, "topic_id": identifier,
+            "topics": len(updated["topics"]), "backup": backup,
+            "next": "生成或更新 HTML：handbook build（已有输出时加 --replace）"}
+
+
+def remove(root, source, identifier, today=None, timeout=10.0):
+    """Delete one topic by id, keeping a backup; a handbook always keeps at least one topic."""
+    day = today_value(today).isoformat()
+    source = Path(source).expanduser()
+    with file_lock(root, timeout=timeout):
+        if not source.exists():
+            raise ValueError(f"手册源文件不存在：{source}")
+        book = _load_book(source)
+        index = _topic_index(book, identifier)
+        if index is None:
+            raise ValueError(f"手册里没有专题 {identifier}；先用 handbook list 查看已有专题")
+        if len(book["topics"]) == 1:
+            raise ValueError("删除后手册将没有任何专题；确实要清空时，请和用户确认后直接删除源文件")
+        updated = deepcopy(book)
+        del updated["topics"][index]
+        updated["updated_on"] = day
+        validate(deepcopy(updated))
+        backup = _save_book(source, updated)
+    return {"input": str(source.resolve()), "action": "removed", "topic_id": identifier,
+            "topics": len(updated["topics"]), "backup": backup,
+            "next": "更新 HTML：handbook build --replace"}

@@ -41,6 +41,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [企业服务 SaaS](../industries/saas.md)：画客户生命周期（评估、采购、实施、上线、续约），使用者与决策者旅程并行。
 - [硬件/IoT/工业制造](../industries/hardware-iot.md)：纳入开箱、安装、配网、维修、回收等线下环节。
 - [电商与零售](../industries/ecommerce.md)：售后和物流异常常是情绪最低点。
+- [政企与 ToG](../industries/gov-enterprise.md)：企业和群众的办事旅程跨部门、跨层级，服务蓝图画到后台审批和数据共享。
 
 ## 不同阶段怎么用
 

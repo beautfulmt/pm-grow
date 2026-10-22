@@ -18,12 +18,14 @@
 | "某指标掉了/涨了，查一下原因""留存连续下滑""GMV 没达标"；一个数字 + 一段时间 + 为什么 | [metric-anomaly](metric-anomaly.md) |
 | "帮我看看方案""下周评审怎么准备""PRD 怎么写""评审被怼了"；手里有方案或评审时间点 | [solution-review](solution-review.md) |
 | "需求太多排不过来""两个老板都要先做自己的""OKR/路线图怎么写"；资源冲突或规划节点 | [prioritization-planning](prioritization-planning.md) |
+| "这个功能没人用，想下掉""老系统要下线迁移""要砍掉一条产品线""两个功能想合并"；做减法、腾资源，有人仍在依赖 | [feature-sunset](feature-sunset.md) |
 | "要延期了""依赖方不给排期""bug 太多还上不上""日期定死了"；时间、依赖与质量压力 | [delivery-risk](delivery-risk.md) |
 | "研发说做不了""和设计意见不一致""怎么跟老板汇报""要人要不到"；需要别人做出行动 | [alignment-communication](alignment-communication.md) |
 | "访谈怎么设计""一堆反馈不知道怎么分析""用户到底要什么"；已有或准备收集用户原声 | [user-research](user-research.md) |
 | "增长从哪下手""冷启动怎么做""让我负责一个新业务""做个 MVP 验证"；不确定性高、缺基线 | [growth-new-business](growth-new-business.md) |
 | "做个竞品分析""市场有多大""我们比竞品强在哪""要不要进这个市场"；外部对比与判断 | [competitive-market](competitive-market.md) |
 | "上线了效果怎么样""A/B 结果显著吗""要写复盘"；有上线事实，需要下结论或总结 | [launch-review](launch-review.md) |
+| "线上出问题了""客诉突然暴涨""用户被多扣了钱""有人看到了别人的信息""事故过去了要写复盘"；影响正在发生或刚发生，涉及故障、资金、数据或安全 | [incident-response](incident-response.md) |
 | "刚入职/转岗不知道从哪开始""接手了老系统""业务术语听不懂"；进入陌生领域 | [onboarding-new-domain](onboarding-new-domain.md) |
 | "要述职了""想晋升差在哪""要不要转 AI/转管理""感觉没成长"；问题指向用户自己的发展 | [career-growth](career-growth.md) |
 
@@ -31,14 +33,18 @@
 
 总原则：先处理决定"问题是什么"的场景，再处理"值不值""怎么做""怎么推进""怎么说"的场景。线上事故、明天就要评审或汇报这类紧急情况，先保住当下，再回到问题本身。
 
+紧急情况优先：线上事故和客诉集中爆发直接用 incident-response，先止损、再同步，影响正在发生时排在一切场景之前。影响停下来之后，用 launch-review 的复盘结构和 [retrospective](../knowledge/methods/retrospective.md) 方法卡复盘，改进项写进 incident-response 的回访里跟踪。
+
 默认顺序：
 
 1. 诊断事实：metric-anomaly、user-research
-2. 判断值不值：feature-request、competitive-market、growth-new-business
+2. 判断值不值：feature-request、feature-sunset、competitive-market、growth-new-business
 3. 取舍与规划：prioritization-planning
 4. 设计方案：solution-review
 5. 推进与交付：delivery-risk、launch-review
 6. 沟通与对齐：alignment-communication
+
+feature-sunset 判断的是反方向的"值不值"：一个已有功能还值不值得继续投入。定下来之后，执行借用 delivery-risk 场景和 [launch-rollout](../knowledge/methods/launch-rollout.md) 方法卡的分阶段做法，释放出的资源回到 prioritization-planning 排序。
 
 onboarding-new-domain 和 career-growth 关注"人"，可以和上面任何一个场景并行：先解决眼前任务，同时用它们的视角安排上手或发展。
 
@@ -56,6 +62,10 @@ onboarding-new-domain 和 career-growth 关注"人"，可以和上面任何一�
 | 从零规划一个新业务 | growth-new-business → prioritization-planning | 先找最危险的假设，规划围绕验证节奏展开 |
 | 新人接手后的第一个需求 | 需求对应的场景为主，onboarding-new-domain 补业务地图 | 用真实任务带动上手 |
 | 晋升答辩时被评委挑战 | career-growth → solution-review 的"应对挑战"分类 | 场合是个人发展，答辩技巧借用评审 |
+| 上线后出了事故 | incident-response → launch-review | 先止损、恢复和善后；影响停下来后，再评估这次上线并按复盘结构总结 |
+| 客诉集中爆发，老板问要不要改功能 | incident-response → user-research | 先止住影响、统一客服口径；再从工单原话还原用户任务，确实要改功能时转 feature-request |
+| 想下线一个功能，但有大客户在用 | feature-sunset → alignment-communication | 先算清依赖、合同和替代方案；方案定了再准备和客户、销售的沟通 |
+| 下线旧系统，要把用户迁到新系统 | feature-sunset → delivery-risk | 先定下线范围和迁移路径；新旧并行期、依赖和日期风险按交付风险管理 |
 
 ## 场景的共同约定
 

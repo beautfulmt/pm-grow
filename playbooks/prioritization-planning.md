@@ -73,6 +73,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [saas](../knowledge/industries/saas.md)：大客户需求与续费风险会强烈拉扯排序，要区分平台能力和单客户定制。
 - [internal-platform](../knowledge/industries/internal-platform.md)：多个业务方共享一个团队，按业务影响、风险和复用程度排，排序规则要公开。
 - [gaming](../knowledge/industries/gaming.md)：版本节奏、活动日历和内容产能是硬节拍，规划围绕版本窗口展开。
+- [gov-enterprise](../knowledge/industries/gov-enterprise.md)：合同与验收承诺先放入，项目定制和产品主干分开排，避免主干被单个项目占满。
 
 ## 阶段检查点反问
 

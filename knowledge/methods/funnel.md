@@ -24,7 +24,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 ## 适用条件
 
 - **适合**：路径清晰的转化问题，如注册、激活、下单、付费、表单提交。
-- **前提**：关键步骤有可靠埋点，用户标识能跨步骤关联。
+- **前提**：关键步骤有可靠埋点（见[埋点与数据需求](tracking-plan.md)），用户标识能跨步骤关联。
 - **换用或简化**：路径高度发散的产品（内容浏览、工具类）更适合路径分析和[留存与同期群](retention-cohort.md)；数字异常时先做[指标异动诊断](metric-diagnosis.md)。
 
 ## 误用与反例
@@ -41,6 +41,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [游戏](../industries/gaming.md)：新手引导以关卡或任务步骤为单位，并和付费漏斗结合看。
 - [金融科技](../industries/fintech.md)：开户和授信漏斗里的风控拒绝单独拆出，拒绝和体验流失分开分析。
 - [教育](../industries/education.md)：试听到正价课的转化包含顾问跟进，线上数据要和销售记录合并看。
+- [开发者与工具类产品](../industries/developer-tools.md)：以首次成功调用为关键节点，按注册来源、编程语言和 SDK 拆分。
 
 ## 不同阶段怎么用
 

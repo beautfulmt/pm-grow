@@ -28,7 +28,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 
 - **适合**：进入投入决策前的任何方案评审，尤其是新功能、新业务和跨团队依赖重的项目。
 - **前提**：方案至少有一页纸的描述，能找到对应的相关方。
-- **换用或简化**：小改动快速过一遍，只记录唯一相关的那条风险；需要系统排期和跟踪时接[风险清单与预案](risk-register.md)。
+- **换用或简化**：小改动快速过一遍，只记录唯一相关的那条风险；需要系统排期和跟踪时接[风险清单与预案](risk-register.md)；可用性风险用[可用性测试](usability-test.md)验证。
 
 ## 误用与反例
 
@@ -43,6 +43,8 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [硬件/IoT/工业制造](../industries/hardware-iot.md)：可行性包括供应链、认证、良率和量产，错了代价高、迭代慢。
 - [AI 产品](../industries/ai-product.md)：可行性看真实数据上的效果分布和失败模式，而不是演示样例；商业可行性加入推理成本和数据授权。
 - [企业服务 SaaS](../industries/saas.md)：商业可行性要请销售和客户成功确认能不能卖、能不能交付。
+- [出海与全球化](../industries/globalization.md)：商业可行性加入各市场的合规、税务、支付和应用商店规则。
+- [政企与 ToG](../industries/gov-enterprise.md)：商业可行性加入采购资格、回款周期和定制成本。
 
 ## 不同阶段怎么用
 

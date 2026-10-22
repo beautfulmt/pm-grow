@@ -39,6 +39,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [中后台与内部系统](../industries/internal-platform.md)：角色多、权限细，故事注明角色与权限，验收覆盖越权场景。
 - [游戏](../industries/gaming.md)：玩法通常用策划案和数值表表达，用户故事更适合系统与商业化功能。
 - [AI 产品](../industries/ai-product.md)：验收标准改为评测集上的通过要求、失败样例的处理方式和人工兜底。
+- [政企与 ToG](../industries/gov-enterprise.md)：验收标准对应合同条款和验收材料，尽早与采购单位书面确认。
 
 ## 不同阶段怎么用
 

@@ -12,19 +12,10 @@ TEMPLATE = rec.SKILL_DIR / "assets" / "report.html"
 NARRATIVE_TEXT = ("headline", "learned_summary", "problems_summary", "growth_summary", "next_focus", "message")
 REPORT_KEYS = {"schema_version", "kind", "generated_on", "basis", "facts", "narrative"}
 LEARNING_KINDS = ("discussion", "exploration", "review")
+REVIEW_MODES = {"agent": "经独立复核", "self_check": "主导师自查"}
 
-
-def method_label(method):
-    if method.startswith("custom:"):
-        return method[len("custom:"):].strip()
-    card = rec.SKILL_DIR / "knowledge" / "methods" / (method + ".md")
-    try:
-        for line in card.read_text(encoding="utf-8").splitlines():
-            if line.startswith("# "):
-                return line[2:].strip() or method
-    except OSError:
-        pass
-    return method
+# Kept as a module attribute for callers of v2.0; the implementation lives in records.
+method_label = rec.method_label
 
 
 def select_basis(view, since=None):
@@ -153,6 +144,8 @@ def build_facts(view, basis):
         "problems": problems,
         "performance_highlights": highlights,
         "ability_changes": changes,
+        "ability_overview": ability_overview(view, chosen),
+        "focus": focus_progress(view, chosen, changes),
         "milestones": [{"record_id": record["record_id"], "date": record["date"], "text": record["milestone"]}
                        for record in chosen if record.get("milestone")],
         "still_practicing": practicing,
@@ -162,6 +155,47 @@ def build_facts(view, basis):
                       **({"problem_id": record["problem"]["id"]} if record.get("problem") else {})}
                      for record in chosen],
     }
+
+
+def ability_overview(view, chosen):
+    """One row per ability that is observed or has a level: current-stage level plus the prior-stage level."""
+    stage = view.stage["stage"] if view.stage else None
+    observed = {item["ability_id"] for record in view.written for item in record.get("observations", [])
+                if item["status"] != "withdrawn"}
+    rows = []
+    for ability_id in rec.known_ability_ids(view.state):
+        level = view.level(ability_id, stage) if stage else None
+        prior = view.prior_level(ability_id, stage)
+        if ability_id not in observed and not prior and level in (None, "unobserved"):
+            continue
+        row = {"ability_id": ability_id, "name": rec.ability_label(view.state, ability_id),
+               "stage": stage, "stage_name": rec.STAGES[stage] if stage else None,
+               "level": level, "level_name": rec.LEVEL_NAMES[level] if level else None,
+               "observations_in_period": sum(1 for record in chosen if rec._observes(record, ability_id))}
+        if prior:
+            row["prior"] = prior
+        rows.append(row)
+    return rows
+
+
+def focus_progress(view, chosen, changes):
+    """The current focus abilities and what happened to them in this period since the focus was set."""
+    current = view.focus_status()
+    if not current:
+        return None
+    since_focus = {record["record_id"] for record in view.written[view.focus["position"]:]}
+    in_scope = [record for record in chosen if record["record_id"] in since_focus]
+    abilities = []
+    for item in current["abilities"]:
+        practiced = [record for record in in_scope if rec._observes(record, item["ability_id"])
+                     and rec._work_kinds(record) & {"independent", "guided"}]
+        abilities.append({**item, "records_in_period": len(practiced),
+                          "changes_in_period": [{"date": change["date"], "stage_name": change["stage_name"],
+                                                 "from_name": change["from_name"], "to_name": change["to_name"]}
+                                                for change in changes if change["ability_id"] == item["ability_id"]
+                                                and change["record_id"] in since_focus]})
+    return {"since": current["since"], "reason": current["reason"], "record_id": current["record_id"],
+            "abilities": abilities}
 
 
 def empty_narrative(facts):
@@ -309,8 +343,56 @@ def render_problems(facts, narrative):
     return _section("problems", "二", "遇到的问题、怎么处理、是否解决", "".join(parts))
 
 
+def _review_note(item):
+    review = item.get("review")
+    if not isinstance(review, dict) or review.get("mode") not in REVIEW_MODES:
+        return ""
+    return f'<span class="review">{_e(REVIEW_MODES[review["mode"]])}</span>'
+
+
+def render_focus(focus):
+    if not focus:
+        return ""
+    rows = []
+    for item in focus.get("abilities", []):
+        step = f'当前「{_e(item["level_name"])}」'
+        if item.get("next_level_name"):
+            step += f'，下一级「{_e(item["next_level_name"])}」'
+        prior = item.get("prior")
+        if prior:
+            step += f'（此前{_e(prior["stage_name"])}阶段已达「{_e(prior["level_name"])}」）'
+        changes = "；".join(
+            f'{_e(change["from_name"])} → {_e(change["to_name"])}'
+            f'（{_e(change.get("stage_name", ""))}阶段，{_e(change["date"])}）'
+            for change in item.get("changes_in_period", []))
+        rows.append(f'<li><strong>{_e(item["name"])}</strong>：{step}；设定焦点以来本期练到 '
+                    f'{_e(item.get("records_in_period", 0))} 次'
+                    + (f'<small>本期变化：{changes}</small>' if changes else "") + "</li>")
+    return (f'<div class="focus"><h3>本期焦点</h3><p class="note">自 {_e(focus["since"])} 起：{_e(focus["reason"])}</p>'
+            f'<ul>{"".join(rows)}</ul></div>')
+
+
+def render_overview(rows):
+    if not rows:
+        return ""
+    stage_name = rows[0].get("stage_name")
+    header = f"当前阶段（{_e(stage_name)}）" if stage_name else "当前阶段（尚未定位）"
+    body = []
+    for row in rows:
+        prior = row.get("prior")
+        earlier = (f'{_e(prior["stage_name"])}：{_e(prior["level_name"])}<small>{_e(prior["date"])}</small>'
+                   if prior else "—")
+        body.append(f'<tr><th scope="row">{_e(row["name"])}</th><td>{_e(row.get("level_name") or "—")}</td>'
+                    f"<td>{earlier}</td></tr>")
+    return ('<h3>能力全景</h3><p class="note">各阶段分别追踪；换阶段后，此前阶段已达到的程度保留在右栏。</p>'
+            f'<table class="overview"><thead><tr><th scope="col">能力</th><th scope="col">{header}</th>'
+            f'<th scope="col">此前阶段</th></tr></thead><tbody>{"".join(body)}</tbody></table>')
+
+
 def render_growth(facts, narrative, state):
     parts = [_paragraphs(narrative["growth_summary"])]
+    # Reports built by v2.0 lack focus and ability_overview; redaction re-renders them, so read with .get.
+    parts.append(render_focus(facts.get("focus")))
     if facts["milestones"]:
         parts.append('<ul class="milestones" aria-label="里程碑">' + "".join(
             f'<li><time>{_e(item["date"])}</time>{_e(item["text"])}</li>' for item in facts["milestones"]) + "</ul>")
@@ -328,7 +410,7 @@ def render_growth(facts, narrative, state):
             f'<li class="change-{_e(item["direction"])}"><strong>{_e(item["name"])}</strong>：'
             f'{_e(item["from_name"])} → {_e(item["to_name"])}'
             f'<span class="stage">（{_e(item["stage_name"])}阶段）</span>，依据：'
-            f'{_e("、".join(item["evidence_dates"]) or "更正记录 " + item["record_id"])}'
+            f'{_e("、".join(item["evidence_dates"]) or "更正记录 " + item["record_id"])}{_review_note(item)}'
             f'<small>{_e(item["reason"])}</small></li>' for item in facts["ability_changes"]) + "</ul>")
     else:
         parts.append('<p class="empty">本期没有记录能力程度变化；成长以证据为准，不按次数推断。</p>')
@@ -344,6 +426,7 @@ def render_growth(facts, narrative, state):
             f'<li><span>{_e(item["name"])}</span>{_e(item["text"])}<small>{_e(item["date"])}</small></li>'
             for item in facts["still_practicing"]) + "</ul>")
     parts.append("</div>")
+    parts.append(render_overview(facts.get("ability_overview") or []))
     return _section("growth", "三", "成长与欠缺", "".join(parts))
 
 
@@ -441,21 +524,31 @@ def build(root, report, output=None, replace=False, today=None, timeout=10.0):
             "record_count": len(report["basis"]["record_ids"]), "cursor_updated": True}
 
 
-def defer(root, today=None, timeout=10.0):
+def defer(root, today=None, until=None, timeout=10.0):
+    """Restart the proposal clock: only evidence written after now counts toward the next proposal.
+
+    `until` (YYYY-MM-DD, later than today) also blocks proposals before that date.
+    """
     root = Path(root)
     today = rec.today_value(today)
+    if until is not None and rec.parse_date(until, "--until") <= today:
+        raise ValueError("--until 必须晚于今天；只是这次不想要报告时直接运行 report defer")
     with file_lock(root, timeout=timeout):
         state = rec.load_state(root)
-        view = rec.View(rec.load_records(root), state)
-        cursor = rec.report_cursor(view, today)
-        state["report"]["deferred"] = {"fingerprint": cursor["fingerprint"],
-                                       "deferred_at": datetime.now(timezone.utc).isoformat(),
-                                       "reasons": [item["code"] for item in cursor["reasons"]]}
+        records = rec.load_records(root)
+        # The records' own write clock marks the deferral, so later writes always count as new.
+        latest = max((record["recorded_at"] for record in records), key=rec._utc, default=None)
+        state["report"]["deferred"] = {"deferred_at": datetime.now(timezone.utc).isoformat(timespec="microseconds"),
+                                       "deferred_on": today.isoformat(), "until": until,
+                                       "after_recorded_at": latest}
         rec.write_state(root, state)
-        view = rec.View(view.records, state)
-        cursor = rec.report_cursor(view, today)
-    return {"data_dir": str(root), "deferred": True, "report": cursor,
-            "note": "证据没有变化前不再提议报告；有新记录后重新计算。用户主动要求时随时可以生成。"}
+        cursor = rec.report_cursor(rec.View(records, state), today)
+    note = ("暂缓后只看之后的新记录：再出现 3 个含用户尝试的问题、新的关键节点，或暂缓满 14 天且有新记录，才会再提议。"
+            "用户主动要求时随时可以生成。")
+    if until:
+        note = f"{until} 之前不再提议；到那天起，尚未写进报告的记录会再次提议。" + note
+    return {"data_dir": str(root), "deferred": True, "deferred_on": today.isoformat(), "deferred_until": until,
+            "report": rec._compact_cursor(cursor)[0], "note": note}
 
 
 def write_draft(report, output):

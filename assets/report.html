@@ -85,13 +85,22 @@ small{display:block;color:var(--muted);font-size:13px;line-height:1.6}
 .gaps li{padding:10px 14px;border:1px dashed #b9c3c4;border-radius:8px;margin:8px 0;break-inside:avoid}
 .practice{display:block;margin-top:4px;font-size:14px;color:#2f5f8a}
 .observations li span{font-weight:600;margin-right:8px}
+.review{display:inline-block;margin-left:8px;font-size:12px;line-height:1.7;padding:0 8px;border-radius:4px;background:var(--soft);color:#345667}
+.focus{margin:14px 0 6px;padding:12px 18px;border-radius:10px;background:var(--open-bg);border-left:3px solid var(--open);break-inside:avoid}
+.focus h3{margin:0 0 4px;color:var(--open)}
+.focus ul{list-style:none;padding:0;margin:4px 0 0}
+.overview{width:100%;border-collapse:collapse;font-size:14px;margin:6px 0 4px}
+.overview th,.overview td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--soft)}
+.overview thead th{color:var(--muted);font-weight:600;font-size:13px}
+.overview tbody th{font-weight:600}
 .open-items{list-style:none;padding:0}
 .open-items li{padding:8px 0;border-bottom:1px dashed var(--line)}
 .open-items .badge{margin-right:8px}
 .message{margin-top:20px;padding:16px 20px;border-radius:10px;background:#f1f4f2}
 .message h3{margin-top:0}
 .evidence{list-style:none;padding:0}
-.evidence li{display:grid;grid-template-columns:minmax(0,170px) 96px 110px minmax(0,1fr);gap:4px 12px;padding:8px 0;border-bottom:1px solid var(--soft);font-size:14px;align-items:baseline}
+.evidence li{display:grid;grid-template-columns:minmax(0,170px) 96px 128px minmax(0,1fr);gap:4px 12px;padding:8px 0;border-bottom:1px solid var(--soft);font-size:14px;align-items:baseline}
+.evidence .kind{white-space:nowrap;margin-right:0;justify-self:start}
 .evidence small{grid-column:1/-1}
 code{font:13px ui-monospace,"SFMono-Regular",Consolas,monospace;overflow-wrap:anywhere}
 footer{max-width:1080px;margin:auto;padding:0 32px 40px;color:var(--muted);font-size:13px}
@@ -112,7 +121,7 @@ body{background:#fff;font-size:10.5pt;line-height:1.6}
 header.cover{padding:0 0 12px;max-width:none}main{padding:0;max-width:none}footer{padding:12px 0 0;max-width:none}
 nav.toc,.screen-only{display:none!important}
 .block{border:0;border-top:2px solid #444;border-radius:0;padding:14px 0 6px;margin:0 0 14px;break-before:auto}
-.stats li,.work,.problem,.quote,.changes li,.gaps li,.milestones li,.message{background:#fff!important;break-inside:avoid}
+.stats li,.work,.problem,.quote,.changes li,.gaps li,.milestones li,.message,.focus{background:#fff!important;break-inside:avoid}
 .headline{background:#f4f4f4}
 h2,h3,h4{break-after:avoid}
 .num{background:#fff;color:#000;border:1px solid #000}

@@ -2,7 +2,7 @@
 id: solution-review
 title: 方案设计与评审
 abilities: [solution_design, user_problem, communication_influence, delivery_risk]
-methods: [user-story, flow-state, prd-writing, mvp-slicing, four-risks, review-defense, structured-communication]
+methods: [user-story, flow-state, prd-writing, mvp-slicing, four-risks, review-defense, structured-communication, usability-test, tracking-plan]
 stages: [newcomer, independent_pm, senior, expert, lead]
 ---
 
@@ -64,6 +64,8 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [four-risks](../knowledge/methods/four-risks.md)：评审前自查价值、可用、可行、商业可行四类风险。
 - [review-defense](../knowledge/methods/review-defense.md)：准备评审、预演挑战和现场应对。
 - [structured-communication](../knowledge/methods/structured-communication.md)：组织评审材料和开场，做到结论先行。
+- [usability-test](../knowledge/methods/usability-test.md)：评审前用原型请目标用户走一遍关键流程，用观察结果回应"用户看不懂"一类的挑战。
+- [tracking-plan](../knowledge/methods/tracking-plan.md)：方案里写清上线后看哪些指标、埋哪些事件、怎样验收。
 
 ## 不同阶段的关注差异
 
@@ -78,6 +80,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [saas](../knowledge/industries/saas.md)：权限、配置项、多角色协作和存量数据迁移常是评审焦点，要单独设计。
 - [fintech](../knowledge/industries/fintech.md)：资金安全、对账、合规审核和异常路径的要求高，主流程之外的设计往往占大头。
 - [healthcare](../knowledge/industries/healthcare.md)：方案需要符合临床或专业工作流，安全和合规审查是评审的一部分。
+- [developer-tools](../knowledge/industries/developer-tools.md)：接口评审关注兼容性、错误码、限流和文档，破坏性变更要附迁移方案和弃用时间表。
 
 ## 阶段检查点反问
 

@@ -54,16 +54,28 @@
 - 推荐使用 `sections`，形如 `[{"heading": "段落标题", "content": "正文"}]`，按阅读顺序排列，正文以纯文本显示。
 - 旧字段仍然可用，都可以省略：`problem`、`context`、`judgment`、`steps`、`boundaries`、`pitfalls`、`case`、`template`、`counterexample`、`next_action`、`first_principles`、`tags`。
 
-修改已有专题前先读出原内容，按 `id` 更新，保留其他专题。
+## 维护专题
+
+用命令维护专题，不手改 JSON 文件：
+
+```sh
+python3 <skill-dir>/scripts/pmgrow.py --data-dir <data-dir> handbook list
+python3 <skill-dir>/scripts/pmgrow.py --data-dir <data-dir> handbook upsert --topic -
+python3 <skill-dir>/scripts/pmgrow.py --data-dir <data-dir> handbook remove --id <id>
+```
+
+- **先看已有专题：**用 `list` 查看已有专题的 `id`、标题和更新日期。同一主题沿用原来的 `id`，避免重复建题。
+- **新增或更新：**`upsert` 从标准输入读入一个专题对象。`id` 已存在时原位替换，否则追加到末尾；源文件还不存在时从模板新建。整本校验通过才写入，上一版备份为 `handbook.previous-<时间>.json`。内容没有变化时不写文件。专题省略 `updated_on` 时用当天日期。
+- **删除：**用户要求撤下某个专题时用 `remove`，同样先备份。手册至少保留一个专题。
+- **范围：**每次只写用户这次同意的专题，其他专题保持原样。
 
 ## 生成与检查
 
 ```sh
-python3 <skill-dir>/scripts/pmgrow.py --data-dir <data-dir> handbook build \
-  --input <data-dir>/knowledge/handbook.json --output <data-dir>/knowledge/handbook.html
+python3 <skill-dir>/scripts/pmgrow.py --data-dir <data-dir> handbook build
 ```
 
-更新已有手册时加 `--replace`，脚本会备份上一版。
+默认读取 `knowledge/handbook.json`，输出 `knowledge/handbook.html`。更新已有手册时加 `--replace`，脚本会备份上一版。
 
 生成后，有浏览器工具时实际打开页面，检查以下几项：
 

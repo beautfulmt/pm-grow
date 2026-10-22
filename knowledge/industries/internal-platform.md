@@ -55,6 +55,7 @@ overlay: false
 - [领域建模](../methods/domain-modeling.md)：组织、权限、主数据、审批是跨系统共享的模型，先统一。
 - [商业模式画布](../methods/business-model.md)：把"收入"改写为降低的成本与风险、提升的效率。
 - [相关方地图](../methods/stakeholder-map.md)：审计、合规、财务常有否决权，尽早纳入。
+- [问卷设计](../methods/survey-design.md)：员工问卷易受上下级关系影响，说明匿名方式，并结合跟岗观察。
 
 ## 易踩的坑
 
@@ -77,3 +78,4 @@ overlay: false
 - 面向外部商家或客户的后台，同时具有[企业服务 SaaS](saas.md)的特点。
 - 金融机构内部系统叠加[金融科技](fintech.md)；用 AI 做自动化时叠加 [AI 产品](ai-product.md)。
 - 制造业的生产执行等工业系统见[硬件/IoT/工业制造](hardware-iot.md)。
+- 集团和国企的内部系统常按项目立项、采购和验收，叠加[政企与 ToG](gov-enterprise.md)；内部开发平台和工程效率工具叠加[开发者与工具类产品](developer-tools.md)。

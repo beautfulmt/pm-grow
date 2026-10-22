@@ -41,6 +41,8 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [游戏](../industries/gaming.md)：内容审核和上线许可是关键外部依赖。
 - [教育](../industries/education.md)：开学、考试等时间窗口无法移动，错过就要等下一周期。
 - [AI 产品](../industries/ai-product.md)：模型效果、供应商变化、成本和内容安全是新增的风险类别。
+- [政企与 ToG](../industries/gov-enterprise.md)：预算到位、采购流程、信创适配、验收与回款单列为风险类别。
+- [出海与全球化](../industries/globalization.md)：政策变化、应用商店规则、支付通道和数据传输单列，指定负责人和观察信号。
 
 ## 不同阶段怎么用
 

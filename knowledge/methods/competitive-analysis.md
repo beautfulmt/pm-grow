@@ -25,7 +25,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 
 - **适合**：立项、定位调整、竞争压力下的功能取舍、进入新市场。
 - **前提**：分析目的清楚；能亲自体验主要竞品。
-- **换用或简化**：日常竞品跟踪简化为固定的信号清单；需要大规模系统对比时可委派 [competitor-analyst](../../reference/agents.md)。
+- **换用或简化**：日常竞品跟踪简化为固定的信号清单；需要大规模系统对比时可委派 [competitor-analyst](../../reference/agents.md)；需要回答"市场有多大"时接[市场规模估算](market-sizing.md)。
 
 ## 误用与反例
 
@@ -41,6 +41,9 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [游戏](../industries/gaming.md)：同品类的玩法、美术、运营节奏和玩家口碑是主要比较维度。
 - [AI 产品](../industries/ai-product.md)：底层模型能力快速趋同，差异化看数据、场景和工作流整合。
 - [中后台与内部系统](../industries/internal-platform.md)：竞品是外采系统和业务自建工具，比较要包含切换成本和维护成本。
+- [出海与全球化](../industries/globalization.md)：按市场比较，本土竞品和替代方式常比全球竞品更关键。
+- [政企与 ToG](../industries/gov-enterprise.md)：竞争发生在投标环节，中标与未中标复盘、对手的方案和报价是一手材料。
+- [开发者与工具类产品](../industries/developer-tools.md)：比较上手时间、文档、生态集成和开源替代方案，而不只是功能清单。
 
 ## 不同阶段怎么用
 

@@ -41,6 +41,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [电商与零售](../industries/ecommerce.md)：商品、SKU、库存、订单、履约在不同系统中含义不同，边界划分是关键。
 - [中后台与内部系统](../industries/internal-platform.md)：组织、权限、审批、主数据是跨系统共享的核心模型。
 - [教育](../industries/education.md)：课程、班级、课时、学习记录在教务、教学、销售中含义不同。
+- [开发者与工具类产品](../industries/developer-tools.md)：资源、版本、权限范围等对外概念一旦公开就成为契约，命名和边界要保持稳定。
 
 ## 不同阶段怎么用
 

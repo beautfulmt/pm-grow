@@ -41,6 +41,8 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [广告与商业化](../industries/ads-monetization.md)：广告主预算周期、竞价策略、反作弊过滤、隐私政策变化都会改变收入和点击。
 - [内容/社区/社交](../industries/content-community.md)：热点事件、推荐策略调整、内容治理动作是主要因素。
 - [本地生活/出行/O2O](../industries/local-services.md)：天气、节假日、城市政策和运力变化影响显著。
+- [出海与全球化](../industries/globalization.md)：按市场拆分，当地节假日、支付通道故障和应用商店政策变化是常见外部因素。
+- [开发者与工具类产品](../industries/developer-tools.md)：调用量波动先看大客户的接入变化、限流配额和 SDK 版本发布。
 
 ## 不同阶段怎么用
 

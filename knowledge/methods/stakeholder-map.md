@@ -41,6 +41,8 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [医疗健康](../industries/healthcare.md)：医生、护士、医院管理层、信息科、医保等诉求差异大。
 - [教育](../industries/education.md)：学校管理者、教研、一线教师、家长、主管部门各有立场。
 - [金融科技](../industries/fintech.md)：风控、合规、法务、资金方常拥有否决权。
+- [政企与 ToG](../industries/gov-enterprise.md)：按层级画使用者、业务处室、分管领导、信息化部门、财务审计和上级主管，标出提需求、拍板、验收和付款的人。
+- [出海与全球化](../industries/globalization.md)：总部、区域团队、本地合作方，以及当地监管和应用商店一起画，标出谁有否决权。
 
 ## 不同阶段怎么用
 

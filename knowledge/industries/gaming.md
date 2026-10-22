@@ -44,6 +44,7 @@ overlay: false
 - [A/B 实验](../methods/ab-test.md)：检查匹配、交易和公会带来的互相影响。
 - [优先级](../methods/prioritization.md)：比较内容、系统和稳定性的机会成本。
 - [发布灰度](../methods/launch-rollout.md)：明确版本兼容、存档和经济系统回退条件。
+- [定价与套餐](../methods/pricing.md)：付费点设计兼顾公平感、进程节奏和经济系统。
 
 ## 易踩的坑
 
@@ -58,4 +59,4 @@ overlay: false
 
 ## 适用边界
 
-创作者与社交问题叠加[社区](content-community.md)，广告收入叠加[广告商业化](ads-monetization.md)，生成内容叠加 [AI 产品](ai-product.md)。单机、竞技和持续运营产品分别选观察周期。
+创作者与社交问题叠加[社区](content-community.md)，广告收入叠加[广告商业化](ads-monetization.md)，生成内容叠加 [AI 产品](ai-product.md)，海外发行叠加[出海与全球化](globalization.md)。单机、竞技和持续运营产品分别选观察周期。

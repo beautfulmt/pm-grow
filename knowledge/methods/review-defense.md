@@ -40,6 +40,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [企业服务 SaaS](../industries/saas.md)：涉及大客户承诺的方案，提前和销售、客户成功对齐口径。
 - [硬件/IoT/工业制造](../industries/hardware-iot.md)：阶段评审（如设计冻结）决定不可逆投入，材料要覆盖供应链与认证。
 - [AI 产品](../industries/ai-product.md)：展示评测方法和失败样例，避免评审被精选演示误导。
+- [政企与 ToG](../industries/gov-enterprise.md)：面向采购单位和评审专家时，按政策目标、业务价值、技术方案和安全合规组织材料。
 
 ## 不同阶段怎么用
 

@@ -2,7 +2,7 @@
 id: competitive-market
 title: 竞品与市场分析
 abilities: [strategy_prioritization, business_value, user_problem]
-methods: [competitive-analysis, jtbd, business-model, strategy-choice, user-interview]
+methods: [competitive-analysis, jtbd, business-model, strategy-choice, user-interview, market-sizing, pricing]
 stages: [newcomer, independent_pm, senior, expert, lead]
 ---
 
@@ -56,6 +56,8 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [business-model](../knowledge/methods/business-model.md)：理解竞品为什么这样做，它的模式与我们的差异。
 - [strategy-choice](../knowledge/methods/strategy-choice.md)：分析结论涉及定位、细分市场或进入与否的取舍。
 - [user-interview](../knowledge/methods/user-interview.md)：直接问用户为什么选择、切换或离开。
+- [market-sizing](../knowledge/methods/market-sizing.md)：需要回答"市场有多大""要不要进这个市场"时，自下而上估算，再与公开数据核对。
+- [pricing](../knowledge/methods/pricing.md)：分析要支撑定价或套餐决策时，先确认双方客群和价值是否可比，再参考竞品价格。
 
 ## 不同阶段的关注差异
 
@@ -70,6 +72,8 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [saas](../knowledge/industries/saas.md)：关注定价与套餐、集成生态和客户迁移成本，切换成本往往比功能差异更决定胜负。
 - [ecommerce](../knowledge/industries/ecommerce.md)：竞争常在供给、价格和履约体验上，前台功能差异的影响相对小。
 - [ai-product](../knowledge/industries/ai-product.md)：底层模型能力变化快，差异化更多来自数据、工作流嵌入和质量控制，结论要标注时效。
+- [globalization](../knowledge/industries/globalization.md)：按目标市场分别比较，本土竞品和替代方式常比全球竞品更关键。
+- [gov-enterprise](../knowledge/industries/gov-enterprise.md)：竞争发生在投标环节，中标与未中标复盘、对手方案和报价是最有价值的材料。
 
 ## 阶段检查点反问
 

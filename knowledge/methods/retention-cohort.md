@@ -42,6 +42,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [电商与零售](../industries/ecommerce.md)：复购周期因品类而异，按品类分开看。
 - [本地生活/出行/O2O](../industries/local-services.md)：补贴期留存和自然留存分开看。
 - [金融科技](../industries/fintech.md)：信贷业务用账龄（vintage）分析风险表现，原理与同期群相同。
+- [开发者与工具类产品](../industries/developer-tools.md)：按注册批次看调用是否持续，区分个人尝试和生产环境依赖。
 
 ## 不同阶段怎么用
 

@@ -25,7 +25,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 
 - **适合**：问题界定、需求验证、流失原因、方案前的探索。
 - **前提**：能接触真实用户或其可靠代理人。
-- **换用或简化**：访谈样本小，擅长发现和理解；规模和频率交给数据或问卷。用户难约时，先用客服记录、会话回放或跟岗观察补位。
+- **换用或简化**：访谈样本小，擅长发现和理解；规模和频率交给数据或[问卷](survey-design.md)。用户难约时，先用客服记录、会话回放或跟岗观察补位。
 
 ## 误用与反例
 
@@ -42,6 +42,9 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [医疗健康](../industries/healthcare.md)：先确认知情同意和脱敏方式；医生时间稀缺，用跟诊观察替代长访谈。
 - [中后台与内部系统](../industries/internal-platform.md)：用跟岗观察补足，同事描述的流程常和实际操作不同。
 - [本地生活/出行/O2O](../industries/local-services.md)：去现场访谈商户和骑手、司机，安排在高峰之后。
+- [出海与全球化](../industries/globalization.md)：用本地语言访谈本地用户，可借助本地研究伙伴；保留原话并标注译者。
+- [开发者与工具类产品](../industries/developer-tools.md)：请开发者现场完成一次接入并出声思考，文档、报错和示例的问题会直接暴露。
+- [政企与 ToG](../industries/gov-enterprise.md)：经采购单位安排后进行，基层使用者与处室负责人分开访谈，留意汇报式回答，结合跟岗观察。
 
 ## 不同阶段怎么用
 

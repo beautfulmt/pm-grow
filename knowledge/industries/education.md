@@ -52,6 +52,8 @@ overlay: false
 - [发布与灰度](../methods/launch-rollout.md)：避开考试周和开学首周，提前培训教师。
 - [相关方地图](../methods/stakeholder-map.md)：面向学校的项目画出校长、信息中心、教研组长、一线教师和家长。
 - [指标异动诊断](../methods/metric-diagnosis.md)：先对齐校历和考试日历，再找内部原因。
+- [可用性测试](../methods/usability-test.md)：教师和学生的任务分开测，学生测试需监护人同意，教师测试避开授课高峰。
+- [问卷设计](../methods/survey-design.md)：家长、教师、学生分开设计，面向学生的题目考虑年龄和理解能力。
 
 ## 易踩的坑
 
@@ -72,4 +74,5 @@ overlay: false
 ## 适用边界
 
 - 教育 SaaS 叠加[企业服务 SaaS](saas.md)；AI 辅导和批改叠加 [AI 产品](ai-product.md)；学习社区叠加[内容/社区/社交](content-community.md)。
+- 面向学校和教育部门的信息化项目叠加[政企与 ToG](gov-enterprise.md)；面向海外学习者的产品叠加[出海与全球化](globalization.md)。
 - 早教、学前、留学服务等细分领域的规则差异大，按需建立个人行业包，规则见[行业组合与传递](../industry-adaptation.md)。

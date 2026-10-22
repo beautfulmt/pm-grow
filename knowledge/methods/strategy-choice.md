@@ -41,6 +41,8 @@ stages: [independent_pm, senior, expert, lead]
 - [AI 产品](../industries/ai-product.md)：自研模型、调用通用模型还是专注场景和数据；变化快，复盘周期更短。
 - [硬件/IoT/工业制造](../industries/hardware-iot.md)：卖硬件、卖服务还是做平台，决定了组织和供应链。
 - [中后台与内部系统](../industries/internal-platform.md)：统一平台还是支持各业务自建，关键在组织协同和成本。
+- [出海与全球化](../industries/globalization.md)：进哪些市场、按什么顺序、每个市场做多深，写清暂不进入的市场。
+- [政企与 ToG](../industries/gov-enterprise.md)：标准产品加配置还是项目集成，写清哪些定制不接、哪些沉淀进主干。
 
 ## 不同阶段怎么用
 

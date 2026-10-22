@@ -25,7 +25,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 ## 适用条件
 
 - **适合**：设定目标、季度规划、搭建数据看板、解释指标变化。
-- **前提**：有基本的数据口径和埋点；口径不清时，先整理口径再建树。
+- **前提**：有基本的数据口径和埋点；口径不清时，先按[埋点与数据需求](tracking-plan.md)整理口径和事件，再建树。
 - **换用或简化**：早期产品先盯一两个代表价值的关键行为指标；单次异动排查用[指标异动诊断](metric-diagnosis.md)。
 
 ## 误用与反例
@@ -42,6 +42,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [内容/社区/社交](../industries/content-community.md)：同时设供给、消费、社区健康三类指标，以负反馈和举报作护栏。
 - [广告与商业化](../industries/ads-monetization.md)：收入指标与用户体验护栏、广告主效果三条线一起看。
 - [中后台与内部系统](../industries/internal-platform.md)：顶层是业务效率或差错率，和业务方共同定义。
+- [出海与全球化](../industries/globalization.md)：顶层指标按市场拆开，护栏加入支付成功、投诉和合规事件。
 
 ## 不同阶段怎么用
 

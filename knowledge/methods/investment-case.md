@@ -43,6 +43,7 @@ stages: [independent_pm, senior, expert, lead]
 - [企业服务 SaaS](../industries/saas.md)：分开写对新签、续约和扩展的影响；引用客户需求时说明客户代表性。
 - [硬件/IoT/工业制造](../industries/hardware-iot.md)：投入包含模具、物料和库存，决策点前移，停止条件更早定。
 - [游戏](../industries/gaming.md)：内容投入周期长、结果不确定，用分阶段投入和里程碑评审控制风险。
+- [政企与 ToG](../industries/gov-enterprise.md)：计入定制、适配、驻场运维和回款周期，判断项目能否沉淀为可复用的产品能力。
 
 ## 不同阶段怎么用
 

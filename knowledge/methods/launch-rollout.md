@@ -25,7 +25,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 
 - **适合**：所有面向用户的变更，力度与风险相称。
 - **前提**：具备基本的开关、监控和回滚能力；缺失时在上线计划中写明替代措施。
-- **换用或简化**：小改动简化为开关 + 监控 + 回看时间；大改版、资金相关、不可逆的变更需要完整方案，并结合[风险清单与预案](risk-register.md)。
+- **换用或简化**：小改动简化为开关 + 监控 + 回看时间；大改版、资金相关、不可逆的变更需要完整方案，并结合[风险清单与预案](risk-register.md)；AI 功能先通过[AI 评测集](ai-eval.md)再灰度。
 
 ## 误用与反例
 
@@ -42,6 +42,9 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [游戏](../industries/gaming.md)：版本更新集中，玩家对改动敏感，提前公告并准备补偿机制。
 - [金融科技](../industries/fintech.md)：资金相关变更用对账验证，灰度要保证交易一致性。
 - [教育](../industries/education.md)：避开考试周和开学首周，提前培训教师。
+- [出海与全球化](../industries/globalization.md)：按市场分批上线，避开当地节假日并预留应用商店审核时间，每个市场单独设回退条件。
+- [开发者与工具类产品](../industries/developer-tools.md)：接口变更走版本化发布，提前公告弃用时间表并提供迁移指南，监控旧版本调用量。
+- [政企与 ToG](../industries/gov-enterprise.md)：私有化环境的升级需要采购单位审批和停机窗口，提前准备部署包、回退方案和现场支持。
 
 ## 不同阶段怎么用
 

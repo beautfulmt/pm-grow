@@ -44,6 +44,8 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [金融科技](../industries/fintech.md)、[医疗健康](../industries/healthcare.md)：在合规框架内限定人群和额度试点，安全底线保持完整。
 - [AI 产品](../industries/ai-product.md)：先用人工或半自动方式验证需求，再投入模型优化。
 - [本地生活/出行/O2O](../industries/local-services.md)：选单一城市或区域试点。
+- [政企与 ToG](../industries/gov-enterprise.md)：在合同范围内分期交付，用试点单位或试运行验证核心流程。
+- [出海与全球化](../industries/globalization.md)：先在一个代表性市场验证，再按市场复制。
 
 ## 不同阶段怎么用
 

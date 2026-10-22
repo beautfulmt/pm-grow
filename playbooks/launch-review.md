@@ -2,7 +2,7 @@
 id: launch-review
 title: 上线效果评估与复盘
 abilities: [data_validation, learning_transfer, business_value]
-methods: [ab-test, metric-tree, funnel, retention-cohort, metric-diagnosis, retrospective]
+methods: [ab-test, metric-tree, funnel, retention-cohort, metric-diagnosis, retrospective, tracking-plan, ai-eval]
 stages: [newcomer, independent_pm, senior, expert, lead]
 ---
 
@@ -57,6 +57,8 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [retention-cohort](../knowledge/methods/retention-cohort.md)：评估长期效果，区分新奇效应和持续价值。
 - [metric-diagnosis](../knowledge/methods/metric-diagnosis.md)：上线后出现意料之外的指标变化，需要排查。
 - [retrospective](../knowledge/methods/retrospective.md)：组织和撰写复盘，提炼可迁移的经验。
+- [tracking-plan](../knowledge/methods/tracking-plan.md)：评估前先核对埋点和口径是否可信；缺数据时，把需要补的埋点写进下一次需求。
+- [ai-eval](../knowledge/methods/ai-eval.md)：AI 功能上线后，按评测集分版本回看质量和错误类型，并把线上新出现的失败补进评测集。
 
 ## 不同阶段的关注差异
 
@@ -71,6 +73,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [education](../knowledge/industries/education.md)：学习效果滞后，常用中间行为指标代理，代理指标与真实学习结果的关系需要单独验证。
 - [ads-monetization](../knowledge/industries/ads-monetization.md)：收入与用户体验此消彼长，评估时必须同时看收入和体验、留存类护栏指标。
 - [gaming](../knowledge/industries/gaming.md)：新奇效应明显，版本更新和活动会干扰对照，评估周期要覆盖新鲜感消退之后。
+- [developer-tools](../knowledge/industries/developer-tools.md)：用首次成功率和持续调用评估效果，同时看兼容性问题和工单变化。
 
 ## 阶段检查点反问
 

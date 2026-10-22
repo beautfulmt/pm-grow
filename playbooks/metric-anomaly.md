@@ -2,7 +2,7 @@
 id: metric-anomaly
 title: 指标异动诊断
 abilities: [data_validation, user_problem, business_value]
-methods: [metric-diagnosis, metric-tree, funnel, retention-cohort, ab-test]
+methods: [metric-diagnosis, metric-tree, funnel, retention-cohort, ab-test, tracking-plan]
 stages: [newcomer, independent_pm, senior, expert, lead]
 ---
 
@@ -59,6 +59,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [funnel](../knowledge/methods/funnel.md)：转化类指标，逐步定位流失发生在哪一步。
 - [retention-cohort](../knowledge/methods/retention-cohort.md)：留存、活跃类指标，区分"新用户质量变了"与"老用户行为变了"。
 - [ab-test](../knowledge/methods/ab-test.md)：怀疑由某次改动引起且能做对照时，或需要读懂已有实验数据时。
+- [tracking-plan](../knowledge/methods/tracking-plan.md)：怀疑埋点改动、上报故障或口径变化时，对照埋点字典和变更记录排查。
 
 ## 不同阶段的关注差异
 
@@ -73,6 +74,8 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [ecommerce](../knowledge/industries/ecommerce.md)：大促、季节和补贴带来大幅波动，交易额先拆成流量、转化、客单价再看。
 - [education](../knowledge/industries/education.md)：学期、寒暑假和考试周期造成强周期，对比要用上一个同期而非上周。
 - [content-community](../knowledge/industries/content-community.md)：供给侧（创作者、内容量）和消费侧都要拆，推荐策略调整和热点事件是常见原因。
+- [developer-tools](../knowledge/industries/developer-tools.md)：调用量波动先看大客户接入变化、限流配额和 SDK 版本发布，再看整体需求。
+- [globalization](../knowledge/industries/globalization.md)：按市场拆分，当地节假日、支付通道和应用商店政策变化是常见外部原因。
 
 ## 阶段检查点反问
 

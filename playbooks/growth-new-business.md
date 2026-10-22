@@ -2,7 +2,7 @@
 id: growth-new-business
 title: 增长策略与新业务探索
 abilities: [business_value, strategy_prioritization, user_problem, data_validation]
-methods: [four-risks, business-model, unit-economics, metric-tree, retention-cohort, mvp-slicing, strategy-choice, investment-case]
+methods: [four-risks, business-model, unit-economics, metric-tree, retention-cohort, mvp-slicing, strategy-choice, investment-case, market-sizing, pricing]
 stages: [newcomer, independent_pm, senior, expert, lead]
 ---
 
@@ -58,6 +58,8 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [mvp-slicing](../knowledge/methods/mvp-slicing.md)：设计只覆盖关键假设的最小验证。
 - [strategy-choice](../knowledge/methods/strategy-choice.md)：在多个方向或细分市场之间取舍。
 - [investment-case](../knowledge/methods/investment-case.md)：验证有了信号，需要申请更多投入。
+- [market-sizing](../knowledge/methods/market-sizing.md)：判断新业务的机会有多大、先进入哪个细分市场。
+- [pricing](../knowledge/methods/pricing.md)：新业务要决定收费方式、套餐或价格时。
 
 ## 不同阶段的关注差异
 
@@ -72,6 +74,8 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [content-community](../knowledge/industries/content-community.md)：双边网络，冷启动通常先解决供给侧，内容质量和氛围决定后续留存。
 - [local-services](../knowledge/industries/local-services.md)：增长依赖同城的供需密度，按城市或区域逐个做透比全面铺开更有效。
 - [ai-product](../knowledge/industries/ai-product.md)：推理成本直接影响单位经济，输出质量的稳定性决定留存，演示效果和日常使用效果要分开验证。
+- [developer-tools](../knowledge/industries/developer-tools.md)：增长靠上手体验和口碑，先把首次成功做顺再放大获客；团队扩散和企业版是主要付费路径。
+- [globalization](../knowledge/industries/globalization.md)：先选一个代表性市场验证，分市场核算获客与回收，合规和支付在上线前就位。
 
 ## 阶段检查点反问
 

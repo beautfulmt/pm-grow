@@ -44,6 +44,7 @@ overlay: false
 - [风险清单](../methods/risk-register.md)：按伤害类型明确人工兜底和升级通道。
 - [MVP 切片](../methods/mvp-slicing.md)：采用经允许的离线或专业人员监督试点。
 - [指标树](../methods/metric-tree.md)：区分代理指标与真正健康结果。
+- [可用性测试](../methods/usability-test.md)：在接近真实的服务环境中测试，重点看误操作的安全后果。
 
 ## 易踩的坑
 
@@ -58,4 +59,4 @@ overlay: false
 
 ## 适用边界
 
-医院行政系统叠加[内部平台](internal-platform.md)，采购与续约叠加 [SaaS](saas.md)，自动输出叠加 [AI 产品](ai-product.md)。消费健康、临床服务、药品和器械分别确认边界。
+医院行政系统叠加[内部平台](internal-platform.md)，采购与续约叠加 [SaaS](saas.md)，公立医院和卫生部门的信息化项目叠加[政企与 ToG](gov-enterprise.md)，自动输出叠加 [AI 产品](ai-product.md)。消费健康、临床服务、药品和器械分别确认边界。

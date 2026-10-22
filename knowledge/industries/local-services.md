@@ -44,6 +44,7 @@ overlay: false
 - [A/B 实验](../methods/ab-test.md)：存在供给共享时评估区域或时段随机及残留影响。
 - [风险清单](../methods/risk-register.md)：写清安全、容量和异常兜底。
 - [MVP 切片](../methods/mvp-slicing.md)：先选有足够供需的区域与时间窗口。
+- [市场规模估算](../methods/market-sizing.md)：按城市分别估算，商户和运力同样限制可服务市场。
 
 ## 易踩的坑
 
@@ -58,4 +59,4 @@ overlay: false
 
 ## 适用边界
 
-实物交易叠加[电商](ecommerce.md)，调度算法叠加 [AI 产品](ai-product.md)。预约、即时服务和到店服务分别确认时间窗口与容量。
+实物交易叠加[电商](ecommerce.md)，调度算法叠加 [AI 产品](ai-product.md)，进入海外城市时叠加[出海与全球化](globalization.md)。预约、即时服务和到店服务分别确认时间窗口与容量。

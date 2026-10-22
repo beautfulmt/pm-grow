@@ -44,6 +44,7 @@ overlay: false
 - [指标树](../methods/metric-tree.md)：商业化指标配体验与质量护栏。
 - [优先级](../methods/prioritization.md)：比较短期收益与长期供给和信任成本。
 - [复盘](../methods/retrospective.md)：等到归因与结算窗口成熟后核对结果。
+- [埋点与数据需求](../methods/tracking-plan.md)：请求、展示、点击、转化与计费事件统一口径，能逐层对账。
 
 ## 易踩的坑
 
@@ -58,4 +59,4 @@ overlay: false
 
 ## 适用边界
 
-内容变现叠加[社区](content-community.md)，零售媒体叠加[电商](ecommerce.md)，智能投放叠加 [AI 产品](ai-product.md)。品牌与效果广告分别确认成功标准。
+内容变现叠加[社区](content-community.md)，零售媒体叠加[电商](ecommerce.md)，智能投放叠加 [AI 产品](ai-product.md)，面向应用开发者的变现 SDK 叠加[开发者与工具类产品](developer-tools.md)，海外变现叠加[出海与全球化](globalization.md)并按市场核对隐私与同意规则。品牌与效果广告分别确认成功标准。

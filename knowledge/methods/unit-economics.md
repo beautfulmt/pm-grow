@@ -25,7 +25,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 
 - **适合**：定价、补贴、获客投放、履约成本、规模化判断相关的问题。
 - **前提**：至少有分渠道或分群的收入与成本数据；早期业务可以用假设，并标明来源和区间。
-- **换用或简化**：只需判断业务结构时先用[商业模式画布](business-model.md)；留存数据不足时，结合[留存与同期群](retention-cohort.md)给出区间。
+- **换用或简化**：只需判断业务结构时先用[商业模式画布](business-model.md)；留存数据不足时，结合[留存与同期群](retention-cohort.md)给出区间；要决定收费单位、套餐和价格时接[定价与套餐设计](pricing.md)。
 
 ## 误用与反例
 
@@ -42,6 +42,9 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [游戏](../industries/gaming.md)：付费高度集中，按付费层级拆分，均值参考价值有限。
 - [AI 产品](../industries/ai-product.md)：推理成本随调用量、模型和上下文长度变化，是新增的变动成本。
 - [金融科技](../industries/fintech.md)：加入资金成本和风险成本，风险损失滞后显现。
+- [出海与全球化](../industries/globalization.md)：分市场计算，计入渠道分成、支付费用、税费、汇率和本地运营成本。
+- [开发者与工具类产品](../industries/developer-tools.md)：按用量计费时单位是调用或资源量，计入基础设施成本和免费额度。
+- [政企与 ToG](../industries/gov-enterprise.md)：单位是项目，计入定制、适配、驻场运维和回款周期带来的资金占用。
 
 ## 不同阶段怎么用
 

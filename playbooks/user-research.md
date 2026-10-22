@@ -2,7 +2,7 @@
 id: user-research
 title: 用户研究与需求挖掘
 abilities: [user_problem, data_validation, solution_design]
-methods: [user-interview, jtbd, journey-map, opportunity-tree, problem-framing, funnel]
+methods: [user-interview, jtbd, journey-map, opportunity-tree, problem-framing, funnel, usability-test, survey-design]
 stages: [newcomer, independent_pm, senior, expert, lead]
 ---
 
@@ -57,6 +57,8 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [opportunity-tree](../knowledge/methods/opportunity-tree.md)：发现很多，需要按目标组织成机会，再连到方案。
 - [problem-framing](../knowledge/methods/problem-framing.md)：用户提的是方案，需要还原成问题。
 - [funnel](../knowledge/methods/funnel.md)：用定量数据确认定性发现的规模。
+- [usability-test](../knowledge/methods/usability-test.md)：研究问题是"用户能不能用"时，请目标用户完成关键任务，观察卡在哪里。
+- [survey-design](../knowledge/methods/survey-design.md)：定性发现需要量化分布时，设计不带引导的题目，并说明样本构成。
 
 ## 不同阶段的关注差异
 
@@ -71,6 +73,8 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [saas](../knowledge/industries/saas.md)：采购者、决策者、使用者往往不同，访谈要分开进行，诉求常互相冲突。
 - [education](../knowledge/industries/education.md)：学生、家长、老师、学校多方参与，付费者与使用者分离；涉及未成年人时需要监护人同意。
 - [healthcare](../knowledge/industries/healthcare.md)：患者与医生视角差异大，涉及隐私和伦理要求，招募和记录方式要合规。
+- [developer-tools](../knowledge/industries/developer-tools.md)：请开发者现场完成一次接入并出声思考，工单和社区问答是持续的一手材料。
+- [globalization](../knowledge/industries/globalization.md)：用本地语言找本地用户，借助本地研究伙伴；保留原话并标注译者。
 
 ## 阶段检查点反问
 

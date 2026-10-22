@@ -41,14 +41,28 @@ def problem(identifier, title=None, **fields):
     return value
 
 
-def attempt(identifier, problem_id, stamp="2026-10-04", kind="independent", **fields):
+def observe(ability_id, status="candidate", text="隔离测试中针对这项能力的观察"):
+    return {"ability_id": ability_id, "text": text, "status": status}
+
+
+def attempt(identifier, problem_id, stamp="2026-10-04", kind="independent", ability=None, **fields):
+    """An attempt on a problem; ability adds an observation so the record can serve as evidence."""
+    if ability is not None:
+        fields.setdefault("observations", [observe(ability)])
     return make_record(identifier, stamp, kind="attempt", problem=problem(problem_id),
                        user_work=[work(kind)], **fields)
 
 
-def upgrade(ability_id, evidence, to="independent", source="unobserved", stage="independent_pm"):
-    return {"ability_id": ability_id, "stage": stage, "from": source, "to": to,
-            "evidence": list(evidence), "reason": "隔离测试中的能力变化依据"}
+def review(mode="agent", summary="隔离测试：复核员认为证据可比、支持这次判断"):
+    return {"mode": mode, "summary": summary}
+
+
+def upgrade(ability_id, evidence, to="independent", source="unobserved", stage="independent_pm", reviewed=None):
+    value = {"ability_id": ability_id, "stage": stage, "from": source, "to": to,
+             "evidence": list(evidence), "reason": "隔离测试中的能力变化依据"}
+    if reviewed is not None:
+        value["review"] = reviewed
+    return value
 
 
 class Clock:

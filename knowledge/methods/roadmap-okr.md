@@ -43,6 +43,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [教育](../industries/education.md)：围绕学期和招生季排布，关键窗口错过就要等下一周期。
 - [游戏](../industries/gaming.md)：按版本和赛季规划，内容产能是主要约束。
 - [中后台与内部系统](../industries/internal-platform.md)：与业务方的年度规划对齐，并公开排期规则。
+- [政企与 ToG](../industries/gov-enterprise.md)：围绕预算年度和招标节点规划，对外承诺以合同为准，区分合同范围和产品方向。
 
 ## 不同阶段怎么用
 

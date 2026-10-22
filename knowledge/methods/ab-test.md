@@ -25,7 +25,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 ## 适用条件
 
 - **适合**：流量足够、结果能在合理时间内观察、可以随机分组的改动。
-- **前提**：有可靠的分流和埋点能力，以及事先写好的假设和指标。
+- **前提**：有可靠的分流和埋点能力（见[埋点与数据需求](tracking-plan.md)），以及事先写好的假设和指标。
 - **换用或简化**：流量小、效果周期长、涉及公平或法规限制、双边网络效应强时，改用准实验、灰度对比或定性研究；明显缺陷修复和战略性决策，实验只是依据之一。
 
 ## 误用与反例
@@ -44,6 +44,8 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [企业服务 SaaS](../industries/saas.md)：按账户计样本常常不足，多用灰度和设计伙伴客户反馈。
 - [医疗健康](../industries/healthcare.md)、[金融科技](../industries/fintech.md)：涉及诊疗、授信或定价的实验需要伦理与合规审查。
 - [广告与商业化](../industries/ads-monetization.md)：广告主预算和竞价在实验组间互相干扰，用长期保留组观察用户效应。
+- [出海与全球化](../industries/globalization.md)：按市场分别实验，各市场的季节、节假日和用户构成不同，结论不直接跨市场推广。
+- [开发者与工具类产品](../industries/developer-tools.md)：账户和项目样本少，同一团队的成员互相影响，按账户随机，多用分批发布和前后对比。
 
 ## 不同阶段怎么用
 

@@ -73,6 +73,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [hardware-iot](../knowledge/industries/hardware-iot.md)：模具、量产和认证周期长且难回头，软件能远程升级而硬件不能，风险要前置。
 - [fintech](../knowledge/industries/fintech.md)：涉及资金和合规，质量底线高，上线前要有对账、监控和回滚。
 - [gaming](../knowledge/industries/gaming.md)：版本档期、活动日历和平台审核是硬节点，砍范围常优先于延期。
+- [gov-enterprise](../knowledge/industries/gov-enterprise.md)：验收标准、信创适配和现场部署是硬节点，验收材料、付款节点和变更审批要提前对齐。
 
 ## 阶段检查点反问
 

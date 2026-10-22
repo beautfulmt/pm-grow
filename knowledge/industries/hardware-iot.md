@@ -44,6 +44,7 @@ overlay: false
 - [MVP 切片](../methods/mvp-slicing.md)：先验证高风险物理条件与现场任务。
 - [发布灰度](../methods/launch-rollout.md)：按设备批次控制更新，验证中断恢复。
 - [领域建模](../methods/domain-modeling.md)：对齐设备、资产、工位、任务和事件定义。
+- [可用性测试](../methods/usability-test.md)：在现场条件下测试安装、配网和异常恢复。
 
 ## 易踩的坑
 
@@ -58,4 +59,4 @@ overlay: false
 
 ## 适用边界
 
-设备管理软件叠加 [SaaS](saas.md) 或[内部平台](internal-platform.md)，医疗设备叠加[医疗健康](healthcare.md)，智能能力叠加 [AI 产品](ai-product.md)。消费与工业场景分别核对容错条件。
+设备管理软件叠加 [SaaS](saas.md) 或[内部平台](internal-platform.md)，医疗设备叠加[医疗健康](healthcare.md)，智能能力叠加 [AI 产品](ai-product.md)，面向政府和国企的工业数字化项目叠加[政企与 ToG](gov-enterprise.md)，海外销售叠加[出海与全球化](globalization.md)并按目标市场核对认证。消费与工业场景分别核对容错条件。

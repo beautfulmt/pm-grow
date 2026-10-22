@@ -6,7 +6,7 @@ overlay: false
 
 # 企业服务 SaaS
 
-覆盖：通用 SaaS、垂直行业 SaaS、开发者工具和平台型企业软件。
+覆盖：通用 SaaS、垂直行业 SaaS 和平台型企业软件。面向开发者的 API、SDK 与工具类产品见[开发者与工具类产品](developer-tools.md)，其中的企业销售与续约仍沿用本包。
 
 ## 价值链与角色
 
@@ -56,6 +56,8 @@ overlay: false
 - [发布与灰度](../methods/launch-rollout.md)：提前通知管理员，为关键客户提供过渡期或开关。
 - [单位经济模型](../methods/unit-economics.md)：以客户为单位，关注获客成本回收和扩展收入。
 - [相关方地图](../methods/stakeholder-map.md)：客户侧也画一张，标出真正的决策者和否决者。
+- [定价与套餐](../methods/pricing.md)：收费单位（席位、用量、模块）决定扩展收入，大客户定制与私有化单独核算。
+- [埋点与数据需求](../methods/tracking-plan.md)：事件同时带账户和用户两层标识，区分管理员配置与成员使用。
 
 ## 易踩的坑
 
@@ -78,4 +80,5 @@ overlay: false
 
 - 垂直 SaaS 叠加对应的行业包，如[教育](education.md)、[医疗健康](healthcare.md)、[金融科技](fintech.md)。
 - 企业内部自建系统见[中后台与内部系统](internal-platform.md)；软硬一体见[硬件/IoT/工业制造](hardware-iot.md)；AI 能力叠加 [AI 产品](ai-product.md)。
-- 私有化部署和项目制交付接近项目型软件，交付与验收规则要在本公司做法里补充。
+- 私有化部署和项目制交付接近项目型软件：政府、国企和大型集团客户的招投标、验收与回款见[政企与 ToG](gov-enterprise.md)，其他交付规则在本公司做法里补充。
+- 以开发者自助采用为主的产品叠加[开发者与工具类产品](developer-tools.md)；跨国家或地区经营叠加[出海与全球化](globalization.md)。

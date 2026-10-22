@@ -72,6 +72,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [internal-platform](../knowledge/industries/internal-platform.md)：老系统隐性规则多、文档少，用户是同事，跟一次一线操作比读文档更快。
 - [fintech](../knowledge/industries/fintech.md)：术语和合规概念密集，规则是硬约束，先掌握资金流向和监管要求。
 - [hardware-iot](../knowledge/industries/hardware-iot.md)：软硬件协作，要了解供应链、生产和认证流程，硬件的变更成本远高于软件。
+- [gov-enterprise](../knowledge/industries/gov-enterprise.md)：先读招标文件、合同和验收材料，弄清采购流程、决策层级和付款节点。
 
 ## 阶段检查点反问
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """pm-grow v2 command line: the only entry point for personal records, reports,
-handbooks and migration. Every command prints one JSON object on success; errors
+handbooks, migration and redaction. Every command prints one JSON object on success; errors
 go to stderr as `错误：...` with exit code 1. See scripts/CLI.md."""
 import argparse
 import json
@@ -10,6 +10,7 @@ import sys
 import handbook
 import migrate
 import records
+import redact
 import report
 
 
@@ -43,8 +44,9 @@ def build_parser():
     commands = parser.add_subparsers(dest="command", required=True, metavar="command")
 
     commands.add_parser("init", parents=[shared], help="创建数据目录与模板（保留已有文件）")
-    status = commands.add_parser("status", parents=[shared], help="只读：一次返回开场需要的全部状态")
-    status.add_argument("--recent", type=int, default=5, help="附带最近几条记录（默认 5）")
+    status = commands.add_parser("status", parents=[shared], help="只读：一次返回开场需要的状态（默认精简版）")
+    status.add_argument("--recent", type=int, default=5, help="附带最近几条记录（默认 5；0 表示不附带）")
+    status.add_argument("--full", action="store_true", help="输出完整列表；默认精简版只列最需要处理的几项")
 
     record = commands.add_parser("record", parents=[shared], help="写入一条不可变记录")
     record.add_argument("--input", required=True, help="JSON 文件路径；- 表示从标准输入读取")
@@ -69,7 +71,9 @@ def build_parser():
     build.add_argument("--input", required=True, help="填好 narrative 的 JSON；- 表示标准输入")
     build.add_argument("--output", help="默认 <data-dir>/reports/YYYY-MM-DD.html")
     build.add_argument("--replace", action="store_true", help="替换同名报告（旧文件会备份）")
-    report_commands.add_parser("defer", parents=[shared], help="用户暂缓：证据不变前不再提议")
+    defer = report_commands.add_parser("defer", parents=[shared],
+                                       help="用户暂缓：之后出现新的触发条件前不再提议")
+    defer.add_argument("--until", help="暂缓到这一天（YYYY-MM-DD），当天起再提议")
 
     settings = commands.add_parser("settings", parents=[shared], help="偏好开关")
     settings_commands = settings.add_subparsers(dest="action", required=True, metavar="action")
@@ -83,10 +87,21 @@ def build_parser():
     book.add_argument("--input", help="默认 <data-dir>/knowledge/handbook.json")
     book.add_argument("--output", help="默认 <data-dir>/knowledge/handbook.html")
     book.add_argument("--replace", action="store_true", help="替换已批准更新的手册（旧文件会备份）")
+    listing = book_commands.add_parser("list", parents=[shared], help="只读：列出手册专题")
+    listing.add_argument("--input", help="默认 <data-dir>/knowledge/handbook.json")
+    upsert = book_commands.add_parser("upsert", parents=[shared], help="按 id 新增或原位替换一个专题（备份上一版）")
+    upsert.add_argument("--topic", required=True, help="专题 JSON 文件；- 表示从标准输入读取")
+    upsert.add_argument("--input", help="默认 <data-dir>/knowledge/handbook.json")
+    removal = book_commands.add_parser("remove", parents=[shared], help="按 id 删除一个专题（备份上一版）")
+    removal.add_argument("--id", required=True, dest="topic_id", help="要删除的专题 id")
+    removal.add_argument("--input", help="默认 <data-dir>/knowledge/handbook.json")
 
     migration = commands.add_parser("migrate", parents=[shared], help="v1 → v2 迁移（原文件复制到 legacy-v1/）")
     migration.add_argument("--dry-run", action="store_true", help="只打印计划，不写任何文件")
     commands.add_parser("rebuild-index", parents=[shared], help="重建 growth-log.md 的自动索引区块")
+    redaction = commands.add_parser("redact", parents=[shared], help="清除误记的敏感文字（先用 --dry-run 预览）")
+    redaction.add_argument("--input", required=True, help="替换规则 JSON 文件；- 表示从标准输入读取")
+    redaction.add_argument("--dry-run", action="store_true", help="只统计将改动的文件与次数，不写任何文件")
     return parser
 
 
@@ -101,7 +116,7 @@ def run(args):
     if command == "status":
         if args.recent < 0:
             raise ValueError("--recent 不能是负数")
-        return records.status(root, today, args.recent)
+        return records.status(root, today, args.recent, args.full)
     if command == "record":
         return records.append_record(root, read_input(args.input), timeout)
     if command == "recent":
@@ -116,13 +131,21 @@ def run(args):
     if command == "report" and action == "build":
         return report.build(root, read_input(args.input), args.output, args.replace, today, timeout)
     if command == "report":
-        return report.defer(root, today, timeout)
+        return report.defer(root, today, args.until, timeout)
     if command == "settings":
         return records.set_setting(root, args.key, args.value, timeout)
     if command == "handbook":
         source = Path(args.input) if args.input else root / "knowledge" / "handbook.json"
+        if action == "list":
+            return handbook.list_topics(source)
+        if action == "upsert":
+            return handbook.upsert(root, source, read_input(args.topic), today, timeout)
+        if action == "remove":
+            return handbook.remove(root, source, args.topic_id, today, timeout)
         target = Path(args.output) if args.output else root / "knowledge" / "handbook.html"
         return handbook.build(source, target, args.replace)
+    if command == "redact":
+        return redact.redact(root, read_input(args.input), args.dry_run, timeout)
     if command == "migrate":
         return migrate.migrate(root, args.dry_run, today, timeout)
     return records.rebuild_index(root, timeout)
@@ -135,7 +158,9 @@ def main(argv=None):
     except (OSError, ValueError, KeyError, TimeoutError) as exc:
         print(f"错误：{exc}", file=sys.stderr)
         return 1
-    print(json.dumps(result, ensure_ascii=False, indent=2))
+    # The compact status is read at the start of every session, so it is printed without indentation.
+    compact = args.command == "status" and not args.full
+    print(json.dumps(result, ensure_ascii=False, **({"separators": (",", ":")} if compact else {"indent": 2})))
     return 0
 
 

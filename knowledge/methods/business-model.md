@@ -42,6 +42,8 @@ PM 需要知道产品为谁创造什么价值、怎样把价值变成收入、�
 - [硬件/IoT/工业制造](../industries/hardware-iot.md)：一次性硬件收入和持续服务收入并存，成本含供应链与库存。
 - [金融科技](../industries/fintech.md)：收入常和资金规模、风险成本挂钩，关键资源包括牌照和资金方。
 - [中后台与内部系统](../industries/internal-platform.md)：没有直接收入，把价值写成为业务降低的成本、风险或提升的效率。
+- [开发者与工具类产品](../industries/developer-tools.md)：开源或免费版带来采用，团队版和企业版分别提供协作价值和安全合规价值。
+- [政企与 ToG](../industries/gov-enterprise.md)：收入来自项目合同、维保和二期，关键资源包括资质、渠道和交付能力。
 
 ## 不同阶段怎么用
 

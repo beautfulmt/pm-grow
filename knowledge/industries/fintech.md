@@ -44,6 +44,7 @@ overlay: false
 - [风险清单](../methods/risk-register.md)：明确阈值负责人、停止条件与处理权限。
 - [投入论证](../methods/investment-case.md)：把损失与长期服务成本计入选项。
 - [评审答辩](../methods/review-defense.md)：分开呈现业务证据、风险偏好和审批条件。
+- [定价与套餐](../methods/pricing.md)：费率与利率受监管和信息披露约束，方案先经合规确认。
 
 ## 易踩的坑
 
@@ -58,4 +59,4 @@ overlay: false
 
 ## 适用边界
 
-支付、授信、保险和投资的机制分别核对；金融 SaaS 叠加 [SaaS](saas.md)，自动决策叠加 [AI 产品](ai-product.md)。本包提供产品取证框架，不确定法律适用性。
+支付、授信、保险和投资的机制分别核对；金融 SaaS 叠加 [SaaS](saas.md)，自动决策叠加 [AI 产品](ai-product.md)，为金融机构交付的私有化项目叠加[政企与 ToG](gov-enterprise.md)，跨境支付与海外金融服务叠加[出海与全球化](globalization.md)并逐个市场核对资质。本包提供产品取证框架，不确定法律适用性。

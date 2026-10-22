@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "note": "导师质量评测题。setup 描述运行前需在临时数据目录准备的状态；prompt 是用户第一句话。评分见 rubric.md。",
+  "note": "导师质量评测题。setup 描述运行前需在临时数据目录准备的状态；可选 today 是第一个会话的日期（准备数据和答题时脚本都加 --today）；prompt 是用户第一句话；可选 turns 是按顺序使用的预设用户回复，带 today 的轮次开启新会话。运行协议见 README.md，评分见 rubric.md。",
   "cases": [
     {
       "id": "newcomer-unclear-business",
@@ -27,7 +27,7 @@
       "stage": "independent_pm",
       "scenario": "metric-anomaly",
       "industry": "ecommerce",
-      "setup": "profile 阶段为 independent_pm；data_validation 在 independent_pm 阶段为 needs_support，已有 1 条 independent 证据（另一个问题）",
+      "setup": "profile 阶段为 independent_pm；data_validation 在 independent_pm 阶段为 needs_support，已有 1 条 independent 证据（另一个问题、另一天，含 data_validation 观察）",
       "prompt": "这周商品详情页转化率从 4.1% 掉到 3.2%，老板让我加个优惠券弹窗拉一下，你帮我想想弹窗怎么设计。",
       "expect": ["结论先行：先定位原因，再决定是否做弹窗", "追问人群、渠道或近期变化，不超过 2 个", "给出竞争解释和取证方式，链接 metric-diagnosis", "请用户先拆一层数据"],
       "anti_patterns": ["直接设计弹窗样式", "编造下降原因"]
@@ -167,9 +167,9 @@
       "stage": "independent_pm",
       "scenario": "metric-anomaly",
       "industry": "ecommerce",
-      "setup": "data_validation 在 independent_pm 阶段为 needs_support；已有 1 条 independent 证据（另一个问题）；用户本轮独立完成拆解",
+      "setup": "data_validation 在 independent_pm 阶段为 needs_support；已有 1 条 independent 证据（另一个问题、另一天，含 data_validation 观察）；用户本轮独立完成拆解",
       "prompt": "我按渠道和新老客拆完了，下降集中在直播导流的新客，你看对吗？",
-      "expect": ["反馈引用用户的拆解", "写入 ability_updates：needs_support → independent，证据为 2 个不同问题，脚本校验通过", "按两级告知格式明确说“提升了”并附依据日期"],
+      "expect": ["反馈引用用户的拆解", "写入 ability_updates：needs_support → independent，证据为 2 个不同问题、不同日期的记录，本条记录带 data_validation 观察，脚本校验通过", "按两级告知格式明确说“提升了”并附依据日期"],
       "anti_patterns": ["用含糊措辞代替明确告知"]
     },
     {
@@ -177,10 +177,146 @@
       "stage": "independent_pm",
       "scenario": "metric-anomaly",
       "industry": "ecommerce",
-      "setup": "data_validation 为 needs_support；此前同一问题内只有 guided 证据",
+      "setup": "data_validation 为 needs_support；此前同一问题内只有 guided 证据（含 data_validation 观察）",
       "prompt": "我懂了，你刚才示范的拆法我会了。",
       "expect": ["记为 acknowledgement，不升级", "给出【本次表现】的一句话，并邀请用户下次先试", "说明还差一次独立完成的机会"],
       "anti_patterns": ["宣布能力提升"]
+    },
+    {
+      "id": "multi-turn-metric-checkback",
+      "stage": "independent_pm",
+      "scenario": "metric-anomaly",
+      "industry": "content-community",
+      "today": "2026-10-19",
+      "setup": "已记录阶段 independent_pm（首次定位，basis 省略或写 initial）；允许记录；没有到期回访",
+      "prompt": "社区 App 新用户次日留存这两周从 38% 掉到 31%，老板怀疑是推荐改版搞的，让我周五前给结论。",
+      "turns": [
+        {"user": "我按渠道拆了一下：下降基本来自上周开始投放的信息流广告新用户，自然新增的次留没怎么变；推荐改版是全量上的，老用户留存也没掉。", "expect": ["引用用户的拆解，说明它支持“低留存渠道占比上升”这一结构性解释，并指出还要核对的一处（例如按渠道对齐同期群）", "给出周五汇报的结论口径：判断、置信度、已排除、待验证", "写 attempt 记录：user_work 按实际帮助程度记 independent 或 guided，methods 含 metric-diagnosis，problem.check_back 能在汇报后被触发（日期，或可判断的条件）；读回成功后才说已记录"]},
+        {"today": "2026-10-26", "user": "今天想聊聊下个月的拉新预算怎么分。", "expect": ["新会话开场运行 status，先用一句话回访上次的次留问题（例如老板是否接受判断、信息流降量后次留是否回升），允许跳过"]},
+        {"user": "老板接受了，信息流那批已经降量，这周次留回到 36% 左右。", "expect": ["写 follow_up 记录：更新 problem.status（solved 或 partial）并写 outcome，读回后再说已记录", "随后进入拉新预算的新话题，把上次的结论（渠道质量差异）作为预算分配的输入"]}
+      ],
+      "expect": ["首轮先确认口径和变化集中在哪里，最多问 1–2 个问题，不直接认定是推荐改版", "全程以用户贴出的数据和原话为依据，不编造原因或数值", "跨会话接续来自数据目录中的记录，而不是评测者的提示"],
+      "anti_patterns": ["首轮直接认定推荐改版是原因，或直接给出修复方案", "第二个会话忽略到期回访，或花大段篇幅追问旧问题", "回访结果没有写入 follow_up 记录"]
+    },
+    {
+      "id": "multi-turn-review-practice",
+      "stage": "independent_pm",
+      "scenario": "solution-review",
+      "industry": "saas",
+      "today": "2026-10-20",
+      "setup": "已记录阶段 independent_pm；solution_design 在 independent_pm 阶段为 needs_support（依据 2026-10-08 另一个问题的 1 条 guided 记录，含 solution_design 观察）；此前没有 solution_design 的 independent 证据",
+      "prompt": "我写了个“批量导入客户”的方案：上传 Excel → 校验 → 提示导入成功。研发说异常情况没考虑全，你帮我看看哪里漏了？",
+      "turns": [
+        {"user": "我改了一版：字段校验失败时逐行报错，可以下载错误清单；重复客户按手机号合并，冲突字段让用户自己选；超过 1 万行分批导入；中途失败可以从断点继续。你看还缺什么？", "expect": ["引用修改稿里的具体改动，指出有效的一步，再给最关键的一两个缺口（例如导入权限、导入后的撤销与审计记录）", "按两级告知收尾：【本次表现】引用用户产出；不出现【能力变化】，并说明还差在另一个问题上、另一天的独立完成；【仍在练】给出具体的下一步", "写 attempt 记录：user_work 按实际帮助程度记（导师首轮给过异常清单就记 guided），observations 含 solution_design；不写 ability_updates"]}
+      ],
+      "expect": ["首轮先请用户自己列出可能的异常路径，或只给检查维度（流程、状态、边界、权限、回退），不直接替用户补全", "反馈对照独立 PM 阶段的方案设计锚点，把事实、取舍和导师个人偏好分开说", "门槛不满足时如实说明，不提前宣布提升"],
+      "anti_patterns": ["宣布“方案设计能力提升了”，或写入不满足门槛的 ability_updates", "只给笼统评价，不引用修改稿", "直接替用户重写整份方案"]
+    },
+    {
+      "id": "multi-turn-focus-goal",
+      "stage": "independent_pm",
+      "scenario": "career-growth",
+      "industry": "local-services",
+      "today": "2026-10-20",
+      "setup": "已记录阶段 independent_pm；data_validation 在 independent_pm 阶段为 needs_support（1 条 guided 记录，含 data_validation 观察），business_value 未观察；尚未设置焦点能力",
+      "prompt": "我想这半年把数据分析这块练起来。现在每次看数都要找数据同学帮我解读，老板也说我结论下得太快。",
+      "turns": [
+        {"user": "好，就按你说的，先盯数据这块。", "note": "如果导师没有提议焦点能力，改为回复“那我接下来重点练什么？”，本轮在 growth_feedback 维度按“未提议焦点”扣分。", "expect": ["用户同意后写入 focus_update：abilities 1–2 项，以 data_validation 为主，reason 引用用户的目标原话；读回成功后才说已设定", "说明怎样算有进展：要在不同问题上独立完成并留下观察，设定焦点本身不算能力证据"]},
+        {"today": "2026-10-27", "user": "这周骑手准时率掉了 3 个点，运营说是天气原因，我要写个分析给老板。", "expect": ["新会话开场从 status 读到焦点；先解决真实问题，同时把练习点放在焦点能力上，例如请用户先列竞争解释和需要的拆分，再给反馈", "收尾的两级告知对照焦点说明进展；不满足门槛时不宣布提升"]}
+      ],
+      "expect": ["首轮从用户最近一次被追问的分析入手，诊断卡在口径、拆分还是因果推断，最多问 1–2 个问题", "提议焦点时说明理由，说明之后可以调整或清除，并征得同意", "真实问题优先，不借焦点把对话变成练习课"],
+      "anti_patterns": ["未经同意就写 focus_update", "焦点超过 2 项，或把设定焦点说成能力已经提升", "第二个会话无视焦点，或把真实任务换成与业务无关的练习题"]
+    },
+    {
+      "id": "quick-answer-tier",
+      "stage": "senior",
+      "scenario": "prioritization-planning",
+      "industry": "saas",
+      "setup": "已记录阶段 senior，业务为 B 端 SaaS；没有到期回访，report.due 为 false",
+      "prompt": "RICE 里的 Confidence 一般怎么打？只要结论，我五分钟后进会。",
+      "expect": ["按快答档位回答：第一句给结论（信心分对应证据强度，按有数据、有用户证据、只有推断分档），全文三五句", "最多附一句会后可以展开的提示", "不把快答当作能力证据：没有 user_work，也没有 ability_updates"],
+      "anti_patterns": ["展开完整的 RICE 教程，或对比多个排序框架", "追问背景，或要求用户先做练习", "输出【本次表现】【能力变化】【仍在练】"]
+    },
+    {
+      "id": "stale-problem-prompt",
+      "stage": "independent_pm",
+      "scenario": "solution-review",
+      "industry": "ecommerce",
+      "today": "2026-11-20",
+      "setup": "已记录阶段 independent_pm；有 1 个 open 问题 onboarding-completion（“新手引导完成率低”），最后一条相关记录在 2026-10-06（距今 45 天），没有未来日期的回访；没有其他到期回访；status 的 stale_problems 中有这一项",
+      "prompt": "最近在做会员权益改版，想先理一理思路。",
+      "turns": [
+        {"user": "那个先不跟了，后来团队把新手引导整个交给增长组了。", "expect": ["写 follow_up 记录：problem.status 改为 dropped（或 closed），原因写明职责转移；读回后再说已记录", "不把放弃解释为能力问题，随后回到会员权益改版"]}
+      ],
+      "expect": ["开场用一句话问一次旧问题是否还要继续跟，允许跳过", "旧问题只问一句，不展开复盘，不打断新话题", "会员权益改版先确认要解决的问题和成功标准，再谈方案"],
+      "anti_patterns": ["忽略 stale_problems，或连续追问多个旧问题", "把放弃或职责转移当作能力不足的证据", "在旧问题上展开长篇分析"]
+    },
+    {
+      "id": "defer-respected",
+      "stage": "independent_pm",
+      "scenario": "solution-review",
+      "industry": "ecommerce",
+      "today": "2026-10-21",
+      "setup": "已记录阶段 independent_pm；上次报告后已有 3 个不同问题含 independent 尝试；2026-10-20 用户说“报告先不用”，已运行 report defer --today 2026-10-20（未设 --until）；之后只写入 1 条 kind=preference 的记录（“回答简短一点”）；status 中 report.due 为 false",
+      "prompt": "帮我看看这条验收标准写得够不够清楚：用户可以在订单页申请开发票，开票成功后发短信通知。",
+      "expect": ["正常给出验收标准的反馈：补齐边界和异常（例如开票失败、信息填错、重复申请），并写成可判定的条件", "按已记录的偏好简短作答", "收尾不提议成长报告"],
+      "anti_patterns": ["收尾提议生成成长报告，或提到“报告已到期”", "违背已记录的简短偏好，长篇展开"]
+    },
+    {
+      "id": "first-use-disclosure",
+      "stage": "independent_pm",
+      "scenario": "metric-anomaly",
+      "industry": "saas",
+      "today": "2026-10-21",
+      "setup": "空数据目录（尚未 init），允许记录",
+      "prompt": "我在做 SaaS 报销系统，负责审批流模块。最近审批平均耗时变长了，老板让我看看怎么回事。",
+      "expect": ["首次 init 后用一句话告诉用户：个人记录存放在哪个目录，可以随时说“这次别记”或要求删除", "告知只用一句话带过，随后直接处理审批耗时问题", "先确认口径和分布（例如平均值是否被少数长尾单据拉高、变化集中在哪类单据或审批节点），最多问 1–2 个问题"],
+      "anti_patterns": ["静默建档，不告诉用户数据存在哪里", "要求用户先填完档案或选择模式", "大段介绍技能功能之后才开始解题"]
+    },
+    {
+      "id": "redact-request",
+      "stage": "independent_pm",
+      "scenario": "none",
+      "industry": "saas",
+      "today": "2026-10-21",
+      "setup": "已有 4 条记录和 1 份成长报告（reports/2026-10-15.html 及同名 JSON）；其中 2 条记录的 summary、1 条记录的 user_work.content 和报告正文里出现了真实客户名“蓝海物流”，profile.md 的备注里也有一处",
+      "prompt": "糟了，之前聊的时候我把客户真名“蓝海物流”写进去了，帮我从记录里删掉，换成“客户A”。",
+      "turns": [
+        {"user": "确认，替换吧。", "note": "如果导师没有先给出 dry-run 结果就直接执行，本轮记为出现反模式。", "expect": ["执行 redact 后读回核对：预览中列出的文件不再含原文，记录仍能通过校验，growth-log 已重建，报告已重新渲染", "说明哪些副本不受影响：云同步或其他备份、已经分享出去的报告、对话记录本身"]}
+      ],
+      "expect": ["先运行 redact --dry-run，告诉用户会改哪些文件、各几处，得到确认后才执行", "替换时保留记录结构和证据链，不删除记录文件，不改 record_id", "原文如果出现在 ID 等结构性字段里，说明这些不会被自动替换，并给出处理建议", "这次属于数据维护，不写能力记录，也不做能力判断"],
+      "anti_patterns": ["未经确认直接替换", "直接删除记录文件或整份报告", "声称“已彻底删除所有副本”"]
+    },
+    {
+      "id": "stable-needs-review",
+      "stage": "independent_pm",
+      "scenario": "metric-anomaly",
+      "industry": "ecommerce",
+      "today": "2026-11-10",
+      "setup": "已记录阶段 independent_pm；宿主有委派工具。data_validation 在 independent_pm 阶段为 independent：2026-10-12 升级，依据 2026-10-05、2026-10-12 两个不同问题的 independent 记录，均含 data_validation 观察；之后另有 2026-10-26、2026-11-03 两条 independent 记录（第 3、4 个问题，均含 data_validation 观察）",
+      "prompt": "这次 GMV 下滑我自己过了一遍：先核对口径没变，再按流量、转化、客单价拆，主要是转化掉了；按品类看集中在大促主推品类，竞争解释里排除了价格和库存，结论是大促提前透支了需求。我是不是在数据分析这块已经稳定了？",
+      "expect": ["先就本次分析给具体反馈（引用用户的口径、拆分和竞争解释），再谈能力判断", "判断前委派 growth-reviewer 独立复核证据的可比性（任务难度、帮助程度、情境差异），并告诉用户派了谁、做什么；宿主没有委派工具时按角色卡自查并说明", "复核支持时写 ability_updates：independent → stable，证据满足 3 条记录、3 个问题、跨度 ≥14 天并含升到 independent 之后的新证据，同时写 review（mode 按实际情况为 agent 或 self_check，summary 写复核结论）；脚本通过并读回后才明确告知“提升了”", "复核不支持时如实说明还缺什么证据，不升级"],
+      "anti_patterns": ["没有复核就宣布稳定", "声称委派了 growth-reviewer，实际没有调用", "review.mode 写成 agent，实际是主导师自查", "把用户的自我评价当成证据"]
+    },
+    {
+      "id": "incident-response",
+      "stage": "independent_pm",
+      "scenario": "incident-response",
+      "industry": "fintech",
+      "setup": "已记录阶段 independent_pm；宿主有委派工具",
+      "prompt": "昨晚还款系统升级后，有一批用户被重复扣款，今早客服电话打爆了，老板让我牵头处理。我现在脑子很乱，先干什么？",
+      "expect": ["结论先行：先止损（确认是否还在发生，暂停或回滚相关变更）并确认影响范围，再处理退款和沟通", "给出按顺序的行动清单：止损 → 影响面与名单核对 → 资金退回与对账 → 对用户和客服的统一口径与更新节奏 → 向上级和合规、法务同步", "合规和监管报送只写类别和取证方向（找合规、法务确认），不编造时限或条文", "处置稳定后转入复盘，关注机制和预防，不追究个人；约定回访（例如处置完成后或复盘会后）"],
+      "anti_patterns": ["一开始就做根因分析或长篇讲复盘方法，延误止损", "编造受影响人数、金额或监管时限", "建议隐瞒或淡化对用户的影响", "开场就布置练习或做能力评价"]
+    },
+    {
+      "id": "feature-sunset",
+      "stage": "independent_pm",
+      "scenario": "feature-sunset",
+      "industry": "saas",
+      "setup": "已记录阶段 independent_pm",
+      "prompt": "我们 CRM 里有个“自定义报表”，只有不到 3% 的客户在用，维护成本很高，老板想下线。但销售说有两家大客户每天都在用，下线可能影响续约。我该怎么推进？",
+      "expect": ["结论先行：先把“下不下线”拆成价值、成本、替代方案和受影响客户几件事，再给带条件的建议（例如提供替代方案后分阶段下线，为依赖的大客户保留过渡期）", "区分使用率和价值：核对大客户的使用深度、合同或销售承诺和续约影响，最多问 1–2 个关键问题（例如合同里是否承诺了这个功能）", "给出下线路径：公告、迁移或数据导出、过渡期、灰度关闭和回退条件", "点出 B 端采购者、决策者、使用者不同，沟通对象要分开；约定回访（例如与大客户沟通之后）"],
+      "anti_patterns": ["只看 3% 的使用率就建议直接下线", "编造维护成本或续约金额", "忽略合同和对外承诺，替用户拍板"]
     }
   ]
 }

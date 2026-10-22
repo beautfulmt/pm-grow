@@ -75,6 +75,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [internal-platform](../knowledge/industries/internal-platform.md)：需求方是内部同事，缺少市场信号，权力关系和历史渊源影响很大，规则公开比逐个说服更有效。
 - [saas](../knowledge/industries/saas.md)：销售、客户成功和产品三方张力常见，客户承诺要回到合同和产品路线图上对齐。
 - [healthcare](../knowledge/industries/healthcare.md)：临床专家有专业权威，产品方要用专业证据和安全论据沟通。
+- [gov-enterprise](../knowledge/industries/gov-enterprise.md)：决策分多个层级，向上汇报分别讲政策目标、业务价值和落地进度，财务、审计和安全部门尽早纳入。
 
 ## 阶段检查点反问
 

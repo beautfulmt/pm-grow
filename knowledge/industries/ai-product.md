@@ -45,6 +45,8 @@ overlay: true
 - [A/B 实验](../methods/ab-test.md)：先离线评测与回归，再验证在线任务价值。
 - [发布灰度](../methods/launch-rollout.md)：同时记录模型、提示词、检索和工具版本，预备停止与回退。
 - [单位经济模型](../methods/unit-economics.md)：计入人工复核、失败与重复调用成本。
+- [AI 评测集](../methods/ai-eval.md)：按场景、风险等级和版本建立回归集与高风险集，作为上线门槛。
+- [定价与套餐](../methods/pricing.md)：按量收费或设用量上限时让账单可预期，计入失败与重试成本。
 
 ## 易踩的坑
 
@@ -59,4 +61,4 @@ overlay: true
 
 ## 适用边界
 
-本包始终保留主行业约束。AI 问诊叠加[医疗健康](healthcare.md)，AI 授信叠加[金融科技](fintech.md)，企业助手叠加 [SaaS](saas.md)。确定性流程和规则引擎也是可比较选项。
+本包始终保留主行业约束。AI 问诊叠加[医疗健康](healthcare.md)，AI 授信叠加[金融科技](fintech.md)，企业助手叠加 [SaaS](saas.md)，模型 API 和 AI 编程工具叠加[开发者与工具类产品](developer-tools.md)，政企 AI 项目叠加[政企与 ToG](gov-enterprise.md)；面向海外市场时同时叠加[出海与全球化](globalization.md)，核对模型服务和数据流向在当地是否可用。确定性流程和规则引擎也是可比较选项。

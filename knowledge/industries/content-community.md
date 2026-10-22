@@ -44,6 +44,7 @@ overlay: false
 - [A/B 实验](../methods/ab-test.md)：关注社交关系和共享供给造成的组间影响。
 - [MVP 切片](../methods/mvp-slicing.md)：先验证一个人群能否持续获得合适内容。
 - [战略选择](../methods/strategy-choice.md)：明确先满足哪类人和哪种互动。
+- [埋点与数据需求](../methods/tracking-plan.md)：区分推荐位与内容来源，治理动作同样留痕。
 
 ## 易踩的坑
 
@@ -58,4 +59,4 @@ overlay: false
 
 ## 适用边界
 
-交易闭环叠加[电商](ecommerce.md)，广告收入问题叠加[广告与商业化](ads-monetization.md)，生成内容叠加 [AI 产品](ai-product.md)。不同内容形态和社区阶段分别验证。
+交易闭环叠加[电商](ecommerce.md)，广告收入问题叠加[广告与商业化](ads-monetization.md)，生成内容叠加 [AI 产品](ai-product.md)，面向海外用户时叠加[出海与全球化](globalization.md)，内容规范和治理按市场分别核对。不同内容形态和社区阶段分别验证。

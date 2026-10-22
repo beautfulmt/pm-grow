@@ -41,6 +41,8 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [金融科技](../industries/fintech.md)：资金状态必须一致、可对账，任何中间态都要有补偿或人工处理路径。
 - [硬件/IoT/工业制造](../industries/hardware-iot.md)：设备在线、离线、固件升级、配网失败等状态要考虑弱网和断电。
 - [中后台与内部系统](../industries/internal-platform.md)：审批流的退回、转交、加签、撤回、超时是高频遗漏。
+- [政企与 ToG](../industries/gov-enterprise.md)：审批和办事流程按时限要求、层级流转和材料规则建模，全程留痕、可追溯。
+- [开发者与工具类产品](../industries/developer-tools.md)：鉴权、限流、配额、重试和错误码都属于状态设计，错误信息要告诉开发者下一步怎么做。
 
 ## 不同阶段怎么用
 

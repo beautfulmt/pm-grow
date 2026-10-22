@@ -41,6 +41,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [电商与零售](../industries/ecommerce.md)：同一商品在送礼、自用、囤货情境下任务不同，影响详情页和推荐。
 - [内容/社区/社交](../industries/content-community.md)：情感与社交维度常是主任务，功能维度反而次要。
 - [广告与商业化](../industries/ads-monetization.md)：品牌广告主和效果广告主雇用平台的任务不同。
+- [开发者与工具类产品](../industries/developer-tools.md)：开发者雇用工具是为了更快、更可靠地交付自己的产品，替代方案常是自己写或用开源方案。
 
 ## 不同阶段怎么用
 

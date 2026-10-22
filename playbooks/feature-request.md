@@ -73,6 +73,7 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [saas](../knowledge/industries/saas.md)：采购者、决策者、使用者常是不同的人；大客户定制要判断能否沉淀为通用能力。
 - [internal-platform](../knowledge/industries/internal-platform.md)：提需求的业务方就是用户，使用常是强制的，价值主要看效率、风险和成本。
 - [ai-product](../knowledge/industries/ai-product.md)："加个 AI 功能"先看任务能否接受概率性输出，再评估质量标准、评测方式和推理成本。
+- [gov-enterprise](../knowledge/industries/gov-enterprise.md)：需求常来自招标条款、上级要求或领导批示，先区分必须响应的条款和可以协商的实现；定制要判断能否沉淀进产品主干。
 
 ## 阶段检查点反问
 

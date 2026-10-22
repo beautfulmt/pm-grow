@@ -44,6 +44,8 @@ overlay: false
 - [用户旅程](../methods/journey-map.md)：从选购延伸到收货和售后。
 - [留存分析](../methods/retention-cohort.md)：按购买周期与品类观察复购。
 - [A/B 实验](../methods/ab-test.md)：检查共享库存、活动和价格的相互影响。
+- [定价与套餐](../methods/pricing.md)：同时看毛利、补贴、退货与价格感知，避免长期依赖折扣。
+- [埋点与数据需求](../methods/tracking-plan.md)：支付、履约和售后以服务端状态为准，渠道来源贯穿链路。
 
 ## 易踩的坑
 
@@ -58,4 +60,4 @@ overlay: false
 
 ## 适用边界
 
-即时配送和到店核销叠加[本地生活](local-services.md)，商家订阅工具叠加 [SaaS](saas.md)，推荐或自动客服叠加 [AI 产品](ai-product.md)。数字商品与实体商品的履约条件分别处理。
+即时配送和到店核销叠加[本地生活](local-services.md)，商家订阅工具叠加 [SaaS](saas.md)，推荐或自动客服叠加 [AI 产品](ai-product.md)，跨境电商叠加[出海与全球化](globalization.md)。数字商品与实体商品的履约条件分别处理。

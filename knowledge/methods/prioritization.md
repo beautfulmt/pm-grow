@@ -45,6 +45,8 @@ stages: [newcomer, independent_pm, senior, expert, lead]
 - [游戏](../industries/gaming.md)：版本节奏和内容排期决定窗口，排序配合版本计划。
 - [硬件/IoT/工业制造](../industries/hardware-iot.md)：硬件需求有冻结节点，过点后进入下一代产品。
 - [广告与商业化](../industries/ads-monetization.md)：收入类需求同时评估对用户体验和广告主效果的影响。
+- [开发者与工具类产品](../industries/developer-tools.md)：覆盖面按活跃项目或调用量衡量，文档、报错和兼容性问题与新功能放在同一张表里比较。
+- [政企与 ToG](../industries/gov-enterprise.md)：合同和验收承诺先单列，剩余容量再按能否沉淀为通用能力排序。
 
 ## 不同阶段怎么用
 

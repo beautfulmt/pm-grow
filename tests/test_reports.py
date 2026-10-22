@@ -43,8 +43,8 @@ class GrowthReportTest(DataTestCase):
         self.assertEqual(self.view().state["report"]["history"], [])
 
     def test_cross_problem_upgrade_is_rendered_and_report_cursor_advances(self):
-        self.add(attempt("attempt-one", "problem-one"))
-        self.add(attempt("attempt-two", "problem-two"))
+        self.add(attempt("attempt-one", "problem-one", stamp="2026-10-02", ability="data_validation"))
+        self.add(attempt("attempt-two", "problem-two", ability="data_validation"))
         self.add(make_record("upgrade", ability_updates=[upgrade("data_validation", ["attempt-one", "attempt-two"])],
                              stage_update={"stage": "independent_pm", "reason": "隔离模拟职责"}))
         draft = self.draft()
@@ -57,14 +57,23 @@ class GrowthReportTest(DataTestCase):
         self.add(make_record("new-learning", stamp="2026-10-19"))
         self.assertEqual(report.draft(self.root, today="2026-10-19")["basis"]["record_ids"], ["new-learning"])
 
-    def test_defer_suppresses_same_evidence_and_new_records_reopen_proposal(self):
+    def test_defer_restarts_the_clock_so_only_new_triggers_reopen_the_proposal(self):
         for index in range(3):
             self.add(attempt(f"attempt-{index}", f"problem-{index}"))
         self.assertTrue(self.cli_json("--today", "2026-10-19", "status")["report"]["due"])
         report.defer(self.root, today="2026-10-19")
         self.assertFalse(self.cli_json("--today", "2026-10-19", "status")["report"]["due"])
+        # One trivial record after the deferral is not a new trigger (v2.0 re-proposed here).
         self.add(make_record("new-learning"))
-        self.assertTrue(self.cli_json("--today", "2026-10-19", "status")["report"]["due"])
+        cursor = self.cli_json("--today", "2026-10-19", "status")["report"]
+        self.assertFalse(cursor["due"])
+        self.assertTrue(cursor["deferred"])
+        self.assertEqual(cursor["deferred_on"], "2026-10-19")
+        for index in range(3, 6):
+            self.add(attempt(f"attempt-{index}", f"problem-{index}"))
+        cursor = self.cli_json("--today", "2026-10-19", "status")["report"]
+        self.assertTrue(cursor["due"])
+        self.assertEqual([reason["code"] for reason in cursor["reasons"]], ["problems"])
 
     def test_replacement_requires_opt_in_and_backs_up_both_outputs(self):
         self.add(make_record("learning"))
