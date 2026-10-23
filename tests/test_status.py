@@ -67,7 +67,7 @@ class CheckBackRetirementTest(DataTestCase):
 
     def test_answered_check_back_still_needs_a_later_follow_up(self):
         self.add(make_record("set", "2026-10-04", problem=problem("p1", check_back=check(on="2026-10-05"))))
-        self.add(make_record("answer", "2026-10-06", kind="follow_up", problem={"id": "p1", "status": "partial"}))
+        self.add(make_record("answer", "2026-10-06", kind="follow_up", problem={"id": "p1", "status": "partial", "outcome": "完成一部分，仍需后续验证"}))
         self.assertEqual(self.pending(), {})
 
 
@@ -76,7 +76,7 @@ class StaleProblemTest(DataTestCase):
         self.add(make_record("old-a", "2026-08-01", problem=problem("old-a")))
         self.add(make_record("old-b", "2026-09-01", problem=problem("old-b", status="blocked")))
         self.add(make_record("old-planned", "2026-08-15", problem=problem("old-planned", check_back=check(on="2026-11-01"))))
-        self.add(make_record("old-solved", "2026-08-01", problem=problem("old-solved", status="solved")))
+        self.add(make_record("old-solved", "2026-08-01", problem=problem("old-solved", status="solved", outcome="已经验收通过")))
         self.add(make_record("recent", "2026-10-10", problem=problem("recent")))
         stale = self.cli_json("--today", "2026-10-20", "status")
         self.assertEqual([item["problem_id"] for item in stale["stale_problems"]], ["old-a", "old-b"])

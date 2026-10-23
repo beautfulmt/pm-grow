@@ -67,6 +67,7 @@ python3 scripts/pmgrow.py --data-dir <data-dir> rebuild-index
 
 写入新记录时，脚本还会做以下校验。推导已保存的记录时只复核证据存在、未作废和条数、问题数、产出类型，所以旧记录不会因门槛收紧被追溯作废：
 
+- **问题结果：**首次设置或切换到 solved/partial 时，本条记录必须带 `problem.outcome`，写实际结果及核验范围；保持同一状态且已有有效结果时可沿用。summary/user_work 不能替代结果字段。旧记录仍可读取和原样重试；核实后可追加同一问题的 follow_up 补录 outcome。
 - **能力升级：**每条证据都要有同一能力的观察，不能跳级，independent 的证据要来自至少 2 个不同日期。stable 的证据要相隔至少 14 天、至少 1 条是新证据，并带 `review`（`mode` 为 agent 或 self_check）。
 - **阶段调整：**已有阶段时，`stage_update` 必须写 `basis`；`performance` 只用于升阶，需要当前阶段至少 2 项能力达到 stable，并带 `review`。
 - **引用：**`methods` 和 `problem.scenario` 必须是技能中已有的方法卡或场景 ID；写错时报错，并提示最接近的 ID。

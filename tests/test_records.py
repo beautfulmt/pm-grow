@@ -172,7 +172,7 @@ class RecordWriteTest(DataTestCase):
 
     def test_problem_fields_merge_in_write_order(self):
         self.add(make_record("one", "2026-10-05", problem=problem("p1", "旧标题", scenario="feature-request")))
-        self.add(make_record("two", "2026-10-03", problem={"id": "p1", "title": "新标题", "status": "partial"}))
+        self.add(make_record("two", "2026-10-03", problem={"id": "p1", "title": "新标题", "status": "partial", "outcome": "已解决一部分问题"}))
         merged = self.view().problems["p1"]
         self.assertEqual((merged["title"], merged["scenario"], merged["status"]), ("新标题", "feature-request", "partial"))
         self.assertEqual((merged["first_date"], merged["last_date"]), ("2026-10-03", "2026-10-05"))

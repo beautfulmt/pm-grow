@@ -1228,6 +1228,15 @@ def append_record(root, value, timeout=10.0, now=None):
             problem = record.get("problem")
             if problem and not view.problems[problem["id"]]["title"]:
                 raise ValueError(f"问题 {problem['id']} 第一次出现，需要 problem.title")
+            if problem and problem.get("status") in ("solved", "partial"):
+                previous = before.problems.get(problem["id"], {})
+                current = view.problems[problem["id"]]
+                if not problem.get("outcome") and (
+                        previous.get("status") != problem["status"] or not current["outcome"]):
+                    raise ValueError(
+                        f"设置 problem.status={problem['status']} 时，本条记录必须填写 problem.outcome，"
+                        "说明实际结果及核验范围；只写在 summary 或 user_work 中不能替代结果字段。"
+                        "结果未知时保留 open/blocked；已结束但结果未核实用 closed。")
             newly_voided = {(item["record_id"], item["ability_id"], item["stage"], item["to"]) for item in view.voided}
             newly_voided -= {(item["record_id"], item["ability_id"], item["stage"], item["to"]) for item in before.voided}
             for record_id, ability_id, stage, target in sorted(newly_voided):

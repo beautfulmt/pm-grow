@@ -36,7 +36,7 @@ class GrowthReportTest(DataTestCase):
         forged["facts"]["period"]["record_count"] = 999
         with self.assertRaisesRegex(ValueError, "facts"):
             report.build(self.root, forged, today="2026-10-19")
-        self.add(make_record("follow-up", kind="follow_up", problem=problem("problem-one", status="solved")))
+        self.add(make_record("follow-up", kind="follow_up", problem=problem("problem-one", status="solved", outcome="用户已验收")))
         with self.assertRaisesRegex(ValueError, "facts"):
             report.build(self.root, draft, today="2026-10-19")
         self.assertFalse((self.root / "reports/2026-10-19.html").exists())

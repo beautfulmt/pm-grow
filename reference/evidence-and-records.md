@@ -15,27 +15,24 @@
 
 ## 什么时候记录
 
-本人学习、并且允许记录时，每轮回复结束前对照下面的清单检查一次，命中任何一项就写一条记录。不要等对话自然结束再补记：导师无法知道哪一轮是最后一轮，用户不再回来时，没写下的问题就不会被回访，也不会进入报告。早记的内容后来有变化，再写一条记录更新或更正即可。值得记录的内容包括：
+每轮回复结束前，按以下优先级检查：
+
+1. 用户要求不记录，或本轮属于第三方代问、只交付制品、技能维护时，不写成长记录，也不更新个人档案和偏好。
+2. 本人学习且允许记录时，新增长期偏好、偏好变更和更正都要保存，任何回答档位均适用。“只回复收到”只限制回复内容；明确说“不要记录”时遵从上一条。偏好标明本轮、某类任务或长期的作用范围。
+3. 其余快答内容，只在问题状态有变化时记录，例如有了结果、决定放弃或约定了回访。普通事实或方法问答不写记录。
+4. 标准和深度档，对照下面的清单，有新增内容就写记录；寒暄、重复内容和同一问题上没有新变化的追问不写。
+
+不要等对话自然结束再补记：导师无法知道哪一轮是最后一轮，用户不再回来时，没写下的问题就不会被回访，也不会进入报告。早记的内容后来有变化，再写一条记录更新或更正即可。值得记录的内容包括：
 
 - 出现了新问题
 - 对问题的理解发生了变化
 - 用户给出的判断或产出
 - 做出的取舍
 - 背景或职责的变化
-- 用户的偏好
+- 新偏好或偏好变更
 - 约定的下一步
 - 回访结果
 - 更正
-
-以下情况不记录：
-
-- 寒暄和重复内容
-- 同一问题上没有新变化的追问轮次
-- 第三方代问
-- 只交付制品
-- 技能维护
-- 用户要求不记录
-- 快答档里问题状态没有变化的一问一答，见[回答档位](reasoning.md)
 
 ## 数据目录
 
@@ -117,6 +114,7 @@ python3 <skill-dir>/scripts/pmgrow.py --data-dir <data-dir> migrate --dry-run
 |---|---|
 | `kind` | 取值：discussion、exploration、attempt、follow_up、context_update、preference、correction、milestone、review |
 | `problem` | 同一个 `id` 跨多条记录合并，后写入的字段覆盖先写入的。`status` 取值：open、solved、partial、blocked、dropped、closed。`check_back` 填 `on`（日期）或 `when`（条件），再加上要问的 `question`。`scenario` 写 playbooks/ 下已有的场景 ID，没有合适的就省略 |
+| `problem.outcome` | 实际结果及核验范围，直接写在 `problem` 内。首次设置或切换到 solved/partial 时，本条记录必须填写；保持同一状态且已有有效结果时可沿用。只写在 summary 或 user_work 中不会进入报告的结果栏。结果未知时保留 open/blocked；已结束但结果未核实用 closed |
 | `user_work` | `kind` 取值：independent、guided、demo、acknowledgement。只写用户本人的产出；导师和 Agent 的贡献写在 `assistance` |
 | `methods` | knowledge/methods/ 下已有的方法卡 ID，写错时脚本拒绝并提示最接近的 ID；个人方法写成 `custom:<名称>` |
 | `observations` | `status` 取值：candidate、supported、withdrawn |
@@ -125,6 +123,18 @@ python3 <skill-dir>/scripts/pmgrow.py --data-dir <data-dir> migrate --dry-run
 | 文本字段 | `milestone`、`unresolved`、`next_step`、`assistance`、`context_ref` 均为非空字符串；多个未决点可用换行写在同一字符串中 |
 | `preferences` | 字符串数组，只记录用户明确表达过的偏好 |
 | `focus_update` | `{"abilities": ["data_validation"], "reason": "..."}`：本期焦点能力，0–2 个不重复的已知能力 ID，必须是用户认可的；空数组表示清除焦点。`reason` 必填，写用户原话里的目标。以最后一条有效记录为准，`status` 和成长报告据此展示焦点进展 |
+
+回访确认结果时，例如：
+
+```json
+"problem": {
+  "id": "onboarding-entry",
+  "status": "solved",
+  "outcome": "原先反馈的 10 位新用户验收均能找到入口；结论仅覆盖该样本。"
+}
+```
+
+结果检查仅用于新写入，旧记录仍可读取和原样重试。旧记录已是 solved/partial 却缺少结果时，报告显示“结果尚未补录”。核实来源后，追加同一 `problem.id` 的 follow_up 记录补充 `problem.outcome`，由脚本更新结果栏和关键节点；不得根据状态猜测结果或覆盖旧记录。
 
 ## 升级门槛
 

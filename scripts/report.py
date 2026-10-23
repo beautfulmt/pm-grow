@@ -333,7 +333,9 @@ def render_problems(facts, narrative):
             ways.append("你的产出：" + "，".join(f"{_e(rec.WORK_KINDS[kind])} {count}" for kind, count in approach["user_work"].items()))
         ways += ["获得帮助：" + _e(text) for text in approach["assistance"]]
         rows.append(("处理方式", "<br>".join(ways) if ways else "以讨论为主"))
-        rows.append(("结果", _e(item["outcome"]) if item.get("outcome") else "尚无结果"))
+        missing_outcome = ("结果尚未补录" if item["status"] in ("solved", "partial")
+                           else "结果尚未核实" if item["status"] == "closed" else "尚无结果")
+        rows.append(("结果", _e(item["outcome"]) if item.get("outcome") else missing_outcome))
         rows.append(("时间", f'{_e(item["first_date"])} 至 {_e(item["last_date"])}'))
         parts.append(f'<article class="problem status-{_e(item["status"])}"><header><h3>{_e(item["title"])}</h3>'
                      f'{_status_badge(item["status"])}</header><dl>'
